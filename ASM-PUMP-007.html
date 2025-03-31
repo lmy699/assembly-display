@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>装配体详情: 新型水泵</title>
+    <style>
+        body { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; padding: 0; background-color: #eef1f5; color: #333; font-size: 16px; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(to right, #3a6ea5, #2c5d8f); color: white; padding: 20px 30px; text-align: center; margin-bottom: 30px; border-radius: 0 0 8px 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 2.1em; font-weight: 600; letter-spacing: 1px; }
+        .assembly-qr-container { margin-top: 15px; }
+        .assembly-qr-image { width: 100px; height: 100px; border: 3px solid #fff; padding: 3px; background-color: white; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); vertical-align: middle; }
+        h2 { color: #2c3e50; border-bottom: 3px solid #5dade2; padding-bottom: 10px; margin-top: 35px; margin-bottom: 25px; font-size: 1.7em; font-weight: 600; }
+        h3 { color: #34495e; margin-top: 25px; margin-bottom: 15px; font-size: 1.4em; font-weight: 500; }
+        .section { background-color: white; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.07); padding: 20px 30px; margin-bottom: 30px; }
+        .info-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .info-table th, .info-table td { border: 1px solid #e0e0e0; padding: 12px 15px; text-align: left; vertical-align: top; }
+        .info-table th { background-color: #f8f9fa; font-weight: 600; width: 20%; color: #495057; }
+        .diagrams-section { display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-around; }
+        .diagram-container { flex: 1; min-width: 300px; max-width: 48%; text-align: center; }
+        .diagram-image-wrapper { border: 1px solid #ddd; padding: 15px; background: #fdfdfd; border-radius: 6px; margin-top: 10px; }
+        .diagram-image { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease; }
+        .diagram-image:hover { transform: scale(1.03); }
+        .no-image { text-align: center; color: #888; padding: 30px 10px; background-color: #f9f9f9; border: 1px dashed #ccc; border-radius: 5px; margin-top: 10px; }
+        .enhanced-flowchart-container { text-align: center; }
+        .enhanced-diagram { max-width: 100%; height: auto; border: 1px solid #ccc; padding: 5px; background: #fff; border-radius: 4px; cursor: pointer; transition: box-shadow 0.2s ease; display: inline-block; }
+        .enhanced-diagram:hover { box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+        .parts-table { width: 100%; border-collapse: collapse; margin-top: 20px; table-layout: fixed; }
+        .parts-table th { background-color: #f8f9fa; font-weight: 600; padding: 12px 15px; border: 1px solid #e0e0e0; text-align: left; color: #495057; }
+        .parts-table td { border: 1px solid #e0e0e0; padding: 15px; vertical-align: top; }
+        .parts-table tr:nth-child(even) { background-color: #fdfdfd; }
+        .part-qr-cell { width: 120px; text-align: center; }
+        .part-qr-link img { width: 100px; height: 100px; display: block; margin: 0 auto; border: 1px solid #eee; padding: 2px; background: white; border-radius: 4px; transition: opacity 0.2s; }
+        .part-qr-link:hover img { opacity: 0.85; }
+        .part-details-cell { width: auto; padding-left: 20px !important; }
+        .part-name-link { font-size: 1.2em; font-weight: 600; color: #0056b3; text-decoration: none; display: block; margin-bottom: 10px; }
+        .part-name-link:hover { text-decoration: underline; color: #003d80; }
+        .part-detail-item { margin-bottom: 6px; font-size: 0.98em; color: #444; line-height: 1.5; }
+        .part-detail-label { font-weight: 600; color: #111; min-width: 80px; display: inline-block; margin-right: 8px; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        @media (max-width: 992px) { .diagram-container { max-width: 100%; } }
+        @media (max-width: 768px) { header h1 { font-size: 1.8em; } h2 { font-size: 1.5em; } h3 { font-size: 1.25em; } .section { padding: 15px 20px; } .info-table th { width: 30%; } .parts-table thead { display: none; } .parts-table, .parts-table tbody, .parts-table tr, .parts-table td { display: block; width: 100% !important; box-sizing: border-box; } .parts-table tr { margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; overflow: hidden; background-color: #fff !important; } .parts-table td { border: none; border-bottom: 1px dashed #eee; padding: 10px 15px; } .parts-table td:last-child { border-bottom: none; } .part-qr-cell { width: 100%; text-align: center; padding-bottom: 10px; } .part-qr-link img { width: 120px; height: 120px; } .part-details-cell { padding-left: 15px !important; padding-top: 10px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>装配体详情: 新型水泵</h1>
+        <div class="assembly-qr-container">
+            <img src="assembly_qr/Assembly_QR_ASM-PUMP-007.png" alt="新型水泵 二维码" class="assembly-qr-image" title="链接到: https://lmy699.github.io/assembly-display/ASM-PUMP-007.html">
+            <!-- QR Code links to: https://lmy699.github.io/assembly-display/ASM-PUMP-007.html -->
+        </div>
+    </header>
+    <div class="container"><div class="section"><h2>智能装配流程图</h2><p>点击下方图片可在新标签页查看完整尺寸的流程图。</p><div class="enhanced-flowchart-container"><a href="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="智能装配流程图 - 新型水泵" class="enhanced-diagram"/></a></div><p style="margin-top: 10px; font-size: 0.9em; color: #666;">注意：如果流程图中包含错误信息... 请编辑源文件 'Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png' 进行修正。</p></div><div class="section"><h2>相关图纸</h2><div class="diagrams-section"><div class="diagram-container"><h3>装配流程图 (源)</h3><div class="diagram-image-wrapper"><a href="images/Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank"><img src="images/Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图" class="diagram-image"/></a></div></div><div class="diagram-container"><h3>装配部件图</h3><div class="diagram-image-wrapper"><a href="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" target="_blank"><img src="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" alt="装配部件图" class="diagram-image"/></a></div></div></div></div><div class="section"><h2>基本信息</h2><table class="info-table"><tr><th>装配体ID (AssemblyAI)</th><td>ASM-PUMP-007</td></tr>
+<tr><th>装配体名称 (AssemblyName)</th><td>新型水泵</td></tr>
+<tr><th>AssemblyID</th><td>1</td></tr>
+<tr><th>CreateDate</th><td>2025-03-27 21:53:44</td></tr>
+<tr><th>LastModified</th><td>2025-03-27 21:53:44</td></tr>
+</table></div><div class="section"><h2>零件列表</h2><p>共包含 3 个零件。</p><table class="parts-table"><thead><tr><th style="width: 120px;">二维码</th><th>零件信息</th></tr></thead><tbody><tr><td class="part-qr-cell"><a href="part_PART-COVER-701.html" class="part-qr-link" title="查看 新泵盖 详情 (链接到: https://lmy699.github.io/assembly-display/part_PART-COVER-701.html)"><img src="parts_qr/Part_QR_PART-COVER-701.png" alt="新泵盖 QR Code"/></a></td><td class="part-details-cell"><a href="part_PART-COVER-701.html" class="part-name-link">新泵盖</a><div class="part-detail-item"><span class="part-detail-label">Item ID:</span> PART-COVER-701</div>
+<div class="part-detail-item"><span class="part-detail-label">材料:</span> 塑料</div>
+<div class="part-detail-item"><span class="part-detail-label">规格:</span> PC-701-PL</div>
+<div class="part-detail-item"><span class="part-detail-label">数量:</span> 2</div>
+<div class="part-detail-item"><span class="part-detail-label">装配方式:</span> 螺钉固定</div>
+<div class="part-detail-item"><span class="part-detail-label">位置:</span> 前侧</div>
+<div class="part-detail-item"><span class="part-detail-label">备注:</span> 改进型塑料，更耐用</div>
+<div class="part-detail-item"><span class="part-detail-label">创建时间:</span> 2025-03-27T21:53:44</div>
+</td></tr><tr><td class="part-qr-cell"><a href="part_PART-MOTOR-702.html" class="part-qr-link" title="查看 新型电机 详情 (链接到: https://lmy699.github.io/assembly-display/part_PART-MOTOR-702.html)"><img src="parts_qr/Part_QR_PART-MOTOR-702.png" alt="新型电机 QR Code"/></a></td><td class="part-details-cell"><a href="part_PART-MOTOR-702.html" class="part-name-link">新型电机</a><div class="part-detail-item"><span class="part-detail-label">Item ID:</span> PART-MOTOR-702</div>
+<div class="part-detail-item"><span class="part-detail-label">材料:</span> 铜+硅钢</div>
+<div class="part-detail-item"><span class="part-detail-label">规格:</span> PM-702-DC</div>
+<div class="part-detail-item"><span class="part-detail-label">数量:</span> 1</div>
+<div class="part-detail-item"><span class="part-detail-label">装配方式:</span> 焊接</div>
+<div class="part-detail-item"><span class="part-detail-label">位置:</span> 中心</div>
+<div class="part-detail-item"><span class="part-detail-label">备注:</span> 高效直流电机，静音</div>
+<div class="part-detail-item"><span class="part-detail-label">创建时间:</span> 2025-03-27T21:53:44</div>
+</td></tr><tr><td class="part-qr-cell"><a href="part_PART-SEAL-703.html" class="part-qr-link" title="查看 O型密封圈 详情 (链接到: https://lmy699.github.io/assembly-display/part_PART-SEAL-703.html)"><img src="parts_qr/Part_QR_PART-SEAL-703.png" alt="O型密封圈 QR Code"/></a></td><td class="part-details-cell"><a href="part_PART-SEAL-703.html" class="part-name-link">O型密封圈</a><div class="part-detail-item"><span class="part-detail-label">Item ID:</span> PART-SEAL-703</div>
+<div class="part-detail-item"><span class="part-detail-label">材料:</span> 橡胶</div>
+<div class="part-detail-item"><span class="part-detail-label">规格:</span> SR-703-NBR</div>
+<div class="part-detail-item"><span class="part-detail-label">数量:</span> 3</div>
+<div class="part-detail-item"><span class="part-detail-label">装配方式:</span> 压入</div>
+<div class="part-detail-item"><span class="part-detail-label">位置:</span> 接口处</div>
+<div class="part-detail-item"><span class="part-detail-label">备注:</span> 耐油橡胶，防止泄漏</div>
+<div class="part-detail-item"><span class="part-detail-label">创建时间:</span> 2025-03-27T21:53:44</div>
+</td></tr></tbody></table></div>
+    </div> <!-- /container -->
+    <footer style="text-align: center; padding: 20px; margin-top: 30px; font-size: 0.9em; color: #777; border-top: 1px solid #ddd;">
+        页面静态生成时间: 2025-03-31 11:47:00 | 公开访问网址: <a href="https://lmy699.github.io/assembly-display/" target="_blank">https://lmy699.github.io/assembly-display/</a>
+    </footer>
+</body>
+</html>
