@@ -6,12 +6,13 @@
     <title>装配体详情: 新型水泵</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- 使用较新版本 Font Awesome -->
     <style>
-        /* --- 基础 & 布局 (V4.1 样式) --- */
+        /* --- 基础 & 布局 (V4.2 样式) --- */
         :root {
             --primary-color: #4a6a8a; /* 主色调 - 深蓝灰 */
             --secondary-color: #6c99c4; /* 辅助色 - 柔和蓝 */
             --accent-color-constraint: #3498db; /* 约束强调色 - 亮蓝 */
             --accent-color-fit: #2ecc71;       /* 配合强调色 - 亮绿 */
+            --accent-color-process: #f39c12;   /* 流程步骤强调色 - 橙色 */
             --background-light: #f4f7f9; /* 页面背景 */
             --background-white: #ffffff; /* 卡片背景 */
             --text-dark: #34495e;     /* 主要文字颜色 - 深灰蓝 */
@@ -22,6 +23,10 @@
             --assembly-highlight: #e8f8f5; /* 子装配行背景 - 更淡的绿 */
             --top-assembly-highlight: #fffacd; /* 顶层装配行背景 - 柠檬黄 */
             --danger-color: #e74c3c; /* 错误/警告色 */
+            --code-background: #ecf0f1; /* 代码/pre背景 */
+            --process-background: #fffaf0; /* 流程步骤背景 - 浅米色 */
+            --process-border: #f3d9a0; /* 流程步骤边框色 */
+            --process-text: #8b5a2b; /* 流程步骤文字色 */
         }
         html { scroll-behavior: smooth; } /* 平滑滚动 */
         body { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; padding: 0; background-color: var(--background-light); color: var(--text-dark); font-size: 16px; line-height: 1.6; }
@@ -37,7 +42,7 @@
         a:hover { text-decoration: underline; color: var(--primary-color); }
         .no-image, .no-data { text-align: center; color: var(--text-light); padding: 40px 20px; background-color: #fafbfc; border: 2px dashed var(--border-color); border-radius: 8px; margin-top: 20px; font-style: italic; font-size: 1.1em; }
         .no-data i { margin-right: 8px; color: var(--danger-color); } /* 错误提示图标 */
-        code { background-color: #ecf0f1; padding: 3px 6px; border-radius: 4px; font-family: Consolas, monospace; color: #555; } /* 代码/文件名样式 */
+        code { background-color: var(--code-background); padding: 3px 6px; border-radius: 4px; font-family: Consolas, monospace; color: #555; } /* 代码/文件名样式 */
 
         /* --- 信息表格 & 功能 --- */
         .info-table { width: 100%; border-collapse: collapse; margin: 25px 0; }
@@ -47,19 +52,62 @@
         .assembly-function-section strong { color: var(--primary-color); font-size: 1.15em; display: block; margin-bottom: 5px;}
         .assembly-function-section p { margin: 0; line-height: 1.7; color: var(--text-dark); }
 
-        /* --- 图纸 & 流程图 --- */
+        /* --- 图纸 & 流程图 (概览图) --- */
         .diagrams-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
         .diagram-container { text-align: center; }
         .diagram-container h3 { font-size: 1.3em; border-bottom: 1px solid #eee; padding-bottom: 8px; margin-bottom: 15px; }
-        .diagram-image-wrapper { border: 1px solid var(--border-color); padding: 18px; background: #fdfdfd; border-radius: 8px; margin-top: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: inline-block; } /*让 wrapper 包裹图片 */
+        .diagram-image-wrapper { border: 1px solid var(--border-color); padding: 18px; background: #fdfdfd; border-radius: 8px; margin-top: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: inline-block; /*让 wrapper 包裹图片 */ }
         .diagram-image { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 5px; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .diagram-image:hover { transform: scale(1.03); box-shadow: 0 5px 12px rgba(0,0,0,0.1); }
-        .enhanced-flowchart-container { text-align: center; margin-bottom: 25px; }
+        .enhanced-flowchart-container { text-align: center; margin-bottom: 25px; } /* 这个是可选的“智能”流程图 */
         .enhanced-diagram { max-width: 90%; height: auto; border: 1px solid var(--border-color); padding: 8px; background: var(--background-white); border-radius: 6px; cursor: pointer; transition: box-shadow 0.2s ease; display: inline-block; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
         .enhanced-diagram:hover { box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
-        .flowchart-details-section { margin-top: 30px; padding: 25px 30px; background-color: #fffef5; border: 1px solid #f0e6d2; border-radius: 8px; box-shadow: inset 0 1px 5px rgba(0,0,0,0.06); }
-        .flowchart-details-section h4 { margin-top: 0; margin-bottom: 18px; color: #8b5a2b; border-bottom: 1px solid #f0e6d2; padding-bottom: 12px; font-size: 1.3em; font-weight: 600; display: flex; align-items: center; gap: 10px; }
-        .flowchart-details-section pre { white-space: pre-wrap; word-wrap: break-word; background-color: #fdfcf9; padding: 15px 20px; border: 1px dashed #eaddc5; border-radius: 4px; font-family: Consolas, "Courier New", monospace; font-size: 0.95em; line-height: 1.7; color: #6a4a2b; }
+
+        /* --- *** 新增/修改: 装配流程步骤样式 *** --- */
+        .assembly-process-section { margin-top: 30px; /* 与 flowchart-details-section 分开 */ }
+        .assembly-process-section h2 i { color: var(--accent-color-process); } /* 步骤列表图标颜色 */
+        .assembly-process-details {
+            background-color: var(--process-background); /* 浅米色背景 */
+            border: 1px solid var(--process-border); /* 边框 */
+            border-left: 6px solid var(--accent-color-process); /* 左侧强调边框 - 橙色 */
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-top: 20px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+        }
+        .assembly-process-details h4 { /* 可选：如果pre内容中有标题需要强调 */
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+            font-size: 1.2em;
+            color: var(--process-text);
+            border-bottom: 1px dotted var(--process-border);
+            padding-bottom: 8px;
+            font-weight: 600;
+        }
+        .assembly-process-details pre {
+            white-space: pre-wrap;       /* 允许自动换行 */
+            word-wrap: break-word;       /* 单词内换行 */
+            background-color: transparent; /* 使用容器背景色 */
+            padding: 0;                 /* 移除 pre 默认 padding */
+            margin: 0;                  /* 移除 pre 默认 margin */
+            border: none;               /* 移除 pre 默认边框 */
+            font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 使用页面主字体 */
+            font-size: 1em;            /* 调整字体大小与正文一致 */
+            line-height: 1.75;           /* 增加行高以便阅读 */
+            color: var(--text-dark);     /* 主要文本颜色 */
+            /* 保留 Markdown 风格的视觉提示 */
+            /* 可以考虑用 JS 解析 Markdown 转 HTML，但保持 <pre> 更简单 */
+        }
+        /* 可以在 pre 中手动用 <strong> 等标签 */
+        .assembly-process-details pre strong { color: var(--primary-color); font-weight: 600; }
+        .assembly-process-details pre code { /* <pre><code>...</code></pre> */
+             background-color: rgba(0,0,0,0.05); /* 轻微背景 */
+             padding: 2px 5px;
+             border-radius: 3px;
+             font-family: Consolas, "Courier New", monospace; /* 代码字体 */
+             font-size: 0.9em;
+        }
+
 
         /* --- 装配关系列表样式 (增强) --- */
         .relationships-list { list-style: none; padding: 0; margin-top: 25px; }
@@ -128,11 +176,16 @@
             .section { padding: 20px 25px; }
             .diagrams-section { grid-template-columns: 1fr; } /* 图纸堆叠 */
             .component-details-grid { grid-template-columns: 1fr; } /* 组件详情堆叠 */
+            .assembly-process-details { padding: 20px 25px; } /* 调整流程步骤内边距 */
         }
         @media (max-width: 768px) {
             header { padding: 20px; border-radius: 0 0 12px 12px;} header h1 { font-size: 1.8em; gap: 10px; }
             h2 { font-size: 1.5em; gap: 10px; } h3 { font-size: 1.25em; gap: 8px; }
             .section { padding: 15px 20px; border-radius: 10px;} .info-table th { width: 35%; }
+             /* 调整流程步骤内边距 */
+            .assembly-process-details { padding: 15px 20px; }
+            .assembly-process-details pre { font-size: 0.95em; line-height: 1.7; }
+
             /* 组件列表堆叠 */
             .components-table thead { display: none; }
             .components-table, .components-table tbody, .components-table tr, .components-table td { display: block; width: 100% !important; box-sizing: border-box; }
@@ -155,7 +208,7 @@
 </head>
 <body>
     <header>
-        <h1><i class="fas fa-toolbox"></i> 装配体详情: 新型水泵</h1><div class="assembly-qr-container"><img src="assembly_qr/Assembly_QR_ASM-PUMP-007.png" alt="新型水泵 二维码" class="assembly-qr-image" title="QR 链接到装配体主页: https://lmy699.github.io/assembly-display/ASM-PUMP-007.html"></div></header><div class="container"><div class="section"><h2><i class="fas fa-project-diagram"></i> 智能装配流程图</h2><p>这是推荐的装配流程概览。点击下方流程图可在新标签页查看大图。</p><div class="enhanced-flowchart-container"><a href="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="智能装配流程图 - 新型水泵" class="enhanced-diagram"/></a></div><p style="margin-top:15px;font-size:0.9em;color:var(--text-light);">注：流程图内容基于源文件: <code>Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png</code></p><div class="flowchart-details-section"><h4><i class="fas fa-list-ol"></i> 流程图说明 / 关键步骤 / 注意事项</h4><pre>### 关键装配步骤：
+        <h1><i class="fas fa-toolbox"></i> 装配体详情: 新型水泵</h1><div class="assembly-qr-container"><img src="assembly_qr/Assembly_QR_ASM-PUMP-007.png" alt="新型水泵 二维码" class="assembly-qr-image" title="QR 链接到装配体主页: https://lmy699.github.io/assembly-display/ASM-PUMP-007.html"></div></header><div class="container"><div class="section"><h2><i class="fas fa-project-diagram"></i> 装配流程概览图</h2><p>这是一个可视化的装配流程概览。点击图片可在新标签页查看大图。</p><div class="enhanced-flowchart-container"><a href="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程概览图 - 新型水泵" class="enhanced-diagram"/></a></div><p style="margin-top:15px;font-size:0.9em;color:var(--text-light);">注：此图基于源文件: <code>Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png</code></p></div><div class="section assembly-process-section"><h2><i class="fas fa-clipboard-list"></i> 装配流程步骤与说明</h2><p>请按照以下步骤和注意事项进行装配：</p><div class="assembly-process-details"><pre>### 关键装配步骤：
 1. **固定电机：** 将电机(PART-MOTOR-702)牢固安装在泵体底座(未列出)上。
 2. **安装密封圈：** 将3个O型密封圈(PART-SEAL-703)分别放入前后泵盖的对应凹槽内。
 3. **安装前泵盖：** 将其中一个泵盖(PART-COVER-701)对准电机前端，使用M4x10螺钉(未列出)均匀拧紧。
@@ -173,7 +226,7 @@
 *   十字螺丝刀 (PH2)
 *   内六角扳手 (根据叶轮固定螺丝)
 *   扭力扳手 (推荐，用于精确控制螺钉扭矩)
-*   干净抹布</pre></div></div><div class="section"><h2><i class="fas fa-drafting-compass"></i> 相关图纸</h2><div class="diagrams-section"><div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (源)</h3><div class="diagram-image-wrapper"><a href="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank"><img src="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图 (源文件)" class="diagram-image"/></a></div></div><div class="diagram-container"><h3><i class="fas fa-shapes"></i> 装配部件图</h3><div class="diagram-image-wrapper"><a href="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" target="_blank"><img src="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" alt="装配部件图" class="diagram-image"/></a></div></div></div></div><div class="section"><h2><i class="fas fa-info-circle"></i> 基本信息与功能</h2><div class="assembly-function-section"><strong>装配体功能:</strong><p>将液体从低压区高效、低噪音地输送到高压区，适用于家庭或轻工业场景。提供可靠的密封性能。</p></div><h3><i class="fas fa-tags"></i> 详细属性</h3><table class="info-table"><tr><th>装配体ID (AssemblyAI)</th><td>ASM-PUMP-007</td></tr><tr><th>装配体名称 (AssemblyName)</th><td>新型水泵</td></tr><tr><th>关联组件表 (TableName)</th><td><code>asm_007</code></td></tr><tr><th>Remarks</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr><tr><th>记录创建时间</th><td>2025-04-01 13:05:48</td></tr><tr><th>最后修改时间</th><td>2025-04-01 13:05:48</td></tr></table></div><div class="section"><h2><i class="fas fa-link"></i> 装配关系 (约束与配合)</h2><p>共定义了 5 条关系。</p><ul class="relationships-list"><li><div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖">新泵盖</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机">新型直流无刷电机</a></div><div class="relationship-info-line"><span class="relationship-type constraint" title="约束类型: Mate"><i class="fas fa-puzzle-piece"></i>&nbsp;Mate</span></div><div class="relationship-description">前泵盖的安装面与电机前端面贴合</div></li><li><div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖">新泵盖</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机">新型直流无刷电机</a></div><div class="relationship-info-line"><span class="relationship-type constraint" title="约束类型: Align"><i class="fas fa-arrows-up-down"></i>&nbsp;Align</span></div><div class="relationship-description">前泵盖的中心孔与电机轴线对齐</div></li><li><div class="relationship-components"><a href="part_PART-SEAL-703.html" class="component-link" title="查看 O型密封圈">O型密封圈</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖">新泵盖</a></div><div class="relationship-info-line"><span class="relationship-type fit" title="配合类型: Interference"><i class="fas fa-gears"></i>&nbsp;Interference</span></div><div class="relationship-description">O型圈压入泵盖密封槽，形成过盈配合以密封</div></li><li><div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机">新型直流无刷电机</a></div><div class="relationship-info-line"><span class="relationship-type constraint" title="约束类型: Insert"><i class="fas fa-plug-circle-check"></i>&nbsp;Insert</span><span class="relationship-type fit" title="配合类型: H7/k6"><i class="fas fa-gears"></i>&nbsp;H7/k6</span></div><div class="relationship-description">叶轮孔与电机轴采用过渡配合(H7/k6)，通过键传递扭矩</div></li><li><div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机">新型直流无刷电机</a></div><div class="relationship-info-line"><span class="relationship-type constraint" title="约束类型: Mate"><i class="fas fa-puzzle-piece"></i>&nbsp;Mate</span></div><div class="relationship-description">叶轮轴向定位面与电机轴肩贴合</div></li></ul></div><div class="section"><h2><i class="fas fa-th-list"></i> 组件列表 (零件和子装配)</h2><p>此装配体包含以下 4 个直接下级组件：</p><table class="components-table"><thead><tr><th style="width: 130px;">二维码</th><th>组件信息 (类型 / 功能 / 详情)</th></tr></thead><tbody><tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-COVER-701.html" class="component-qr-link" title="查看 新泵盖 详情 (目标链接: https://lmy699.github.io/assembly-display/part_PART-COVER-701.html)"><img src="component_qr/Component_QR_PART-COVER-701.png" alt="新泵盖 QR Code"/></a></td><td class="component-details-cell"><a href="part_PART-COVER-701.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 新泵盖</a><div class="component-functional-desc">构成泵体外壳，提供密封界面，保护内部电机，并引导水流。</div><div class="component-details-grid"><div class="component-detail-item"><span class="component-detail-label">组件 ID:</span> PART-COVER-701</div>
+*   干净抹布</pre></div></div><div class="section"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section"><div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (源参考)</h3><div class="diagram-image-wrapper"><a href="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank"><img src="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图 (源文件)" class="diagram-image"/></a></div></div><div class="diagram-container"><h3><i class="fas fa-shapes"></i> 装配部件图</h3><div class="diagram-image-wrapper"><a href="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" target="_blank"><img src="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" alt="装配部件图" class="diagram-image"/></a></div></div></div></div><div class="section"><h2><i class="fas fa-info-circle"></i> 基本信息与功能</h2><div class="assembly-function-section"><strong>装配体功能:</strong><p>将液体从低压区高效、低噪音地输送到高压区，适用于家庭或轻工业场景。提供可靠的密封性能。</p></div><h3><i class="fas fa-tags"></i> 详细属性</h3><table class="info-table"><tr><th>装配体ID (AssemblyAI)</th><td>ASM-PUMP-007</td></tr><tr><th>装配体名称 (AssemblyName)</th><td>新型水泵</td></tr><tr><th>关联组件表 (TableName)</th><td><code>asm_007</code></td></tr><tr><th>Remarks</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr><tr><th>记录创建时间</th><td>2025-04-01 13:05:48</td></tr><tr><th>最后修改时间</th><td>2025-04-01 13:05:48</td></tr></table></div><div class="section"><h2><i class="fas fa-link"></i> 装配关系 (约束与配合)</h2><p>共定义了 5 条关系。</p><ul class="relationships-list"><li><div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖">新泵盖</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机">新型直流无刷电机</a></div><div class="relationship-info-line"><span class="relationship-type constraint" title="约束类型: Mate"><i class="fas fa-puzzle-piece"></i>&nbsp;Mate</span></div><div class="relationship-description">前泵盖的安装面与电机前端面贴合</div></li><li><div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖">新泵盖</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机">新型直流无刷电机</a></div><div class="relationship-info-line"><span class="relationship-type constraint" title="约束类型: Align"><i class="fas fa-arrows-up-down"></i>&nbsp;Align</span></div><div class="relationship-description">前泵盖的中心孔与电机轴线对齐</div></li><li><div class="relationship-components"><a href="part_PART-SEAL-703.html" class="component-link" title="查看 O型密封圈">O型密封圈</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖">新泵盖</a></div><div class="relationship-info-line"><span class="relationship-type fit" title="配合类型: Interference"><i class="fas fa-gears"></i>&nbsp;Interference</span></div><div class="relationship-description">O型圈压入泵盖密封槽，形成过盈配合以密封</div></li><li><div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机">新型直流无刷电机</a></div><div class="relationship-info-line"><span class="relationship-type constraint" title="约束类型: Insert"><i class="fas fa-plug-circle-check"></i>&nbsp;Insert</span><span class="relationship-type fit" title="配合类型: H7/k6"><i class="fas fa-gears"></i>&nbsp;H7/k6</span></div><div class="relationship-description">叶轮孔与电机轴采用过渡配合(H7/k6)，通过键传递扭矩</div></li><li><div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机">新型直流无刷电机</a></div><div class="relationship-info-line"><span class="relationship-type constraint" title="约束类型: Mate"><i class="fas fa-puzzle-piece"></i>&nbsp;Mate</span></div><div class="relationship-description">叶轮轴向定位面与电机轴肩贴合</div></li></ul></div><div class="section"><h2><i class="fas fa-th-list"></i> 组件列表 (零件和子装配)</h2><p>此装配体包含以下 4 个直接下级组件：</p><table class="components-table"><thead><tr><th style="width: 130px;">二维码</th><th>组件信息 (类型 / 功能 / 详情)</th></tr></thead><tbody><tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-COVER-701.html" class="component-qr-link" title="查看 新泵盖 详情 (目标链接: https://lmy699.github.io/assembly-display/part_PART-COVER-701.html)"><img src="component_qr/Component_QR_PART-COVER-701.png" alt="新泵盖 QR Code"/></a></td><td class="component-details-cell"><a href="part_PART-COVER-701.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 新泵盖</a><div class="component-functional-desc">构成泵体外壳，提供密封界面，保护内部电机，并引导水流。</div><div class="component-details-grid"><div class="component-detail-item"><span class="component-detail-label">组件 ID:</span> PART-COVER-701</div>
 <div class="component-detail-item"><span class="component-detail-label">数量:</span> 2</div>
 <div class="component-detail-item"><span class="component-detail-label">单位:</span> 个</div>
 <div class="component-detail-item"><span class="component-detail-label">位置参考:</span> 前后两端</div>
@@ -212,15 +265,15 @@
 </div></td></tr></tbody></table></div>
     </div> <!-- /container -->
 
-    /* 返回顶部按钮 HTML */
+    <!-- 返回顶部按钮 HTML -->
     <button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button>
 
     <footer style="text-align: center; padding: 25px; margin-top: 40px; font-size: 0.9em; color: #888; border-top: 1px solid #ddd; background-color: #f0f0f0;">
-        页面静态生成时间: 2025-04-01 13:05:54 | 数据来源: ASM 数据库
+        页面静态生成时间: 2025-04-01 13:27:56 | 数据来源: ASM 数据库
         <br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a>
     </footer>
 
-    /* 返回顶部按钮 JavaScript */
+    <!-- 返回顶部按钮 JavaScript -->
     <script>
         var backToTopBtn = document.getElementById("back-to-top");
 
