@@ -1,865 +1,400 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="装配体 新型高效离心泵 工艺规程"><meta name="author" content="Process Spec Generator"><title>装配工艺规程: 新型高效离心泵</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="装配体 新型水泵 的详细信息、组件列表、装配关系和流程。"><meta name="author" content="Static Site Generator"><title>装配体详情: 新型水泵</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* --- Base, Variables, Reset (约 50 行) --- */
-        :root {
-            /* Color Palette */
-            --primary-color: #2c3e50; /* Midnight Blue */
-            --primary-hover: #34495e; /* Wet Asphalt */
-            --secondary-color: #16a085; /* Green Sea */
-            --secondary-hover: #1abc9c; /* Turquoise */
-            --accent-1: #2980b9; /* Belize Hole */
-            --accent-2: #8e44ad; /* Wisteria */
-            --accent-3: #d35400; /* Pumpkin */
-            --accent-4: #c0392b; /* Pomegranate */
-            --accent-constraint: var(--accent-1);
-            --accent-fit: var(--secondary-color);
-            --accent-process: #f1c40f; /* Sun Flower */
-            --accent-warning: #e67e22; /* Carrots */
-            --accent-danger: var(--accent-4);
-            --accent-tooling: var(--accent-2);
-            --accent-quality: var(--secondary-hover);
-            --accent-safety: var(--accent-danger);
-            --accent-info: var(--accent-1);
-            --accent-revision: #7f8c8d; /* Asbestos */
-            --accent-standard: #27ae60; /* Nephritis */
-            --accent-material: #f39c12; /* Orange */
-            --accent-personnel: var(--accent-2);
-            --accent-troubleshoot: var(--accent-warning);
-            --accent-rework: var(--accent-danger);
-
-            /* Backgrounds */
-            --background-light: #ecf0f1; /* Clouds */
-            --background-white: #ffffff;
-            --background-section-odd: var(--background-white);
-            --background-section-even: #f8f9f9; /* Slightly off-white */
-            --background-code: #f1f3f4;
-            --background-header-grad-start: var(--primary-color);
-            --background-header-grad-end: #5d6d7e; /* Darker shade */
-            --background-table-header: #e5e8e8; /* Light Gray */
-            --background-highlight: #e8f8f5; /* Light teal */
-            --background-tooltip: #34495e;
-
-            /* Text */
-            --text-dark: #212f3c;
-            --text-medium: #566573;
-            --text-light: #909ca8; /* Lighter grey */
-            --text-headings: var(--primary-color);
-            --text-link: var(--secondary-color);
-            --text-link-hover: var(--secondary-hover);
-            --text-code: #5a6571; /* Darker code text */
-            --text-white: #ffffff;
-            --text-placeholder: var(--text-light);
-
-            /* Borders */
-            --border-color: #d5dbdb; /* Lighter border */
-            --border-color-strong: #bdc3c7; /* Clouds darker */
-            --border-radius-small: 4px;
-            --border-radius-medium: 8px;
-            --border-radius-large: 12px;
-            --border-width: 1px;
-            --border-width-strong: 2px;
-
-            /* Shadows (More pronounced) */
-            --shadow-light: 0 2px 5px rgba(44, 62, 80, 0.08);
-            --shadow-medium: 0 6px 15px rgba(44, 62, 80, 0.1);
-            --shadow-strong: 0 12px 30px rgba(44, 62, 80, 0.15);
-
-            /* Spacing */
-            --spacing-tiny: 0.3rem;
-            --spacing-small: 0.6rem;
-            --spacing-medium: 1.1rem;
-            --spacing-large: 1.7rem;
-            --spacing-xlarge: 2.4rem;
-            --spacing-xxlarge: 3.5rem;
-
-            /* Transitions */
-            --transition-speed: 0.3s;
-            --transition-timing: cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother ease */
-
-            /* Typography */
-            --font-size-base: 15px;
-            --font-size-small: 0.88em;
-            --font-size-large: 1.15em;
-            --line-height-base: 1.7;
-            --line-height-heading: 1.3;
-            --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif;
-            --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-            --font-weight-light: 300;
-            --font-weight-normal: 400;
-            --font-weight-medium: 500;
-            --font-weight-bold: 700;
-        }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-        body { font-family: var(--font-family-sans); background-color: var(--background-light); color: var(--text-dark); line-height: var(--line-height-base); font-size: var(--font-size-base); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        img, svg { max-width: 100%; height: auto; vertical-align: middle; }
-
-        /* --- Layout, Header, Navigation (约 80 行) --- */
-        .container { max-width: 1500px; margin: 0 auto; padding: var(--spacing-medium) var(--spacing-large); }
-        header { background: linear-gradient(140deg, var(--background-header-grad-start) 0%, var(--background-header-grad-end) 100%); color: var(--text-white); padding: var(--spacing-large) var(--spacing-xlarge); text-align: center; margin-bottom: var(--spacing-xlarge); border-radius: 0 0 var(--border-radius-large) var(--border-radius-large); box-shadow: var(--shadow-strong); position: relative; border-bottom: 6px solid var(--secondary-color); overflow: hidden;}
-        header::before { /* Subtle pattern */ content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 15px 15px; opacity: 0.5; pointer-events: none; }
-        header h1 { margin: 0 0 var(--spacing-medium) 0; font-size: clamp(2em, 4.5vw, 2.8em); font-weight: var(--font-weight-bold); letter-spacing: 1px; display: flex; align-items: center; justify-content: center; gap: var(--spacing-medium); text-shadow: 1px 1px 5px rgba(0,0,0,0.3); }
-        header h1 i { opacity: 0.9; margin-right: var(--spacing-small); animation: icon-float 3s ease-in-out infinite; }
-        @keyframes icon-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-        .assembly-qr-container { margin-top: var(--spacing-medium); opacity: 0.95; transition: opacity var(--transition-speed); display: inline-block; /* Allow centering */ }
-        .assembly-qr-container:hover { opacity: 1; }
-        .assembly-qr-image { width: var(--assembly-qr-width, 130px); height: var(--assembly-qr-height, 130px); border: 6px solid rgba(255,255,255,0.9); padding: 4px; background-color: var(--background-white); border-radius: var(--border-radius-medium); box-shadow: 0 6px 18px rgba(0,0,0,0.3); vertical-align: middle; transition: transform 0.35s var(--transition-timing); }
-        .assembly-qr-image:hover { transform: scale(1.12) rotate(4deg); box-shadow: 0 8px 22px rgba(0,0,0,0.35); }
-        .page-nav { background-color: rgba(255, 255, 255, 0.98); padding: var(--spacing-medium); margin-bottom: var(--spacing-xlarge); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-medium); text-align: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-color); transition: box-shadow 0.3s; }
-        .page-nav:hover { box-shadow: var(--shadow-strong); }
-        .page-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-small) var(--spacing-small); } /* Reduced gap */
-        .page-nav a { display: inline-flex; align-items:center; padding: var(--spacing-small) var(--spacing-medium); color: var(--text-link); text-decoration: none; font-weight: var(--font-weight-medium); border-radius: var(--border-radius-small); transition: all var(--transition-speed); border: 1px solid transparent; font-size: 0.9em; white-space: nowrap; }
-        .page-nav a:hover, .page-nav a:focus { background-color: var(--secondary-hover); color: var(--text-white); text-decoration: none; transform: translateY(-2px); box-shadow: var(--shadow-light); border-color: transparent; }
-        .page-nav a.active { background-color: var(--primary-color); color: var(--text-white); font-weight: var(--font-weight-bold); box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); }
-        .page-nav i { margin-right: var(--spacing-small); font-size: 1em; line-height: 1; vertical-align: middle; width: 1.2em; text-align: center; transition: transform 0.2s; }
-        .page-nav a:hover i { transform: scale(1.2) rotate(-10deg); }
-
-        /* --- Sections, Headings, Basic Elements (约 150 行) --- */
-        .section { background-color: var(--background-section-odd); border-radius: var(--border-radius-large); box-shadow: var(--shadow-medium); padding: var(--spacing-xlarge) var(--spacing-xxlarge); margin-bottom: var(--spacing-xlarge); transition: box-shadow var(--transition-speed); overflow: hidden; border: var(--border-width) solid var(--border-color); position: relative; }
+        /* --- Global & Variables --- */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif; margin: 0; padding: 0; background-color: var(--background-light, #f4f7f9); color: var(--text-dark, #34495e); line-height: 1.65; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        :root { --primary-color: #4a6a8a; --primary-hover: #3b5671; --secondary-color: #6c99c4; --secondary-hover: #5a8ab3; --accent-color-constraint: #3498db; --accent-color-fit: #2ecc71; --accent-color-process: #f39c12; --accent-color-warning: #e67e22; --accent-color-danger: #e74c3c; --accent-color-history: #9b59b6; /* New color for history */ --background-light: #f4f7f9; --background-white: #ffffff; --background-section-odd: var(--background-white); --background-section-even: #fbfcfd; --text-dark: #34495e; --text-light: #7f8c8d; --text-headings: var(--primary-color); --text-link: var(--secondary-color); --text-link-hover: var(--primary-color); --text-code: #555; --text-white: #ffffff; --border-color: #e1e5e8; --border-color-strong: #ced4da; --border-radius-small: 4px; --border-radius-medium: 8px; --border-radius-large: 12px; --code-background: #ecf0f1; --subtle-highlight: #eaf4ff; --process-background: #fffaf0; --process-border: #f3d9a0; --process-text: #8b5a2b; --process-subtitle-border: #e6d0a7; --shadow-light: 0 2px 5px rgba(0,0,0,0.05); --shadow-medium: 0 5px 15px rgba(0,0,0,0.07); --shadow-strong: 0 6px 18px rgba(0,0,0,.1); --spacing-small: 0.5rem; --spacing-medium: 1rem; --spacing-large: 1.5rem; --spacing-xlarge: 2rem; --spacing-xxlarge: 2.5rem; --transition-speed: 0.2s; --transition-timing: ease-in-out; }
+        /* --- Layout & Header --- */
+        .container { max-width: 1400px; margin: 0 auto; padding: var(--spacing-medium) var(--spacing-large); }
+        header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--text-white); padding: var(--spacing-large) var(--spacing-xlarge); text-align: center; margin-bottom: var(--spacing-xlarge); border-radius: 0 0 var(--border-radius-large) var(--border-radius-large); box-shadow: var(--shadow-strong); position: relative; }
+        header h1 { margin: 0; font-size: clamp(1.8em, 4vw, 2.4em); font-weight: 600; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; gap: var(--spacing-medium); text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        .assembly-qr-container { margin-top: var(--spacing-medium); }
+        .assembly-qr-image { width: 120px; height: 120px; border: 4px solid var(--background-white); padding: 4px; background-color: var(--background-white); border-radius: var(--border-radius-medium); box-shadow: 0 3px 8px rgba(0,0,0,0.15); vertical-align: middle; transition: transform var(--transition-speed) var(--transition-timing); }
+        .assembly-qr-image:hover { transform: scale(1.05); }
+        /* --- Navigation --- */
+        .page-nav { background-color: var(--background-section-even); padding: var(--spacing-small) var(--spacing-large); margin-bottom: var(--spacing-xlarge); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); text-align: center; }
+        .page-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-medium); }
+        .page-nav a { display: inline-block; padding: var(--spacing-small) var(--spacing-medium); color: var(--text-link); text-decoration: none; font-weight: 500; border-radius: var(--border-radius-small); transition: background-color var(--transition-speed), color var(--transition-speed); }
+        .page-nav a:hover, .page-nav a:focus { background-color: var(--primary-color); color: var(--text-white); text-decoration: none; }
+        .page-nav i { margin-right: var(--spacing-small); }
+        /* --- Sections & Headings --- */
+        .section { background-color: var(--background-section-odd); border-radius: var(--border-radius-large); box-shadow: var(--shadow-medium); padding: var(--spacing-xlarge) var(--spacing-xxlarge); margin-bottom: var(--spacing-xlarge); transition: box-shadow var(--transition-speed); }
         .section:nth-child(even) { background-color: var(--background-section-even); }
-        .section:hover { box-shadow: var(--shadow-strong); border-color: var(--border-color-strong); }
-        .section:target { box-shadow: 0 0 0 5px rgba(22, 160, 133, 0.3), var(--shadow-strong); animation: highlight-section 1.2s cubic-bezier(0.165, 0.84, 0.44, 1); border-color: var(--secondary-color); }
-        @keyframes highlight-section { 0% { transform: scale(1); opacity: 0.8; } 60% { transform: scale(1.015); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-        h1, h2, h3, h4, h5, h6 { color: var(--text-headings); font-weight: var(--font-weight-bold); margin: 2em 0 1.2em 0; padding-bottom: var(--spacing-small); line-height: var(--line-height-heading); text-rendering: optimizeLegibility; }
-        h2 { border-bottom: 4px solid var(--secondary-color); padding-bottom: var(--spacing-medium); margin-top: 0; margin-bottom: var(--spacing-xlarge); font-size: clamp(1.9em, 4vw, 2.5em); display: flex; align-items: center; gap: var(--spacing-medium); }
-        h2 i { font-size: 1em; opacity: 0.9; transition: transform 0.35s ease-out; color: inherit; margin-right: var(--spacing-small); }
-        h2:hover i { transform: rotate(-15deg) scale(1.2); color: var(--secondary-hover); }
-        h3 { color: var(--text-dark); margin-top: var(--spacing-xlarge); margin-bottom: var(--spacing-medium); font-size: clamp(1.6em, 3.5vw, 2em); display: flex; align-items: center; gap: var(--spacing-small); border-bottom: var(--border-width-strong) solid var(--border-color); font-weight: var(--font-weight-medium); }
-        h4 { font-size: 1.3em; color: var(--primary-hover); margin-top: 2em; margin-bottom: 1em; border-bottom: 1px dashed var(--border-color-strong); padding-bottom: var(--spacing-small); font-weight: 600; }
-        h5 { font-size: 1.15em; color: var(--text-medium); font-weight: 600; margin-bottom: 0.6em; text-transform: uppercase; letter-spacing: 0.5px;}
-        h6 { font-size: 1em; color: var(--text-light); font-weight: 600; margin-bottom: 0.4em; }
-        p { margin-bottom: var(--spacing-medium); max-width: 75ch; /* Improve readability */ }
-        p:last-child { margin-bottom: 0; }
-        a { color: var(--text-link); text-decoration: none; transition: color var(--transition-speed), border-bottom-color 0.2s; border-bottom: 1px solid transparent; }
-        a:hover, a:focus { color: var(--text-link-hover); text-decoration: none; border-bottom-color: var(--text-link-hover); outline: none; }
-        strong, b { font-weight: var(--font-weight-bold); color: inherit; } /* Inherit color unless specified */
-        em, i { font-style: italic; }
-        ul, ol { margin-bottom: var(--spacing-medium); padding-left: 2.5em; }
-        li { margin-bottom: var(--spacing-small); padding-left: var(--spacing-tiny); }
-        ul { list-style-type: disc; }
-        ol { list-style-type: decimal; }
-        ul ul, ol ol, ul ol, ol ul { margin-top: var(--spacing-small); margin-bottom: var(--spacing-small); } /* Nested list spacing */
-        code { background-color: var(--background-code); padding: 3px 7px; border-radius: var(--border-radius-small); font-family: var(--font-family-mono); color: var(--text-code); font-size: 0.9em; border: var(--border-width) solid var(--border-color); word-break: break-word; display: inline-block; line-height: 1.4; }
-        pre { background-color: var(--background-code); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-medium); padding: var(--spacing-medium); overflow-x: auto; font-size: 0.9em; line-height: 1.7; white-space: pre-wrap; word-wrap: break-word; color: var(--text-code); box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); }
-        pre code { background: none; border: none; padding: 0; font-size: inherit; white-space: pre-wrap; word-wrap: break-word; display: block; }
-        hr { border: none; border-top: var(--border-width-strong) solid var(--border-color); margin: var(--spacing-xlarge) 0; }
-        blockquote { border-left: 5px solid var(--secondary-color); margin: var(--spacing-large) 0; padding: var(--spacing-medium) var(--spacing-large); background-color: var(--background-section-even); font-style: italic; color: var(--text-medium); }
-        blockquote p { margin-bottom: 0; }
-        /* --- Utilities & Placeholders --- */
-        .no-image, .no-data { text-align: center; color: var(--text-light); padding: var(--spacing-xlarge); background-color: var(--background-section-even); border: 3px dashed var(--border-color); border-radius: var(--border-radius-medium); margin-top: var(--spacing-large); font-style: italic; font-size: 1.1em; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-medium); }
-        .no-data i { font-size: 2em; color: var(--accent-danger); animation: pulse 2.5s infinite ease-in-out; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.15); opacity: 0.9; } }
-        .placeholder-note { font-size: var(--font-size-small); color: var(--text-light); margin-top: var(--spacing-medium); font-style: italic; text-align: right; opacity: 0.75; padding-right: var(--spacing-small); border-top: 1px dashed var(--border-color); padding-top: var(--spacing-small); }
-        /* --- Tables --- */
-        .info-table, .revision-table, .data-table { width: 100%; border-collapse: collapse; /* Changed from separate */ margin: var(--spacing-large) 0; box-shadow: var(--shadow-medium); border: var(--border-width) solid var(--border-color-strong); border-radius: var(--border-radius-medium); overflow: hidden; }
-        .info-table th, .info-table td, .revision-table th, .revision-table td, .data-table th, .data-table td { border: var(--border-width) solid var(--border-color); padding: var(--spacing-medium); text-align: left; vertical-align: middle; word-break: break-word; }
-        .info-table th, .revision-table th, .data-table th { background-color: var(--background-table-header); font-weight: var(--font-weight-bold); color: #444; border-bottom: var(--border-width-strong) solid var(--border-color-strong); white-space: nowrap; }
-        .info-table th { width: 22%; }
-        .info-table tr:hover td, .revision-table tr:hover td, .data-table tr:hover td { background-color: var(--background-highlight); }
-        .revision-table td, .data-table td { font-size: 0.95em; }
-        .revision-table code, .data-table code { font-size: 0.95em; }
-        /* --- Specific Section Styling (Function, Content Block, Process, etc.) --- (约 250 行) */
-        .assembly-function-section { margin-bottom: var(--spacing-large); padding: var(--spacing-large) var(--spacing-xlarge); background-color: var(--subtle-highlight); border-left: 8px solid var(--secondary-color); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-medium); transition: all var(--transition-speed); }
-        .assembly-function-section:hover { box-shadow: var(--shadow-strong); border-left-color: var(--secondary-hover); transform: scale(1.01); }
-        .assembly-function-section strong { color: var(--primary-color); font-size: 1.25em; display: block; margin-bottom: var(--spacing-small); font-weight: var(--font-weight-bold); }
-        .assembly-function-section p { margin: 0; line-height: 1.8; color: var(--text-dark); }
-        /* Section Icon Colors */
-        #overview h2 i { color: var(--accent-info); } #info h2 i { color: var(--accent-info); } #revisions h2 i { color: var(--accent-revision); } #standards h2 i { color: var(--accent-standard); } #diagrams h2 i { color: #7d3c98; } /* Specific color for diagrams */ #tech-req h2 i { color: var(--accent-constraint); } #material h2 i { color: var(--accent-material); } #personnel h2 i { color: var(--accent-personnel); } #tooling h2 i { color: var(--accent-tooling); } #safety h2 i { color: var(--accent-safety); } #steps h2 i { color: var(--accent-process); } #quality h2 i { color: var(--accent-quality); } #troubleshooting h2 i { color: var(--accent-troubleshoot); } #rework h2 i { color: var(--accent-rework); } #relationships h2 i { color: var(--primary-hover); } #components h2 i { color: #5d6d7e; }
-        /* Content Block Styling */
-        .content-block { margin-top: var(--spacing-large); padding: var(--spacing-large) var(--spacing-xlarge); background-color: var(--background-section-even); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); transition: all var(--transition-speed); }
+        .section:hover { box-shadow: var(--shadow-strong); }
+        h2, h3, h4, h5, h6 { color: var(--text-headings); font-weight: 600; margin-top: 2em; margin-bottom: 1em; }
+        h2 { border-bottom: 3px solid var(--secondary-color); padding-bottom: var(--spacing-medium); margin-top: 0; margin-bottom: var(--spacing-xlarge); font-size: clamp(1.6em, 3.5vw, 2em); display: flex; align-items: center; gap: var(--spacing-medium); }
+        h2 i { font-size: 0.9em; opacity: 0.8; }
+        h3 { color: var(--text-dark); margin-top: var(--spacing-xlarge); margin-bottom: var(--spacing-medium); font-size: clamp(1.3em, 3vw, 1.5em); display: flex; align-items: center; gap: var(--spacing-small); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-small); }
+        /* --- Basic Elements --- */
+        a { color: var(--text-link); text-decoration: none; transition: color var(--transition-speed); }
+        a:hover, a:focus { color: var(--text-link-hover); text-decoration: underline; outline: none; }
+        code { background-color: var(--code-background); padding: 3px 6px; border-radius: var(--border-radius-small); font-family: Consolas, "Courier New", monospace; color: var(--text-code); font-size: 0.9em; border: 1px solid var(--border-color); word-break: break-all; }
+        pre code { border: none; background: none; padding: 0; font-size: inherit; }
+        .no-image, .no-data { text-align: center; color: var(--text-light); padding: var(--spacing-xlarge); background-color: var(--background-section-even); border: 2px dashed var(--border-color); border-radius: var(--border-radius-medium); margin-top: var(--spacing-large); font-style: italic; font-size: 1.1em; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-medium); }
+        .no-data i { font-size: 1.5em; color: var(--accent-color-danger); }
+        /* --- Info & Function --- */
+        .info-table { width: 100%; border-collapse: collapse; margin: var(--spacing-large) 0; }
+        .info-table th, .info-table td { border: 1px solid var(--border-color); padding: var(--spacing-medium) var(--spacing-large); text-align: left; vertical-align: top; word-break: break-word; }
+        .info-table th { background-color: #f8fafd; font-weight: 600; width: 25%; color: #495057; border-bottom: 2px solid var(--border-color-strong); }
+        .info-table tr:hover td { background-color: var(--subtle-highlight); }
+        .assembly-function-section { margin-bottom: var(--spacing-large); padding: var(--spacing-large) var(--spacing-xlarge); background-color: var(--subtle-highlight); border-left: 6px solid var(--secondary-color); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); }
+        .assembly-function-section strong { color: var(--primary-color); font-size: 1.15em; display: block; margin-bottom: var(--spacing-small);}
+        .assembly-function-section p { margin: 0; line-height: 1.7; color: var(--text-dark); }
+        /* --- Technical Requirements & Acceptance --- */
+        #tech-req h2 i { color: var(--accent-color-constraint); }
+        .content-block { margin-top: var(--spacing-large); padding: var(--spacing-large); background-color: var(--background-section-even); border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); }
         .section > .content-block:first-of-type { margin-top: 0; }
-        .content-block:hover { border-color: var(--border-color-strong); box-shadow: var(--shadow-medium); }
-        .content-block h3 { margin-top: 0; margin-bottom: var(--spacing-medium); border-bottom: none; padding-bottom: 0; font-size: 1.6em; color: var(--primary-hover); display: flex; align-items: center; gap: var(--spacing-small); font-weight: 600;}
-        .content-block h3 i { font-size: 1.1em; color: var(--primary-color); opacity: 1; width: 1.5em; text-align: center; transition: transform 0.3s; }
-        .content-block h3:hover i { transform: rotate(10deg); }
-        .content-block h4 { font-size: 1.2em; color: var(--secondary-hover); margin-top: var(--spacing-large); margin-bottom: var(--spacing-small); border-bottom: none; padding-bottom: 0; font-weight: 600; }
-        .content-block p, .content-block ul, .content-block ol, .content-block pre, .content-block table { color: var(--text-dark); line-height: 1.8; margin-bottom: var(--spacing-medium); }
-        .content-block ul, .content-block ol { padding-left: calc(1.5em + var(--spacing-small) + 1.5em); margin-top: var(--spacing-small); }
-        .content-block ul li, .content-block ol li { margin-bottom: var(--spacing-small); padding-left: var(--spacing-small); position: relative;}
-        .content-block ul { list-style-type: none; /* Custom bullets */ }
-        .content-block ul li::before { content: ''; display: inline-block; width: 8px; height: 8px; background-color: var(--secondary-color); border-radius: 50%; margin-right: var(--spacing-medium); position: absolute; left: -1.5em; top: 0.6em; }
-        .content-block ol { list-style-type: none; counter-reset: content-ol-counter; }
-        .content-block ol li::before { counter-increment: content-ol-counter; content: counter(content-ol-counter) "."; font-weight: bold; color: var(--secondary-color); margin-right: var(--spacing-medium); position: absolute; left: -2em; top: 0; width: 1.5em; text-align: right;}
-        .content-block .no-data { padding: var(--spacing-medium) 0; text-align: left; border: none; background: none; font-size: 1em; margin-top: var(--spacing-small); display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--spacing-small); color: var(--text-light); }
-        .content-block .no-data i { font-size: 1.2em; color: var(--text-light); animation: none; }
-        .content-block table { margin-top: var(--spacing-medium); } /* Adjust table margin inside content block */
-        /* --- Diagrams --- */
-        .diagrams-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: var(--spacing-xlarge); } /* Responsive grid */
-        .diagram-container { text-align: center; background: var(--background-white); padding: var(--spacing-large); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-medium); transition: box-shadow var(--transition-speed), transform 0.2s; border-top: 5px solid var(--secondary-color); }
-        .diagram-container:hover { box-shadow: var(--shadow-strong); transform: translateY(-6px); }
-        .diagram-container h3 { font-size: 1.3em; border-bottom: 1px solid #eee; padding-bottom: var(--spacing-small); margin-bottom: var(--spacing-medium); font-weight: 600; }
-        .diagram-image-wrapper { border: 1px solid var(--border-color); padding: var(--spacing-medium); background: #fdfdfd; border-radius: var(--border-radius-medium); margin-top: var(--spacing-medium); display: inline-block; }
-        .diagram-image { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: var(--border-radius-small); cursor: zoom-in; transition: transform var(--transition-speed), box-shadow var(--transition-speed), filter 0.2s; }
-        .diagram-image:hover { transform: scale(1.06); box-shadow: var(--shadow-strong); filter: contrast(1.1); }
-        .enhanced-flowchart-container { text-align: center; margin-bottom: var(--spacing-large); background: var(--background-white); padding: var(--spacing-large); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-medium); border-top: 5px solid var(--primary-color); }
-        .enhanced-diagram { max-width: 100%; height: auto; border: 1px solid var(--border-color-strong); padding: var(--spacing-small); background: var(--background-white); border-radius: var(--border-radius-medium); cursor: zoom-in; transition: box-shadow var(--transition-speed); display: block; box-shadow: var(--shadow-medium); margin: 0 auto; }
+        .content-block h3 { margin-top: 0; margin-bottom: var(--spacing-medium); border-bottom: none; padding-bottom: 0; font-size: 1.3em; color: var(--primary-color); display: flex; align-items: center; gap: var(--spacing-small); }
+        .content-block h3 i { font-size: 1em; color: var(--secondary-hover); opacity: 0.9; width: 1.2em; text-align: center; }
+        .content-block p, .content-block ul { color: var(--text-dark); line-height: 1.7; margin-bottom: var(--spacing-small); }
+        .content-block ul { list-style: disc; padding-left: calc(1.2em + var(--spacing-small) + 1em); margin-top: var(--spacing-small); margin-bottom: 0; }
+        .content-block ul li { margin-bottom: var(--spacing-small); }
+        .content-block .no-data { padding: var(--spacing-medium) 0; text-align: left; border: none; background: none; font-size: 1em; margin-top: var(--spacing-small); display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--spacing-small); }
+        .content-block .no-data i { font-size: 1.2em; color: var(--text-light); }
+        /* --- Diagrams & Flowcharts --- */
+        .diagrams-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xlarge); }
+        .diagram-container { text-align: center; }
+        .diagram-container h3 { font-size: 1.2em; border-bottom: 1px solid #eee; padding-bottom: var(--spacing-small); margin-bottom: var(--spacing-medium); font-weight: 500; }
+        .diagram-image-wrapper { border: 1px solid var(--border-color); padding: var(--spacing-medium); background: #fdfdfd; border-radius: var(--border-radius-medium); margin-top: var(--spacing-medium); box-shadow: var(--shadow-light); display: inline-block; }
+        .diagram-image { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: var(--border-radius-small); cursor: pointer; transition: transform var(--transition-speed), box-shadow var(--transition-speed); }
+        .diagram-image:hover { transform: scale(1.03); box-shadow: var(--shadow-medium); }
+        .enhanced-flowchart-container { text-align: center; margin-bottom: var(--spacing-large); }
+        .enhanced-diagram { max-width: 95%; height: auto; border: 1px solid var(--border-color-strong); padding: var(--spacing-small); background: var(--background-white); border-radius: var(--border-radius-medium); cursor: pointer; transition: box-shadow var(--transition-speed); display: inline-block; box-shadow: var(--shadow-medium); }
         .enhanced-diagram:hover { box-shadow: var(--shadow-strong); }
+        /* --- !!! 新增: Revision History Styles !!! --- */
+        #revision-history h2 i { color: var(--accent-color-history); }
+        .revision-history-table { margin-top: var(--spacing-large); }
+        .revision-history-table th { background-color: #f7f3f9; /* Lighter accent color */ border-bottom: 2px solid var(--accent-color-history); color: var(--accent-color-history); }
+        .revision-history-table th:nth-child(1) { width: 10%; } /* Version */
+        .revision-history-table th:nth-child(2) { width: 15%; } /* Date */
+        .revision-history-table th:nth-child(3) { width: 45%; } /* Content */
+        .revision-history-table th:nth-child(4) { width: 15%; } /* Reviser */
+        .revision-history-table th:nth-child(5) { width: 15%; } /* Approver */
+        .revision-history-table td { padding: var(--spacing-medium) var(--spacing-large); }
+        .revision-history-table tr:nth-child(even) td { background-color: #fdfdfe; }
+        .revision-history-table tr:hover td { background-color: #fbf9fc; } /* Subtle hover */
+        .revision-note { font-size: 0.9em; color: var(--text-light); margin-top: var(--spacing-large); text-align: center; font-style: italic; }
+        /* --- !!! 新增样式结束 !!! --- */
         /* --- Assembly Steps --- */
-        .assembly-process-section h2 i { color: var(--accent-process); }
-        .assembly-process-details { background-color: var(--process-background); border: 1px solid var(--process-border); border-left: 8px solid var(--accent-process); border-radius: var(--border-radius-medium); padding: var(--spacing-xlarge); margin-top: var(--spacing-large); box-shadow: var(--shadow-medium); }
-        .process-subtitle { font-size: 1.4em; font-weight: 700; color: var(--process-text); margin-top: 2.5em; margin-bottom: 1.2em; padding-bottom: var(--spacing-small); border-bottom: 3px solid var(--process-subtitle-border); display: flex; align-items: center; gap: var(--spacing-medium); }
+        .assembly-process-section h2 i { color: var(--accent-color-process); }
+        .assembly-process-details { background-color: var(--process-background); border: 1px solid var(--process-border); border-left: 6px solid var(--accent-color-process); border-radius: var(--border-radius-medium); padding: var(--spacing-large) var(--spacing-xlarge); margin-top: var(--spacing-large); box-shadow: var(--shadow-light); }
+        .process-subtitle { font-size: 1.25em; font-weight: 600; color: var(--process-text); margin-top: 2em; margin-bottom: 1em; padding-bottom: var(--spacing-small); border-bottom: 2px solid var(--process-subtitle-border); display: flex; align-items: center; gap: var(--spacing-medium); }
         .process-subtitle:first-child { margin-top: 0; }
-        .process-subtitle i { font-size: 1.1em; opacity: 1; color: var(--accent-process); }
-        .process-subtitle-warning { color: var(--accent-warning); border-bottom-color: var(--accent-warning); }
-        .process-subtitle-warning i { color: var(--accent-warning); animation: pulse-warning 1.5s infinite; }
-        @keyframes pulse-warning { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
-        .process-list { list-style: none; padding-left: var(--spacing-medium); margin: var(--spacing-medium) 0 var(--spacing-large) 0; }
-        .process-list li { position: relative; padding-left: 3em; margin-bottom: var(--spacing-medium); line-height: 1.85; border-left: 4px solid transparent; transition: border-left-color 0.2s, background-color 0.2s; padding: var(--spacing-small) 0; border-radius: var(--border-radius-small); }
-        .process-list li:hover { border-left-color: var(--accent-process); background-color: rgba(241, 196, 15, 0.05); }
-        .process-list li::before { content: "•"; position: absolute; left: 1em; top: 0.1em; font-size: 1.6em; color: var(--accent-process); font-weight: bold; line-height: 1; }
+        .process-subtitle i { font-size: 1em; opacity: 0.9; }
+        .process-subtitle-warning i { color: var(--accent-color-warning); }
+        .process-list { list-style: none; padding-left: var(--spacing-large); margin-top: var(--spacing-medium); margin-bottom: var(--spacing-large); }
+        .process-list li { position: relative; padding-left: 2em; margin-bottom: var(--spacing-medium); line-height: 1.75; }
+        .process-list li::before { content: "▹"; position: absolute; left: 0; top: 1px; font-size: 1.3em; color: var(--accent-color-process); font-weight: bold; line-height: 1; }
         .process-list.numbered-list { counter-reset: step-counter; }
-        .process-list.numbered-list li::before { content: counter(step-counter); counter-increment: step-counter; font-size: 1em; color: var(--text-white); background-color: var(--accent-process); font-weight: var(--font-weight-bold); min-width: 2em; height: 2em; line-height: 2em; text-align: center; border-radius: 50%; position: absolute; left: 0; top: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .assembly-process-details p { margin: 0 0 var(--spacing-medium) 0; line-height: 1.85; }
-        .process-paragraph-spacer { height: var(--spacing-medium); } /* More space */
-        .process-component-ref code { background-color: #ddecf8; border: 1px solid var(--accent-info); color: #2471a3; font-weight: 600; cursor: pointer; transition: all var(--transition-speed); padding: 4px 9px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); border-radius: var(--border-radius-small); }
-        .process-component-ref:hover code, .process-component-ref:focus code { background-color: var(--accent-info); color: var(--text-white); box-shadow: inset 0 1px 4px rgba(0,0,0,0.3); transform: scale(1.08); }
-        .process-component-ref-nolink { background-color: #eaeded; border: 1px dashed #bdc3c7; color: var(--text-light); font-style: italic; cursor: default; padding: 2px 6px; border-radius: var(--border-radius-small); font-size: 0.9em; }
+        .process-list.numbered-list li::before { content: counter(step-counter) "."; counter-increment: step-counter; font-size: 1em; color: var(--accent-color-process); font-weight: bold; min-width: 1.5em; text-align: right; margin-right: 0.8em; position: absolute; left: -0.5em; top: 1px; }
+        .assembly-process-details p { margin: 0 0 var(--spacing-medium) 0; line-height: 1.7; }
+        .process-paragraph-spacer { height: var(--spacing-small); margin: 0; padding: 0; line-height: 0; font-size: 1px; border: none; }
+        .process-component-ref code { background-color: var(--subtle-highlight); border: 1px solid var(--secondary-color); color: var(--primary-color); font-weight: 500; cursor: pointer; transition: background-color var(--transition-speed), color var(--transition-speed); }
+        .process-component-ref:hover code, .process-component-ref:focus code { background-color: var(--secondary-hover); color: var(--text-white); }
+        .process-component-ref-nolink { background-color: var(--code-background); border: 1px dashed var(--border-color); color: var(--text-light); font-style: italic; cursor: default; padding: 2px 5px; border-radius: var(--border-radius-small); font-size: 0.85em; }
         /* --- Relationships --- */
-        .relationships-list { list-style: none; padding: 0; margin-top: var(--spacing-large); display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: var(--spacing-large); }
-        .relationships-list li { background-color: var(--background-white); border: var(--border-width) solid var(--border-color); border-left: 8px solid var(--secondary-color); padding: var(--spacing-large) var(--spacing-xlarge); border-radius: var(--border-radius-medium); display: flex; flex-direction: column; gap: var(--spacing-medium); transition: all var(--transition-speed); margin-bottom: 0; box-shadow: var(--shadow-medium); }
-        .relationships-list li:hover { box-shadow: var(--shadow-strong); border-left-color: var(--primary-hover); transform: translateY(-6px) scale(1.015); z-index: 5; }
-        .relationship-components { font-weight: var(--font-weight-bold); color: var(--text-dark); display: flex; align-items: center; flex-wrap: wrap; gap: var(--spacing-small) var(--spacing-medium); font-size: 1.2em; border-bottom: 1px solid #eee; padding-bottom: var(--spacing-medium); margin-bottom: var(--spacing-small); }
-        .relationship-components .fas { color: var(--secondary-hover); font-size: 1em; opacity: 1; margin: 0 var(--spacing-tiny); }
-        .relationship-info-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-medium); margin-top: var(--spacing-small); }
-        .relationship-type { display: inline-flex; align-items: center; gap: var(--spacing-small); padding: 8px 18px; border-radius: 22px; font-size: 1em; font-weight: 500; white-space: nowrap; border: 1px solid transparent; transition: all var(--transition-speed); box-shadow: var(--shadow-light); }
-        .relationship-type .fas { font-size: 1em; line-height: 1; margin-right: 5px; width: 1.2em; text-align: center;}
-        .relationship-type.constraint { background-color: #ebf5fb; color: var(--accent-constraint); border-color: #aed6f1; }
-        .relationship-type.fit { background-color: #e8f8f5; color: var(--accent-fit); border-color: #a3e4d7; }
-        .relationship-type:hover { filter: brightness(97%); transform: scale(1.04); box-shadow: var(--shadow-medium); }
-        .constraint-value { font-style: normal; font-weight: 600; color: var(--text-medium); font-size: 0.9em; margin-left: var(--spacing-small); background: #e5e8e8; padding: 3px 8px; border-radius: 4px;}
-        .relationship-description { color: var(--text-medium); font-size: 1em; width: 100%; margin-top: var(--spacing-medium); padding: var(--spacing-small) 0 0 var(--spacing-medium); border-left: 5px solid var(--border-color); line-height: 1.65; background: #fbfcfd; padding: var(--spacing-medium); border-radius: var(--border-radius-small); }
-        .component-link { color: var(--primary-color); font-weight: 700; border-bottom: 2px dashed var(--primary-color); transition: color 0.2s, border-bottom-color 0.2s, border-bottom-style 0.2s; padding-bottom: 2px;}
+        .relationships-list { list-style: none; padding: 0; margin-top: var(--spacing-large); }
+        .relationships-list li { background-color: #fdfdff; border: 1px solid var(--border-color); border-left: 6px solid var(--secondary-color); padding: var(--spacing-large) var(--spacing-xlarge); margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); display: flex; flex-direction: column; gap: var(--spacing-medium); transition: box-shadow var(--transition-speed), border-left-color var(--transition-speed), transform var(--transition-speed); }
+        .relationships-list li:hover { box-shadow: var(--shadow-medium); border-left-color: var(--primary-hover); transform: translateY(-3px); }
+        .relationship-components { font-weight: 600; color: var(--text-dark); display: flex; align-items: center; flex-wrap: wrap; gap: var(--spacing-small) var(--spacing-medium); font-size: 1.1em; }
+        .relationship-components .fas { color: #95a5a6; font-size: 0.9em; opacity: 0.8; }
+        .relationship-info-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-small) var(--spacing-medium); margin-top: var(--spacing-small); }
+        .relationship-type { display: inline-flex; align-items: center; gap: var(--spacing-small); padding: 6px 14px; border-radius: 18px; font-size: 0.95em; font-weight: 500; white-space: nowrap; border: 1px solid transparent; transition: background-color var(--transition-speed), color var(--transition-speed); }
+        .relationship-type .fas { font-size: 1em; line-height: 1; margin-right: 2px; }
+        .relationship-type.constraint { background-color: #eaf3fb; color: var(--accent-color-constraint); border-color: #aed6f1; }
+        .relationship-type.fit { background-color: #eafaf1; color: var(--accent-color-fit); border-color: #a3e4d7; }
+        .relationship-type:hover { filter: brightness(95%); }
+        .constraint-value { font-style: italic; color: var(--text-light); font-size: 0.9em; margin-left: var(--spacing-small); }
+        .relationship-description { color: var(--text-light); font-size: 0.95em; font-style: italic; width: 100%; margin-top: var(--spacing-medium); padding-left: var(--spacing-medium); border-left: 3px solid var(--border-color); line-height: 1.5; }
+        .component-link { color: var(--primary-color); font-weight: bold; text-decoration: none; border-bottom: 1px dotted var(--primary-color); }
         .component-link:hover { color: var(--primary-hover); border-bottom-style: solid; text-decoration: none; }
         /* --- Components Table --- */
-        .components-table { width: 100%; border-collapse: separate; border-spacing: 0 var(--spacing-large); margin-top: var(--spacing-large); table-layout: fixed; } /* Wider spacing */
-        .components-table th { background-color: var(--background-table-header); font-weight: 700; font-size: 1.1em; padding: var(--spacing-medium) var(--spacing-large); border-bottom: 3px solid var(--border-color-strong); text-align: left; color: #34495e; position: sticky; top: 60px; z-index: 10; }
-        .components-table td { border: var(--border-width) solid var(--border-color); border-left: none; border-right: none; padding: var(--spacing-large); vertical-align: top; background-color: var(--background-white); }
-        .components-table tr.component-row { border-radius: var(--border-radius-large); overflow: hidden; box-shadow: var(--shadow-medium); transition: all var(--transition-speed); border-left: 8px solid transparent; } /* Thicker indicator */
-        .components-table tr.component-row:hover { box-shadow: var(--shadow-strong); transform: translateY(-5px) scale(1.01); z-index: 5; }
-        .components-table td:first-child { border-top-left-radius: var(--border-radius-large); border-bottom-left-radius: var(--border-radius-large); border-left: var(--border-width) solid var(--border-color); }
-        .components-table td:last-child { border-top-right-radius: var(--border-radius-large); border-bottom-right-radius: var(--border-radius-large); border-right: var(--border-width) solid var(--border-color); }
-        .top-assembly-row { border-left-color: #f1c40f; } .top-assembly-row td { background-color: #fef9e7; }
-        .sub-assembly-row { border-left-color: var(--accent-fit); } .sub-assembly-row td { background-color: #e8f8f5; }
-        .part-row { border-left-color: var(--accent-constraint); } .part-row td { background-color: var(--background-white); }
-        .component-qr-cell { width: 150px; text-align: center; vertical-align: middle; padding-right: var(--spacing-medium) !important; }
-        .no-qr-placeholder { font-size: 0.9em; color: #aaa; display:flex; align-items:center; justify-content:center; height: 110px; width:110px; margin:auto; padding: var(--spacing-small); border: 2px dashed #ccc; border-radius: var(--border-radius-medium); background: #f7f7f7; flex-direction: column; }
-        .component-qr-link img { width: var(--component-qr-width, 110px); height: var(--component-qr-height, 110px); display: block; margin: 0 auto; border: 2px solid #ddd; padding: 5px; background: white; border-radius: var(--border-radius-small); transition: all var(--transition-speed); box-shadow: var(--shadow-light); }
-        .component-qr-link:hover img { opacity: 0.85; transform: scale(1.1); box-shadow: var(--shadow-medium); }
+        .components-table { width: 100%; border-collapse: separate; border-spacing: 0 var(--spacing-medium); margin-top: var(--spacing-large); table-layout: fixed; }
+        .components-table th { background-color: #f8fafd; font-weight: 600; padding: var(--spacing-medium) var(--spacing-large); border-bottom: 2px solid var(--border-color-strong); text-align: left; color: #495057; position: sticky; top: 0; z-index: 10; }
+        .components-table td { border: 1px solid var(--border-color); border-left: none; border-right: none; padding: var(--spacing-large); vertical-align: top; background-color: var(--background-white); }
+        .components-table tr.component-row { border-radius: var(--border-radius-medium); overflow: hidden; box-shadow: var(--shadow-light); transition: box-shadow var(--transition-speed), background-color var(--transition-speed), transform var(--transition-speed); border-left: 5px solid transparent; }
+        .components-table tr.component-row:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
+        .components-table td:first-child { border-top-left-radius: var(--border-radius-medium); border-bottom-left-radius: var(--border-radius-medium); border-left: 1px solid var(--border-color); }
+        .components-table td:last-child { border-top-right-radius: var(--border-radius-medium); border-bottom-right-radius: var(--border-radius-medium); border-right: 1px solid var(--border-color); }
+        .top-assembly-row { border-left-color: #e6d9a1; } .top-assembly-row td { background-color: var(--top-assembly-highlight, #fdfaec); }
+        .sub-assembly-row { border-left-color: var(--accent-color-fit); } .sub-assembly-row td { background-color: var(--assembly-highlight, #f0fff4); }
+        .part-row { border-left-color: var(--accent-color-constraint); } .part-row td { background-color: var(--background-white); }
+        .component-qr-cell { width: 130px; text-align: center; vertical-align: middle; }
+        .no-qr-placeholder { font-size: 0.85em; color: #aaa; display:inline-block; padding: var(--spacing-small) var(--spacing-medium); border: 1px dashed #ccc; border-radius: var(--border-radius-small); background: #f7f7f7; }
+        .component-qr-link img { width: 100px; height: 100px; display: block; margin: 0 auto; border: 1px solid #eee; padding: 3px; background: white; border-radius: var(--border-radius-small); transition: opacity var(--transition-speed), transform var(--transition-speed); }
+        .component-qr-link:hover img { opacity: 0.85; transform: scale(1.05); }
         .component-details-cell { width: auto; padding-left: var(--spacing-xlarge) !important; }
-        .component-name-link { font-size: 1.5em; font-weight: 700; color: var(--primary-color); text-decoration: none; display: inline-flex; align-items: center; gap: var(--spacing-medium); margin-bottom: var(--spacing-medium); transition: color var(--transition-speed), transform 0.2s; }
-        .component-name-link:hover { color: var(--primary-hover); transform: translateX(3px); }
-        .component-icon { font-size: 1.2em; width: 1.5em; text-align: center; opacity: 1; }
-        .top-assembly-icon { color: #d35400; } .assembly-icon { color: var(--accent-fit); } .part-icon { color: var(--accent-constraint); } .unknown-icon { color: var(--text-light); }
-        .component-functional-desc { font-size: 1em; color: var(--text-medium); margin-top: var(--spacing-small); margin-bottom: var(--spacing-large); padding: var(--spacing-medium) var(--spacing-large); background-color: #fbfcfc; border-left: 5px solid var(--border-color-strong); line-height: 1.65; border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0; }
-        .component-details-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--spacing-small) var(--spacing-large); margin-top: var(--spacing-medium); }
-        .component-detail-item { font-size: 1em; color: #444; line-height: 1.7; padding: 5px 0; border-bottom: 1px dotted #e0e0e0; display: flex; justify-content: space-between; align-items: baseline; gap: var(--spacing-medium); }
-        .component-detail-item:last-child { border-bottom: none; }
-        .component-detail-label { font-weight: 600; color: var(--text-dark); min-width: 110px; display: inline-block; margin-right: var(--spacing-medium); flex-shrink: 0; opacity: 0.9; }
-        .component-detail-value { text-align: right; word-break: break-word; color: var(--text-medium); }
+        .component-name-link { font-size: 1.3em; font-weight: 600; color: var(--primary-color); text-decoration: none; display: inline-flex; align-items: center; gap: var(--spacing-medium); margin-bottom: var(--spacing-small); transition: color var(--transition-speed); }
+        .component-name-link:hover { color: var(--primary-hover); }
+        .component-icon { font-size: 1.1em; width: 1.2em; text-align: center; opacity: 0.9; }
+        .top-assembly-icon { color: #b8860b; } .assembly-icon { color: var(--accent-color-fit); } .part-icon { color: var(--accent-color-constraint); } .unknown-icon { color: var(--text-light); }
+        .component-functional-desc { font-size: 0.95em; color: var(--text-dark); margin-top: var(--spacing-medium); margin-bottom: var(--spacing-large); padding: var(--spacing-medium) var(--spacing-large); background-color: #f9fafb; border-left: 4px solid #bdc3c7; font-style: italic; line-height: 1.5; border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0; }
+        .component-details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-small) var(--spacing-medium); margin-top: var(--spacing-medium); }
+        .component-detail-item { font-size: 0.95em; color: #555; line-height: 1.5; padding: 2px 0; }
+        .component-detail-label { font-weight: 600; color: var(--text-dark); min-width: 80px; display: inline-block; margin-right: var(--spacing-small); }
         /* --- Footer & Back-to-Top --- */
-        footer { text-align: center; padding: var(--spacing-xlarge); margin-top: var(--spacing-xxlarge); font-size: 0.95em; color: #666; border-top: 3px solid var(--border-color); background-color: #dfe6e9; }
-        footer a { color: var(--primary-color); font-weight: 600; }
+        footer { text-align: center; padding: var(--spacing-large); margin-top: var(--spacing-xlarge); font-size: 0.9em; color: #888; border-top: 1px solid var(--border-color); background-color: #f0f0f0; }
+        footer a { color: var(--primary-color); }
         footer a:hover { color: var(--primary-hover); }
-        #back-to-top { display: none; position: fixed; bottom: var(--spacing-large); right: var(--spacing-large); z-index: 1000; font-size: 22px; border: none; outline: none; background-color: var(--secondary-hover); color: var(--text-white); cursor: pointer; padding: 15px 18px; border-radius: 50%; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; }
-        #back-to-top:hover { background-color: var(--primary-color); transform: scale(1.2) rotate(-15deg); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
-        #back-to-top.show { display: block; opacity: 0.9; }
+        #back-to-top { display: none; position: fixed; bottom: var(--spacing-large); right: var(--spacing-large); z-index: 1000; font-size: 18px; border: none; outline: none; background-color: var(--secondary-color); color: var(--text-white); cursor: pointer; padding: 12px 15px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); transition: opacity 0.3s, background-color 0.3s, transform 0.2s; opacity: 0; }
+        #back-to-top:hover { background-color: var(--primary-color); transform: scale(1.1); }
+        #back-to-top.show { display: block; opacity: 0.8; }
         #back-to-top.show:hover { opacity: 1; }
-        /* --- Print & Responsive --- (Extended) */
-        @media print { /* Keep print styles simple */ body { font-size: 9pt; color: #000; background-color: #fff; } header, footer, .page-nav, #back-to-top, .assembly-qr-image, .component-qr-cell { display: none !important; } .container { max-width: 100%; padding: 0; margin: 0; } .section { box-shadow: none; border: 1px solid #ccc; padding: 0.8cm; margin-bottom: 0.8cm; border-radius: 0; } h1, h2, h3, h4 { color: #000; border-bottom: 1px solid #999; page-break-after: avoid; } a { color: #000; text-decoration: none; } .component-link::after { content: " (" attr(href) ")"; font-size: 0.8em; } .info-table, .components-table, .relationships-list li, .content-block, .revision-table, .data-table { page-break-inside: avoid; } img { max-width: 100% !important; height: auto !important; } code { background: #eee; border: none; } .content-block { border: 1px solid #ccc; box-shadow: none; background: #fff;} .content-block h3 { color: #000; } }
-        @media (max-width: 1500px) { .container { max-width: 96%; } }
-        @media (max-width: 1200px) { .section { padding: var(--spacing-large) var(--spacing-xlarge); } .component-details-grid, .relationships-list, .diagrams-section { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); } }
-        @media (max-width: 992px) { html { font-size: 14px; } .container { padding: var(--spacing-small) var(--spacing-medium); } header h1 { font-size: 1.9em; } h2 { font-size: 1.7em; } h3 { font-size: 1.4em; } .section { padding: var(--spacing-large); margin-bottom: var(--spacing-large); } .assembly-process-details, .content-block { padding: var(--spacing-medium); } .process-subtitle { font-size: 1.2em; } .page-nav ul { gap: var(--spacing-tiny); } .page-nav a { padding: var(--spacing-small) var(--spacing-tiny); font-size: 0.8em; } }
-        @media (max-width: 768px) { header { padding: var(--spacing-medium); border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);} header h1 { font-size: 1.7em; gap: var(--spacing-small); } h2 { font-size: 1.5em; gap: var(--spacing-small); margin-bottom: var(--spacing-medium); } h3 { font-size: 1.25em; gap: var(--spacing-small); } .section { padding: var(--spacing-medium); border-radius: var(--border-radius-medium); margin-bottom: var(--spacing-large); } .info-table th { width: 40%; } .assembly-process-details, .content-block { padding: var(--spacing-medium); } .process-subtitle { font-size: 1.15em; } .process-list { padding-left: var(--spacing-small); } .process-list li { padding-left: 1.5em; } .components-table thead { display: none; } .components-table, .components-table tbody, .components-table tr, .components-table td { display: block; width: 100% !important; box-sizing: border-box; } .components-table tr.component-row { margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); border: 1px solid var(--border-color); border-left-width: 5px; } .components-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-medium); border-radius: 0 !important; background-color: inherit !important; } .components-table td:first-child { border-left: none; } .components-table td:last-child { border-bottom: none; border-right: none; } .component-qr-cell { width: 100%; text-align: center; padding-bottom: var(--spacing-medium); } .component-qr-link img { width: 100px; height: 100px; } .component-details-cell { padding-left: var(--spacing-medium) !important; padding-top: var(--spacing-small); } .relationships-list { grid-template-columns: 1fr; gap: var(--spacing-medium); } .relationships-list li { padding: var(--spacing-medium); gap: var(--spacing-small);} .relationship-components { font-size: 1.05em; } .relationship-info-line { flex-direction: column; align-items: flex-start; gap: var(--spacing-small); margin-top: var(--spacing-medium); } .relationship-description { width: 100%; padding-left: 0; border-left: none; border-top: 1px dashed #eee; margin-top: var(--spacing-medium); padding-top: var(--spacing-medium); } #back-to-top { bottom: var(--spacing-medium); right: var(--spacing-medium); padding: 10px 13px; font-size: 16px; } .content-block h3 { font-size: 1.2em; } .content-block ul, .content-block ol { padding-left: 1.5em; } }
-        @media (max-width: 480px) { html { font-size: 13px; } header { padding: var(--spacing-small); } header h1 { font-size: 1.5em; } .section { padding: var(--spacing-small); } .info-table th, .info-table td, .components-table td, .relationships-list li, .content-block { padding: var(--spacing-small); } .page-nav a { padding: 4px 6px; font-size: 0.75em; } .component-details-grid { grid-template-columns: 1fr; } }
+        /* --- Print Styles --- */
+        @media print { body { font-size: 10pt; color: #000; background-color: #fff; } header, footer, .page-nav, #back-to-top, .assembly-qr-image, .component-qr-cell { display: none !important; } .container { max-width: 100%; padding: 0; margin: 0; } .section { box-shadow: none; border: 1px solid #ccc; padding: 1cm; margin-bottom: 1cm; border-radius: 0; } h1, h2, h3, h4 { color: #000; border-bottom: 1px solid #999; page-break-after: avoid; } a { color: #000; text-decoration: none; } .component-link::after { content: " (" attr(href) ")"; font-size: 0.8em; } .info-table, .components-table, .relationships-list li, .content-block, .revision-history-table { page-break-inside: avoid; } img { max-width: 100% !important; height: auto !important; } code { background: #eee; border: none; } .content-block { border: 1px solid #ccc; box-shadow: none; background: #fff;} .content-block h3 { color: #000; } }
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1200px) { .container { max-width: 95%; } .section { padding: var(--spacing-large) var(--spacing-xlarge); } }
+        @media (max-width: 992px) { html { font-size: 15px; } .container { padding: var(--spacing-small) var(--spacing-medium); } header h1 { font-size: 2em; } h2 { font-size: 1.7em; margin-bottom: var(--spacing-large); } h3 { font-size: 1.4em; } .section { padding: var(--spacing-large) var(--spacing-large); margin-bottom: var(--spacing-large); } .diagrams-section { grid-template-columns: 1fr; } .component-details-grid { grid-template-columns: 1fr; } .assembly-process-details { padding: var(--spacing-large) var(--spacing-large); } .process-subtitle { font-size: 1.2em; } .page-nav ul { gap: var(--spacing-small) var(--spacing-medium); } .content-block { padding: var(--spacing-large); } .revision-history-table th { font-size: 0.95em; } .revision-history-table td { padding: var(--spacing-medium); } }
+        @media (max-width: 768px) { html { font-size: 14px; } header { padding: var(--spacing-large); border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);} header h1 { font-size: 1.8em; gap: var(--spacing-small); } h2 { font-size: 1.5em; gap: var(--spacing-small); margin-bottom: var(--spacing-medium); } h3 { font-size: 1.25em; gap: var(--spacing-small); } .section { padding: var(--spacing-medium) var(--spacing-large); border-radius: var(--border-radius-medium); margin-bottom: var(--spacing-large); } .info-table th { width: 35%; } .assembly-process-details { padding: var(--spacing-medium) var(--spacing-large); } .process-subtitle { font-size: 1.15em; } .process-list { padding-left: var(--spacing-medium); } .process-list li { padding-left: 1.5em; } .components-table thead { display: none; } .components-table, .components-table tbody, .components-table tr, .components-table td { display: block; width: 100% !important; box-sizing: border-box; } .components-table tr.component-row { margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); border: 1px solid var(--border-color); border-left-width: 5px; } .components-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-medium) var(--spacing-large); border-radius: 0 !important; background-color: inherit !important; } .components-table td:first-child { border-left: none; } .components-table td:last-child { border-bottom: none; border-right: none; } .component-qr-cell { width: 100%; text-align: center; padding-bottom: var(--spacing-medium); } .component-qr-link img { width: 110px; height: 110px; } .component-details-cell { padding-left: var(--spacing-large) !important; padding-top: var(--spacing-small); } .relationships-list li { padding: var(--spacing-medium) var(--spacing-large); gap: var(--spacing-small);} .relationship-components { font-size: 1.05em; } .relationship-info-line { flex-direction: column; align-items: flex-start; gap: var(--spacing-small); margin-top: var(--spacing-medium); } .relationship-description { width: 100%; padding-left: 0; border-left: none; border-top: 1px dashed #eee; margin-top: var(--spacing-medium); padding-top: var(--spacing-medium); } #back-to-top { bottom: var(--spacing-medium); right: var(--spacing-medium); padding: 10px 13px; font-size: 16px; } .content-block { padding: var(--spacing-medium) var(--spacing-large); } .content-block h3 { font-size: 1.2em; } .content-block ul { padding-left: 1.5em; } /* Revision History Responsive */ .revision-history-table thead { display: none; } .revision-history-table, .revision-history-table tbody, .revision-history-table tr, .revision-history-table td { display: block; width: 100% !important; } .revision-history-table tr { margin-bottom: var(--spacing-large); border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); padding: var(--spacing-medium); background-color: var(--background-white); box-shadow: var(--shadow-light); } .revision-history-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-small) 0; display: flex; justify-content: space-between; align-items: center; } .revision-history-table td:last-child { border-bottom: none; } .revision-history-table td::before { content: attr(data-label); font-weight: bold; color: var(--text-dark); margin-right: var(--spacing-large); flex-basis: 30%; text-align: right; } }
+        @media (max-width: 480px) { html { font-size: 13px; } header { padding: var(--spacing-medium); } header h1 { font-size: 1.6em; } .section { padding: var(--spacing-medium); } .info-table th, .info-table td { padding: var(--spacing-small) var(--spacing-medium); } .components-table td { padding: var(--spacing-small) var(--spacing-medium); } .relationships-list li { padding: var(--spacing-small) var(--spacing-medium); } .page-nav a { padding: 5px 8px; } .content-block { padding: var(--spacing-medium); } /* Revision History Mobile */ .revision-history-table td::before { flex-basis: 40%; } }
     </style></head><body><header>
-<h1><i class="fa-info-circle"></i> 装配工艺规程: 新型高效离心泵</h1>
-<div class="assembly-qr-container"><img src="assembly_qr/Assembly_QR_ASM-PUMP-007.png" alt="新型高效离心泵 QR" class="assembly-qr-image" title="QR: https://lmy699.github.io/assembly-display/ASM-PUMP-007.html" style="width:130px; height:130px;"></div>
+<h1><i class="fas fa-toolbox"></i> 装配体详情: 新型水泵</h1>
+<div class="assembly-qr-container"><img src="assembly_qr/Assembly_QR_ASM-PUMP-007.png" alt="新型水泵 二维码" class="assembly-qr-image" title="QR 链接到装配体主页: https://lmy699.github.io/assembly-display/ASM-PUMP-007.html"></div>
 </header><div class="container">
     <nav class="page-nav" aria-label="页面导航">
         <ul>
-            <li><a href="#overview"><i class="fas fa-project-diagram"></i> 概览</a></li>
+            <li><a href="#overview"><i class="fas fa-eye"></i> 概览图</a></li>
             <li><a href="#info"><i class="fas fa-info-circle"></i> 基本信息</a></li>
-            <li><a href="#revisions"><i class="fas fa-history"></i> 修订历史</a></li>
-            <li><a href="#standards"><i class="fas fa-certificate"></i> 适用标准</a></li>
             <li><a href="#diagrams"><i class="fas fa-drafting-compass"></i> 参考图纸</a></li>
-            <li><a href="#tech-req"><i class="fas fa-cogs"></i> 技术与验收</a></li>
-            <li><a href="#material"><i class="fas fa-pallet"></i> 物料</a></li>
-            <li><a href="#personnel"><i class="fas fa-users-cog"></i> 人员</a></li>
-            <li><a href="#tooling"><i class="fas fa-tools"></i> 工装工具</a></li>
-            <li><a href="#safety"><i class="fas fa-hard-hat"></i> 安全环境</a></li>
-            <li><a href="#steps"><i class="fas fa-tasks"></i> 装配步骤</a></li>
-            <li><a href="#quality"><i class="fas fa-vial"></i> 质量控制</a></li>
-            <li><a href="#troubleshooting"><i class="fas fa-wrench"></i> 故障处理</a></li>
-            <li><a href="#rework"><i class="fas fa-undo-alt"></i> 返工</a></li>
+            <li><a href="#revision-history"><i class="fas fa-history"></i> 修订历史</a></li> <!-- 新增 -->
+            <li><a href="#tech-req"><i class="fas fa-cogs"></i> 技术要求</a></li>
+            <!-- <li><a href="#prod-program"><i class="fas fa-industry"></i> 生产纲领</a></li> --> <!-- 移除 -->
+            <li><a href="#steps"><i class="fas fa-clipboard-list"></i> 装配步骤</a></li>
             <li><a href="#relationships"><i class="fas fa-link"></i> 装配关系</a></li>
-            <li><a href="#components"><i class="fas fa-sitemap"></i> 组件列表</a></li>
+            <li><a href="#components"><i class="fas fa-th-list"></i> 组件列表</a></li>
         </ul>
     </nav>
     <div class="section" id="overview"><h2><i class="fas fa-project-diagram"></i> 装配流程概览图</h2>
-<p class="no-image"><i class="fas fa-image"></i> 未找到装配流程概览图。</p>
+<p>这是一个可视化的装配流程概览。点击图片可在新标签页查看大图。</p><div class="enhanced-flowchart-container"><a href="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程概览图 - 新型水泵" class="enhanced-diagram"/></a></div>
+<p style="margin-top:15px;font-size:0.9em;color:var(--text-light);">注：此图基于源文件: <code>Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png</code></p>
 </div><div class="section" id="info"><h2><i class="fas fa-info-circle"></i> 基本信息与功能</h2>
-<div class="assembly-function-section"><strong>装配体功能:</strong><p>本装配体用于将液体从低压区高效、低噪音地输送到高压区...</p></div>
+<div class="assembly-function-section"><strong>装配体功能:</strong><p>将液体从低压区高效、低噪音地输送到高压区，适用于家庭或轻工业场景。提供可靠的密封性能。</p></div>
 <h3><i class="fas fa-tags"></i> 详细属性</h3><table class="info-table">
-<tr><th>装配体ID (AI)</th><td>ASM-PUMP-007</td></tr>
-<tr><th>装配体名称</th><td>新型高效离心泵</td></tr>
-<tr><th>装配组织形式</th><td>固定式装配 (单元装配工位)</td></tr>
-<tr><th>组件数据表</th><td><code>asm_007</code></td></tr>
-<tr><th>Remarks</th><td>V1.0 首版工艺规程</td></tr>
-<tr><th>规程创建时间</th><td>2025-04-07 16:45:45</td></tr>
-<tr><th>规程最后修改</th><td>2025-04-07 16:45:45</td></tr>
-</table></div><div class="section" id="revisions"><h2><i class="fas fa-history"></i> 修订历史</h2>
-<div class="content-block">
-<table class="revision-table data-table">
-<thead><tr>
-<th>版本</th>
-<th>日期</th>
-<th>修订内容</th>
-<th>修订人</th>
-<th>批准人</th>
-</tr></thead><tbody>
+<tr><th>装配体ID (AssemblyAI)</th><td>ASM-PUMP-007</td></tr>
+<tr><th>装配体名称 (AssemblyName)</th><td>新型水泵</td></tr>
+<tr><th>关联组件表 (TableName)</th><td><code>asm_007</code></td></tr>
+<tr><th>Remarks</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr>
+<tr><th>记录创建时间</th><td>2025-04-07 17:28:19</td></tr>
+<tr><th>最后修改时间</th><td>2025-04-07 17:28:19</td></tr>
+</table></div><div class="section" id="diagrams"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section">
+<div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (源参考)</h3>
+<div class="diagram-image-wrapper"><a href="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图 (源文件) - 新型水泵" class="diagram-image"/></a></div>
+</div>
+<div class="diagram-container"><h3><i class="fas fa-shapes"></i> 装配部件图</h3>
+<div class="diagram-image-wrapper"><a href="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" target="_blank" title="点击查看大图"><img src="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" alt="装配部件图 - 新型水泵" class="diagram-image"/></a></div>
+</div>
+</div></div><div class="section" id="revision-history"><h2><i class="fas fa-history"></i> 修订历史</h2>
+<table class="info-table revision-history-table">
+<thead><tr><th>版本</th><th>日期</th><th>修订内容</th><th>修订人</th><th>批准人</th></tr></thead>
+<tbody>
 <tr>
-<td>V1.0</td>
-<td>2023-01-15</td>
-<td>初始发布</td>
-<td>张工</td>
-<td>李总</td>
+<td data-label="版本">V1.0</td>
+<td data-label="日期">2023-01-15</td>
+<td data-label="修订内容">初始发布</td>
+<td data-label="修订人">张工</td>
+<td data-label="批准人">李总</td>
 </tr>
 <tr>
-<td>V1.1</td>
-<td>2023-05-20</td>
-<td>更新电机型号；修改力矩</td>
-<td>王工</td>
-<td>李总</td>
+<td data-label="版本">V1.1</td>
+<td data-label="日期">2023-05-20</td>
+<td data-label="修订内容">更新电机型号; 修改力矩参数</td>
+<td data-label="修订人">王工</td>
+<td data-label="批准人">李总</td>
 </tr>
 <tr>
-<td>V1.2</td>
-<td>2023-08-01</td>
-<td>增加动平衡检测</td>
-<td>赵工</td>
-<td>李总</td>
+<td data-label="版本">V1.2</td>
+<td data-label="日期">2023-08-01</td>
+<td data-label="修订内容">增加动平衡检测工序</td>
+<td data-label="修订人">赵工</td>
+<td data-label="批准人">李总</td>
 </tr>
 <tr>
-<td>V1.3</td>
-<td>2024-01-10</td>
-<td>调整气密性测试压力</td>
-<td>钱工</td>
-<td>李总</td>
+<td data-label="版本">V1.3</td>
+<td data-label="日期">2024-01-10</td>
+<td data-label="修订内容">调整气密性测试压力标准</td>
+<td data-label="修订人">钱工</td>
+<td data-label="批准人">李总</td>
 </tr>
 </tbody></table>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section" id="standards"><h2><i class="fas fa-certificate"></i> 适用标准与规范</h2>
-<div class="content-block"><h3><i class="fas fa-book-open"></i> 遵循的标准列表</h3>
-  <ul>
-    <li>  **国家/行业标准**: GB/T 191; GB/T 1032; GB/T 2828.1; JB/T 8097</li>
-    <li>  **国际标准**: IEC 60034-1; IEC 60335-1; ISO 9001:2015</li>
-    <li>  **企业内部标准**: Q/XYZ-STD-01 (通用技术条件); Q/XYZ-ASSY-001 (作业指导书); Q/XYZ-QC-003 (检验规范); Q/XYZ-SAFE-01 (安全规范)</li>
-  </ul>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section" id="diagrams"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section">
-<div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (参考)</h3>
-<p class="no-image"><i class="fas fa-times-circle"></i> 无流程图</p>
-</div>
-<div class="diagram-container"><h3><i class="fas fa-shapes"></i> 装配爆炸/部件图</h3>
-<p class="no-image"><i class="fas fa-times-circle"></i> 无部件图</p>
-</div>
-</div></div><div class="section" id="tech-req"><h2><i class="fas fa-cogs"></i> 技术要求与验收标准</h2>
-<div class="content-block"><h3><i class="fas fa-tools"></i> 装配技术要求细则</h3>
-  <h5>1. 清洁度</h5>
-  <ul>
-    <li>  所有零件无油污、尘埃及可见毛刺、氧化层。</li>
-    <li>  工作台面、工装、工具保持清洁。</li>
-  </ul>
-  <h5>2. 紧固力矩</h5>
-  <ul>
-    <li>  M4螺钉 (泵盖): 1.5 ± 0.2 Nm (使用扭力批 TQ-M4)。</li>
-    <li>  M5螺钉 (电机座): 3.0 ± 0.3 Nm (使用扭力扳手 TQ-M5)。</li>
-    <li>  M8螺母 (叶轮): 8 ± 1 Nm。</li>
-    <li>  力矩工具需在校准有效期内。</li>
-  </ul>
-  <h5>3. 配合与间隙</h5>
-  <ul>
-    <li>  叶轮与前盖间隙: 0.4 ± 0.1 mm (使用塞尺检查)。</li>
-    <li>  轴承与轴承座: 过盈配合，使用压装机压入，受力均匀。</li>
-    <li>  电机轴与泵盖孔同轴度: ≤ 0.05 mm。</li>
-  </ul>
-  <h5>4. 密封性</h5>
-  <ul>
-    <li>  O型圈外观完好，无老化、裂纹、变形。</li>
-    <li>  安装时涂抹指定硅脂 GXYZ-123 薄层，不得扭曲。</li>
-  </ul>
-  <h5>5. 电气连接</h5>
-  <ul>
-    <li>  导线颜色符合图纸规定，压接牢固，无虚焊、脱落。</li>
-    <li>  线束布线整齐，使用扎带固定，避免与旋转部件干涉。</li>
-  </ul>
-  <h5>6. 外观要求</h5>
-  <ul>
-    <li>  不允许磕碰、划伤、变形。漆面/涂层均匀，无流挂、漏喷。</li>
-  </ul>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div><div class="content-block"><h3><i class="fas fa-clipboard-check"></i> 验收技术标准与方法</h3>
-  <h5>1. 外观检验 (依据 WI-QC-003)</h5>
-  <ul>
-    <li>  表面状态: 无损伤、污迹、锈蚀。</li>
-    <li>  标识: 铭牌、序列号清晰、准确、牢固。</li>
-    <li>  附件: 齐全，包装完好。</li>
-  </ul>
-  <h5>2. 结构与尺寸检验</h5>
-  <ul>
-    <li>  装配完整性: 无错装、漏装。</li>
-    <li>  关键尺寸复核: 抽检叶轮间隙等。</li>
-  </ul>
-  <h5>3. 气密性测试</h5>
-  <ul>
-    <li>  测试压力: 0.5 MPa。</li>
-    <li>  保压时间: 5 分钟。</li>
-    <li>  允许压降: ≤ 0.01 MPa。</li>
-    <li>  测试介质: 干燥空气。</li>
-  </ul>
-  <h5>4. 电气安全测试</h5>
-  <ul>
-    <li>  绝缘电阻: ≥ 2 MΩ (500V DC)。</li>
-    <li>  接地电阻: ≤ 0.1 Ω (25A)。</li>
-  </ul>
-  <h5>5. 功能与性能测试 (依据 TP-PUMP7-FN)</h5>
-  <ul>
-    <li>  通电检查: 电机启动平稳，运转无异常噪音、无剧烈振动。</li>
-    <li>  额定工况测试: 在 24V DC 电压下，测定流量、扬程、输入功率、效率。</li>
-    <li>  判定标准: 流量 ≥ 50 L/min, 扬程 ≥ 15 m, 效率 ≥ 85%。</li>
-    <li>  噪音测试: ≤ 45 dB(A) @ 1m。</li>
-  </ul>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section" id="material"><h2><i class="fas fa-pallet"></i> 物料搬运与存储</h2>
-<div class="content-block"><h3><i class="fas fa-dolly-flatbed"></i> 搬运、存储及防护要求</h3>
-  <h5>1. 入库与存储</h5>
-  <ul>
-    <li>  **电机**: 原包装，防潮恒温库，堆码≤5层，标识清晰。</li>
-    <li>  **壳体/叶轮**: 防静电托盘/料盒，分区存放，防尘防撞。</li>
-    <li>  **密封件**: 密封避光，常温库，记录有效期。</li>
-    <li>  **紧固件**: 按规格分类，防锈存储。</li>
-  </ul>
-  <h5>2. 线边配送与管理</h5>
-  <ul>
-    <li>  **领料**: 凭工单按需领料，使用专用料车。</li>
-    <li>  **摆放**: 工位旁设物料架，按BOM顺序，标识清晰，FIFO。</li>
-    <li>  **防护**: 敏感元件（PCB板）使用防静电腕带和容器。</li>
-  </ul>
-  <h5>3. 搬运要求</h5>
-  <ul>
-    <li>  轻拿轻放，严禁抛扔、碰撞。</li>
-    <li>  使用合适工具（手套、吸盘、小车）。</li>
-    <li>  保持零件清洁，避免二次污染。</li>
-  </ul>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section" id="personnel"><h2><i class="fas fa-users-cog"></i> 人员资质要求</h2>
-<div class="content-block"><h3><i class="fas fa-id-badge"></i> 操作与检验人员资质</h3>
-  <h5>1. 基本资质</h5>
-  <ul>
-    <li>  所有人员需完成公司级安全培训和岗位基础技能培训，考核合格。</li>
-    <li>  熟悉本装配工艺规程及相关SOP。</li>
-  </ul>
-  <h5>2. 特殊岗位资质</h5>
-  <ul>
-    <li>  **电气连接/测试**: 持有效低压电工操作证。</li>
-    <li>  **性能测试**: 经内部培训考核，具备独立操作测试台能力。</li>
-    <li>  **动平衡操作**: 需设备厂家或内部认证培训。</li>
-    <li>  **质量检验 (IPQC/FQC)**: 具备识图能力，熟悉测量工具使用，通过内部检验员资格认证。</li>
-  </ul>
-  <h5>3. 培训与再认证</h5>
-  <ul>
-    <li>  新员工上岗前必须完成培训。</li>
-    <li>  每年进行至少一次安全和技能再培训/考核。</li>
-    <li>  特殊岗位资质需按规定进行复审或换证。</li>
-  </ul>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section" id="tooling"><h2><i class="fas fa-tools"></i> 工装夹具与工具</h2>
+<p class="revision-note">（注：以上为详细示例内容，请在数据库对应表中填充实际信息。）</p>
+</div><div class="section" id="tech-req"><h2><i class="fas fa-cogs"></i> 技术要求与验收</h2>
 <div class="content-block">
-  <h5>1. 通用工具</h5>
-  <ul>
-    <li>  **手动工具**:</li>
-    <li>  十字螺丝刀: PH1 (用于接线盒盖), PH2 (用于 M4 泵盖螺钉)</li>
-    <li>  内六角扳手: 全套公制 (主要 H3, H4 用于 M4/M5 螺钉)</li>
-    <li>  开口扳手/梅花扳手: 13mm (用于 M8 螺母)</li>
-    <li>  尖嘴钳, 斜口钳</li>
-    <li>  **电动/气动工具**:</li>
-    <li>  电动扭力螺丝批 (型号: Bosch Go 2 或同级, 设定力矩: 1.5 Nm)</li>
-    <li>  气动打标机 (用于序列号)</li>
-    <li>  **辅助工具**:</li>
-    <li>  无绒布, 棉签, 清洁刷</li>
-    <li>  专用硅脂涂抹棒</li>
-    <li>  扎带枪</li>
-  </ul>
-  <h5>2. 专用工装与夹具</h5>
-  <ul>
-    <li>  电机安装定位板 (编号: **FJ-PUMP7-01**): 保证电机安装平行度和位置精度。定期检查磨损。</li>
-    <li>  泵盖压装导向套 (编号: **FJ-PUMP7-02**): 防止压装轴承或密封时倾斜损坏。</li>
-    <li>  O型圈安装引导器 (编号: **TL-PUMP7-S01**): 辅助O型圈平整放入凹槽。</li>
-    <li>  气密性测试堵头与接口 (编号: **TS-PUMP7-AT01**): 快速连接测试设备。</li>
-    <li>  性能测试循环水路及传感器接口 (测试台 **TS-PUMP7-PT01** 的一部分)。</li>
-  </ul>
-  <h5>3. 量具与检测设备</h5>
-  <ul>
-    <li>  **量具**:</li>
-    <li>  数显扭力扳手 (量程 0.5-10 Nm, 分度 0.01 Nm, 精度 ±3%, 校准周期: 6个月) - 型号: TQ-D10</li>
-    <li>  塞尺 (0.02mm - 1.00mm, 精度等级 2, 校准周期: 12个月)</li>
-    <li>  游标卡尺 (0-150mm, 分度 0.02mm, 校准周期: 12个月)</li>
-    <li>  深度尺 (必要时用于检查特定装配深度)</li>
-    <li>  **检测设备**:</li>
-    <li>  动平衡测试仪 (设备编号: **EQ-BAL-05**, 精度 G2.5, 校准周期: 12个月)</li>
-    <li>  气密性检漏仪 (设备编号: **EQ-AT-02**, 量程 0-1 MPa, 精度 0.5%, 校准周期: 6个月)</li>
-    <li>  电气安规综合测试仪 (设备编号: **EQ-ES-08**, 含绝缘/接地测试, 校准周期: 12个月)</li>
-    <li>  水泵性能测试台 (设备编号: **TS-PUMP7-PT01**, 含流量计/压力传感器/功率计, 系统校准周期: 12个月)</li>
-    <li>  噪音计 (声级计, 型号: SND-L2, 精度 Class 2, 校准周期: 12个月)</li>
-  </ul>
-  <h5>4. 工具管理要求</h5>
-  <ul>
-    <li>  所有工具、量具、设备需定置管理，标识清晰。</li>
-    <li>  量具和力矩工具需按期送检校准，保留记录。</li>
-    <li>  专用工装夹具定期检查、维护、保养。</li>
-  </ul>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section" id="safety"><h2><i class="fas fa-hard-hat"></i> 安全、环境与人机工程</h2>
+<h3><i class="fas fa-tools"></i> 装配技术要求</h3>
+<ul>
+<li>示例要求：所有紧固件需按照指定扭矩拧紧。</li>
+<li>示例要求：装配过程中保持清洁，防止异物进入。</li>
+<li>示例要求：线缆布线整齐，固定牢靠。</li>
+</ul>
+<p style="font-size:0.9em; color:var(--text-light); margin-top: var(--spacing-small);"><i>（注：数据库中未提供具体要求，此处为示例。）</i></p>
+</div>
 <div class="content-block">
-  <h5>1. 操作安全规定 (关键风险点)</h5>
-  <ul>
-    <li>  **电气安全**:</li>
-    <li>  只有持证电工可进行接线、带电调试和安规测试。</li>
-    <li>  测试区域需设安全围栏和警示标识。</li>
-    <li>  确保所有设备可靠接地，定期检查接地线。</li>
-    <li>  操作带电设备时必须佩戴绝缘手套和绝缘鞋。</li>
-    <li>  严禁湿手操作电气设备。</li>
-    <li>  **机械伤害**:</li>
-    <li>  使用电动/气动工具前检查其安全防护装置。</li>
-    <li>  注意旋转部件（电机轴、动平衡仪），防止卷入。长发需盘起。</li>
-    <li>  使用压装设备时，双手不得进入压头下方。</li>
-    <li>  搬运重物（电机、泵体）采用正确姿势或辅助工具，防止砸伤、扭伤。</li>
-    <li>  **化学品安全**:</li>
-    <li>  阅读并理解硅脂、清洁剂的MSDS（物料安全数据表）。</li>
-    <li>  在通风良好处使用化学品。</li>
-    <li>  佩戴合适的防护手套（如丁腈手套）和护目镜。</li>
-    <li>  **高温烫伤**:</li>
-    <li>  电机长时间运行或测试后表面温度可能较高，冷却前避免触摸。</li>
-    <li>  **高压/喷溅**:</li>
-    <li>  气密性测试和水泵性能测试时，人员应与加压部件保持安全距离。</li>
-    <li>  必须佩戴防护眼镜或面罩。</li>
-    <li>  缓慢升压/降压，防止管路爆裂。</li>
-  </ul>
-  <h5>2. 个人防护装备 (PPE)</h5>
-  <ul>
-    <li>  **全员标配**: 防静电工作服、防砸安全鞋、工作帽。</li>
-    <li>  **特定岗位**:</li>
-    <li>  电气操作/测试: **绝缘手套 (10kV), 绝缘鞋**。</li>
-    <li>  涂抹硅脂/清洁: **丁腈手套, 防护眼镜**。</li>
-    <li>  零件打磨/去毛刺 (若有): **防割手套, 防护眼镜/面罩, 防尘口罩**。</li>
-    <li>  性能/气密性测试: **防护眼镜/面罩**。</li>
-    <li>  噪音测试区: **耳塞/耳罩**。</li>
-  </ul>
-  <h5>3. 作业环境要求</h5>
-  <ul>
-    <li>  **温湿度**: 温度 20-28°C, 相对湿度 40%-65%。</li>
-    <li>  **照度**: 装配区 ≥ 500 lux, 检验区 ≥ 750 lux。</li>
-    <li>  **洁净度**: 装配区达到 ISO Class 8 (或同等级别) 标准，定期清洁。</li>
-    <li>  **静电防护**: 关键工位（如PCB处理、电机接线）需铺设防静电台垫，操作员佩戴接地腕带，使用离子风扇（必要时）。</li>
-    <li>  **通风**: 保持良好通风，特别是在使用化学品区域。</li>
-    <li>  **噪音控制**: 测试区应采取隔音措施，确保其他区域噪音 &lt; 70 dB(A)。</li>
-  </ul>
-  <h5>4. 人机工程学考量</h5>
-  <ul>
-    <li>  **工位设计**: 工作台高度可调，常用工具、物料置于最佳取用范围。</li>
-    <li>  **照明**: 提供充足且无眩光的局部照明。</li>
-    <li>  **重复性操作**: 评估高重复性操作（如拧螺钉）的疲劳风险，考虑使用助力工具。</li>
-    <li>  **搬运**: 超过 15kg 的物品需使用辅助搬运设备或双人操作。</li>
-  </ul>
-  <h5>5. 应急预案链接 (示例)</h5>
-  <ul>
-    <li>  [触电应急预案 (点击查看)](link/to/electric_emergency_plan.pdf)</li>
-    <li>  [火灾应急预案 (点击查看)](link/to/fire_emergency_plan.pdf)</li>
-  </ul>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section assembly-process-section" id="steps">
-<h2><i class="fas fa-tasks"></i> 装配顺序与工序说明</h2>
-<p class="intro-text">请严格按照以下步骤和要求进行装配。点击 <code>组件ID</code> 可查看组件详情。</p>
+<h3><i class="fas fa-clipboard-check"></i> 验收技术条件</h3>
+<ul>
+<li>示例条件：成品外观无划痕、磕碰、变形。</li>
+<li>示例条件：通电测试运行平稳，无异响、无泄漏。</li>
+<li>示例条件：各项性能指标符合设计规范要求。</li>
+</ul>
+<p style="font-size:0.9em; color:var(--text-light); margin-top: var(--spacing-small);"><i>（注：数据库中未提供具体条件，此处为示例。）</i></p>
+</div>
+</div><div class="section assembly-process-section" id="steps">
+<h2><i class="fas fa-clipboard-list"></i> 装配顺序与工序说明</h2>
+<p class="intro-text">请依据以下步骤执行装配操作。点击 <code class="process-component-ref">零件/子装配AI</code> 可跳转至其详情页面。</p>
 <div class="assembly-process-details"><h4 class="process-subtitle"><i class="fas fa-list-ol"></i> 关键装配步骤：</h4>
-<ol class="process-list numbered-list">
-  <li>**电机固定**: ...</li>
-</ol>
-<p>...</p></div>
-</div><div class="section" id="quality"><h2><i class="fas fa-vial"></i> 质量控制计划</h2>
-<div class="content-block">
-  <h5>1. 进料检验 (IQC) - 依据《IQC检验规范-WI-QC-001》</h5>
-  <ul>
-    <li>  **抽样方案**: GB/T 2828.1, 一般检查水平II, AQL Cr=0, Ma=0.65, Mi=1.5</li>
-    <li>  **电机 (PART-MOTOR-702)**: 外观, 尺寸, 供应商测试报告审核, 关键性能抽测 (空载电流/转速)。</li>
-    <li>  **泵盖/叶轮 (PART-COVER-701/704)**: 外观 (飞边/缩水/变形), 关键尺寸 (轴孔/安装孔), 材料证明。</li>
-    <li>  **密封件 (PART-SEAL-703)**: 外观 (毛边/裂纹), 尺寸 (线径/内径), 硬度抽测。</li>
-    <li>  **标准件 (螺钉/螺母/键/轴承)**: 外观, 规格型号, 防锈状态, 供应商资质。</li>
-  </ul>
-  <h5>2. 过程检验 (IPQC) - 关键控制点 (KCP)</h5>
-  <ul>
-    <li>  **KCP-01: 电机安装 (第1步)**</li>
-    <li>  控制项: 力矩 (3.0±0.3Nm), 螺钉是否用对, 安装平稳性。</li>
-    <li>  方法: 扭力扳手100%检查, 操作员自检。巡检抽查。</li>
-    <li>  **KCP-02: 轴承压装 (第2步)**</li>
-    <li>  控制项: 压入力, 压入后旋转顺畅度, 是否到底。</li>
-    <li>  方法: 压装机压力监控, 手感检查。首件确认，每批抽检。</li>
-    <li>  **KCP-03: 密封圈安装 (第3步)**</li>
-    <li>  控制项: O圈完好, 无扭曲, 硅脂涂抹均匀。</li>
-    <li>  方法: 操作员100%目视+手电筒检查。</li>
-    <li>  **KCP-04: 泵盖拧紧 (第4, 7步)**</li>
-    <li>  控制项: 力矩 (1.5±0.2Nm), 拧紧顺序 (星型/交叉)。</li>
-    <li>  方法: 扭力批100%检查。</li>
-    <li>  **KCP-05: 叶轮安装与动平衡 (第5, 6步)**</li>
-    <li>  控制项: 键配合, 螺母力矩 (8±1Nm), 动平衡等级 (≤G2.5)。</li>
-    <li>  方法: 目视, 扭力扳手, 动平衡仪。100%检测。</li>
-    <li>  **KCP-06: 电气连接 (第8步)**</li>
-    <li>  控制项: 接线正确性, 压接/焊接质量, 线束固定。</li>
-    <li>  方法: 目视, 拉力测试(抽检)。</li>
-  </ul>
-  <h5>3. 成品检验 (FQC) - 依据《成品检验规范-WI-QC-003》</h5>
-  <ul>
-    <li>  **检验项目**: 100%执行以下项目</li>
-    <li>  外观全检 (同验收条件)</li>
-    <li>  气密性测试</li>
-    <li>  电气安全测试 (绝缘电阻, 接地电阻)</li>
-    <li>  通电运行测试 (启动, 噪音, 振动)</li>
-    <li>  水泵性能测试 (流量, 扬程, 效率 @ 额定工况)</li>
-    <li>  **抽检项目**:</li>
-    <li>  包装检查 (标签, 附件, 缓冲) - 每批抽10%</li>
-  </ul>
-  <h5>4. 记录与追溯</h5>
-  <ul>
-    <li>  所有检验和测试结果需记录在《装配过程检验记录表》和《成品测试报告》中。</li>
-    <li>  关键物料批次号、操作员、设备编号需记录，确保可追溯性。</li>
-  </ul>
-  <h5>5. 不合格品处理</h5>
-  <ul>
-    <li>  发现不合格，立即停线，标识隔离。</li>
-    <li>  按《不合格品控制程序》进行评审、处置（返工/报废）。</li>
-  </ul>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section" id="troubleshooting"><h2><i class="fas fa-wrench"></i> 常见问题与处理</h2>
-<div class="content-block"><h3><i class="fas fa-exclamation-triangle"></i> 故障排除指南</h3>
-<table class="revision-table data-table">
-<thead><tr>
-<th>序号</th>
-<th>故障现象</th>
-<th>可能原因</th>
-<th>排查与处理方法</th>
-</tr></thead><tbody>
-<tr>
-<td>1</td>
-<td>电机不转或启动困难</td>
-<td>1. 电源问题&lt;br&gt;2. 接线错误/松动&lt;br&gt;3. 控制板故障&lt;br&gt;4. 电机卡死</td>
-<td>1. 检查电压/极性&lt;br&gt;2. 核对图纸重接&lt;br&gt;3. 更换控制板&lt;br&gt;4. 拆检电机/叶轮</td>
-</tr>
-<tr>
-<td>2</td>
-<td>运行噪音异常</td>
-<td>1. 叶轮碰擦&lt;br&gt;2. 轴承异响&lt;br&gt;3. 动平衡超差&lt;br&gt;4. 安装松动</td>
-<td>1. 检查/调整间隙&lt;br&gt;2. 更换轴承/电机&lt;br&gt;3. 重新动平衡&lt;br&gt;4. 检查紧固件</td>
-</tr>
-<tr>
-<td>3</td>
-<td>流量/扬程不足</td>
-<td>1. 叶轮堵塞/损坏&lt;br&gt;2. 电机转向错误&lt;br&gt;3. 内部/外部泄漏&lt;br&gt;4. 电压不足</td>
-<td>1. 清理/更换叶轮&lt;br&gt;2. 调整接线&lt;br&gt;3. 检查密封/管路&lt;br&gt;4. 检查电源</td>
-</tr>
-<tr>
-<td>4</td>
-<td>泵体/接口泄漏</td>
-<td>1. O型圈损坏/老化/未装好&lt;br&gt;2. 泵盖螺钉松动/力矩不足&lt;br&gt;3. 壳体裂纹</td>
-<td>1. 检查/更换O圈,重涂硅脂&lt;br&gt;2. 按力矩重新拧紧&lt;br&gt;3. 报废处理</td>
-</tr>
-<tr>
-<td>5</td>
-<td>气密性测试失败</td>
-<td>1. 所有密封点均可能&lt;br&gt;2. 测试接头泄漏</td>
-<td>1. 浸水或喷涂肥皂水查找漏点,修复&lt;br&gt;2. 检查测试设备</td>
-</tr>
-<tr>
-<td>6</td>
-<td>电气安规测试失败</td>
-<td>1. 绝缘不良(短路/受潮)&lt;br&gt;2. 接地线松动/断开</td>
-<td>1. 检查线束/控制板/电机&lt;br&gt;2. 检查接地螺钉/线缆</td>
-</tr>
-</tbody></table>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section" id="rework"><h2><i class="fas fa-undo-alt"></i> 返工流程</h2>
-<div class="content-block"><h3><i class="fas fa-history"></i> 不合格品返工步骤</h3>
-  <h5>1. 判定与隔离</h5>
-  <p>检验员根据不合格项判定，填写《返工通知单》，将产品移至返工区并挂“待返工”标识。</p>
-  <h5>2. 原因分析</h5>
-  <p>由工艺员或技术员主导，分析根本原因，确定返工方案。</p>
-  <h5>3. 批准</h5>
-  <p>返工方案需经主管批准。</p>
-  <h5>4. 拆卸</h5>
-  <ul>
-    <li>  仅拆卸至能进行修复或更换的最小单元。</li>
-    <li>  使用专用工具，避免二次损伤。</li>
-    <li>  拆下的合格零件妥善保管。</li>
-  </ul>
-  <h5>5. 修复/更换</h5>
-  <ul>
-    <li>  更换新零件或对原零件进行修复（如去毛刺）。</li>
-    <li>  确保修复/更换操作符合技术要求。</li>
-  </ul>
-  <h5>6. 清洁</h5>
-  <ul>
-    <li>  返工涉及区域及零件需重新清洁。</li>
-  </ul>
-  <h5>7. 重新装配</h5>
-  <ul>
-    <li>  严格按照本规程的相关步骤重新装配。</li>
-    <li>  特别注意返工相关的关键控制点。</li>
-  </ul>
-  <h5>8. 重新检验</h5>
-  <ul>
-    <li>  必须重新执行 **所有** FQC检验项目。</li>
-    <li>  IPQC检验员需对返工工序进行重点确认。</li>
-  </ul>
-  <h5>9. 记录</h5>
-  <ul>
-    <li>  在《返工通知单》上详细记录返工过程、结果。</li>
-    <li>  返工信息录入产品追溯系统。</li>
-  </ul>
-<p class="placeholder-note"><i>（注：以下为详细示例内容，请在数据库对应列中填充实际信息。）</i></p>
-</div></div><div class="section" id="relationships"><h2><i class="fas fa-link"></i> 装配关系</h2>
-<p>共定义 <strong>6</strong> 条关系。</p><ul class="relationships-list">
+<ul class="process-list numbered-list">
+  <li>**固定电机：** 将电机(<a href="part_PART-MOTOR-702.html" class="process-component-ref" title="查看 新型直流无刷电机 详情"><code>PART-MOTOR-702</code></a>)牢固安装在泵体底座(未列出)上。</li>
+  <li>**安装密封圈：** 将3个O型密封圈(<a href="part_PART-SEAL-703.html" class="process-component-ref" title="查看 O型密封圈 详情"><code>PART-SEAL-703</code></a>)分别放入前后泵盖的对应凹槽内。</li>
+  <li>**安装前泵盖：** 将其中一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)对准电机前端，使用M4x10螺钉(未列出)均匀拧紧。</li>
+  <li>**安装叶轮：** 将叶轮(未列出)安装到电机输出轴上，确保键槽对齐并固定到位。</li>
+  <li>**安装后泵盖：** 安装另一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)，同样使用M4x10螺钉拧紧。</li>
+  <li>**接线与测试：** 连接电源线，进行短暂通电测试，检查是否有异响或泄漏。</li>
+</ul>
+<p class="process-paragraph-spacer">&nbsp;</p>
+<h4 class="process-subtitle process-subtitle-warning"><i class="fas fa-exclamation-triangle"></i> 注意事项：</h4>
+<ul class="process-list">
+  <li>安装密封圈时避免扭曲或损伤。</li>
+  <li>泵盖螺钉需交叉、分次拧紧，确保受力均匀。</li>
+  <li>叶轮安装方向不能错误。</li>
+  <li>测试时注意安全，防止触电和液体喷溅。</li>
+</ul>
+<p class="process-paragraph-spacer">&nbsp;</p>
+<h4 class="process-subtitle"><i class="fas fa-tools"></i> 所需工具：</h4>
+<ul class="process-list">
+  <li>十字螺丝刀 (PH2)</li>
+  <li>内六角扳手 (根据叶轮固定螺丝)</li>
+  <li>扭力扳手 (推荐，用于精确控制螺钉扭矩)</li>
+  <li>干净抹布</li>
+</ul></div>
+</div><div class="section" id="relationships"><h2><i class="fas fa-link"></i> 装配关系 (约束与配合)</h2>
+<p>共定义了 <strong>5</strong> 条关系。</p>
+<ul class="relationships-list">
 <li>
-<div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 泵盖 详情">泵盖</a>&nbsp;<i class="fas fa-exchange-alt" title="关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 高效无刷电机 详情">高效无刷电机</a></div>
+<div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖 详情">新泵盖</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
 <div class="relationship-info-line">
-<span class="relationship-type constraint" title="约束: Mate (贴合)"><i class="fas fa-puzzle-piece"></i>&nbsp;贴合</span>
+<span class="relationship-type constraint" title="约束类型: Mate"><i class="fas fa-puzzle-piece"></i>&nbsp;面贴合</span>
 </div>
-<div class="relationship-description">前泵盖与电机贴合</div>
+<div class="relationship-description">前泵盖的安装面与电机前端面贴合</div>
 </li>
 <li>
-<div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 泵盖 详情">泵盖</a>&nbsp;<i class="fas fa-exchange-alt" title="关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 高效无刷电机 详情">高效无刷电机</a></div>
+<div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖 详情">新泵盖</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
 <div class="relationship-info-line">
-<span class="relationship-type constraint" title="约束: Align (对齐)"><i class="fas fa-arrows-alt-h"></i>&nbsp;对齐</span>
+<span class="relationship-type constraint" title="约束类型: Align"><i class="fas fa-arrows-up-down"></i>&nbsp;对齐</span>
 </div>
-<div class="relationship-description">前盖孔与电机轴对齐</div>
+<div class="relationship-description">前泵盖的中心孔与电机轴线对齐</div>
 </li>
 <li>
-<div class="relationship-components"><a href="part_PART-SEAL-703.html" class="component-link" title="查看 O型密封圈 详情">O型密封圈</a>&nbsp;<i class="fas fa-exchange-alt" title="关系"></i>&nbsp;<a href="part_PART-COVER-701.html" class="component-link" title="查看 泵盖 详情">泵盖</a></div>
+<div class="relationship-components"><a href="part_PART-SEAL-703.html" class="component-link" title="查看 O型密封圈 详情">O型密封圈</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖 详情">新泵盖</a></div>
 <div class="relationship-info-line">
-<span class="relationship-type fit" title="配合: Interference (过盈)"><i class="fas fa-sync-alt"></i>&nbsp;过盈</span>
+<span class="relationship-type fit" title="配合类型: Interference"><i class="fas fa-gears"></i>&nbsp;过盈配合</span>
 </div>
-<div class="relationship-description">O圈压入泵盖槽</div>
+<div class="relationship-description">O型圈压入泵盖密封槽，形成过盈配合以密封</div>
 </li>
 <li>
-<div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt" title="关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 高效无刷电机 详情">高效无刷电机</a></div>
+<div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
 <div class="relationship-info-line">
-<span class="relationship-type constraint" title="约束: Insert (插入)"><i class="fas fa-sign-in-alt"></i>&nbsp;插入</span>
-<span class="relationship-type fit" title="配合: H7/k6"><i class="fas fa-sync-alt"></i>&nbsp;H7/k6</span>
+<span class="relationship-type constraint" title="约束类型: Insert"><i class="fas fa-plug-circle-check"></i>&nbsp;插入配合</span>
+<span class="relationship-type fit" title="配合类型: H7/k6"><i class="fas fa-gears"></i>&nbsp;H7/k6 (过渡)</span>
 </div>
-<div class="relationship-description">叶轮与轴过渡配合</div>
+<div class="relationship-description">叶轮孔与电机轴采用过渡配合(H7/k6)，通过键传递扭矩</div>
 </li>
 <li>
-<div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt" title="关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 高效无刷电机 详情">高效无刷电机</a></div>
+<div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
 <div class="relationship-info-line">
-<span class="relationship-type constraint" title="约束: Mate (贴合)"><i class="fas fa-puzzle-piece"></i>&nbsp;贴合</span>
+<span class="relationship-type constraint" title="约束类型: Mate"><i class="fas fa-puzzle-piece"></i>&nbsp;面贴合</span>
 </div>
-<div class="relationship-description">叶轮与轴肩贴合</div>
-</li>
-<li>
-<div class="relationship-components"><a href="part_PART-BRG-F.html" class="component-link" title="查看 前轴承 详情">前轴承</a>&nbsp;<i class="fas fa-exchange-alt" title="关系"></i>&nbsp;<a href="part_PART-COVER-701.html" class="component-link" title="查看 泵盖 详情">泵盖</a></div>
-<div class="relationship-info-line">
-<span class="relationship-type constraint" title="约束: Insert (插入)"><i class="fas fa-sign-in-alt"></i>&nbsp;插入</span>
-</div>
-<div class="relationship-description">轴承压入前盖座</div>
+<div class="relationship-description">叶轮轴向定位面与电机轴肩贴合</div>
 </li>
 </ul>
-</div><div class="section" id="components"><h2><i class="fas fa-sitemap"></i> 组件列表</h2>
-<p>包含 <strong>9</strong> 个直接下级组件：</p><table class="components-table"><thead><tr><th style="width: 140px;" title="QR"><i class="fas fa-qrcode"></i></th><th><i class="fas fa-info-circle"></i> 组件信息</th></tr></thead><tbody>
-<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-BASE-700.html" class="component-qr-link" title="查看 泵体底座 详情 (https://lmy699.github.io/assembly-display/part_PART-BASE-700.html)"><img src="component_qr/Component_QR_PART-BASE-700.png" alt="泵体底座 QR" style="width:110px; height:110px;"/></a></td><td class="component-details-cell"><a href="part_PART-BASE-700.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 泵体底座</a><div class="component-functional-desc" title="支撑电机和泵体">支撑电机和泵体</div><div class="component-details-grid"><div class="component-detail-item" title="ID: PART-BASE-700"><span class="component-detail-label">ID:</span><span class="component-detail-value">PART-BASE-700</span></div>
-<div class="component-detail-item" title="数量: 1"><span class="component-detail-label">数量:</span><span class="component-detail-value">1</span></div>
-<div class="component-detail-item" title="单位: 件"><span class="component-detail-label">单位:</span><span class="component-detail-value">件</span></div>
-<div class="component-detail-item" title="位置: 底部"><span class="component-detail-label">位置:</span><span class="component-detail-value">底部</span></div>
-<div class="component-detail-item" title="材料: 铸铁"><span class="component-detail-label">材料:</span><span class="component-detail-value">铸铁</span></div>
-<div class="component-detail-item" title="规格: HT250"><span class="component-detail-label">规格:</span><span class="component-detail-value">HT250</span></div>
-<div class="component-detail-item" title="图号: PUMP-D-B00"><span class="component-detail-label">图号:</span><span class="component-detail-value">PUMP-D-B00</span></div>
-<div class="component-detail-item" title="装配方法: 地面固定"><span class="component-detail-label">装配方法:</span><span class="component-detail-value">地面固定</span></div>
-<div class="component-detail-item" title="备注: 需防锈"><span class="component-detail-label">备注:</span><span class="component-detail-value">需防锈</span></div>
+</div><div class="section" id="components"><h2><i class="fas fa-th-list"></i> 组件列表 (零件和子装配)</h2>
+<p>此装配体包含以下 <strong>4</strong> 个直接下级组件：</p>
+<table class="components-table"><thead><tr><th style="width: 130px;" title="组件二维码"><i class="fas fa-qrcode"></i> 二维码</th><th><i class="fas fa-info-circle"></i> 组件信息 (类型 / 功能 / 详情)</th></tr></thead><tbody>
+<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-COVER-701.html" class="component-qr-link" title="查看 新泵盖 详情 (目标链接: https://lmy699.github.io/assembly-display/part_PART-COVER-701.html)"><img src="component_qr/Component_QR_PART-COVER-701.png" alt="新泵盖 QR Code"/></a></td><td class="component-details-cell"><a href="part_PART-COVER-701.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 新泵盖</a><div class="component-functional-desc" title="功能描述">构成泵体外壳，提供密封界面，保护内部电机，并引导水流。</div><div class="component-details-grid"><div class="component-detail-item" title="组件 ID"><span class="component-detail-label">组件 ID:</span> PART-COVER-701</div>
+<div class="component-detail-item" title="数量"><span class="component-detail-label">数量:</span> 2</div>
+<div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 个</div>
+<div class="component-detail-item" title="位置参考"><span class="component-detail-label">位置参考:</span> 前后两端</div>
+<div class="component-detail-item" title="材料"><span class="component-detail-label">材料:</span> 增强聚碳酸酯(PC)</div>
+<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> PC-701-V2</div>
+<div class="component-detail-item" title="图纸号"><span class="component-detail-label">图纸号:</span> PUMP-D-C01</div>
+<div class="component-detail-item" title="装配方法"><span class="component-detail-label">装配方法:</span> M4螺钉固定</div>
+<div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> V2版本，加强筋设计，提升耐压性。</div>
 </div></td></tr>
-<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-COVER-701.html" class="component-qr-link" title="查看 泵盖 详情 (https://lmy699.github.io/assembly-display/part_PART-COVER-701.html)"><img src="component_qr/Component_QR_PART-COVER-701.png" alt="泵盖 QR" style="width:110px; height:110px;"/></a></td><td class="component-details-cell"><a href="part_PART-COVER-701.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 泵盖</a><div class="component-functional-desc" title="构成泵体外壳">构成泵体外壳</div><div class="component-details-grid"><div class="component-detail-item" title="ID: PART-COVER-701"><span class="component-detail-label">ID:</span><span class="component-detail-value">PART-COVER-701</span></div>
-<div class="component-detail-item" title="数量: 2"><span class="component-detail-label">数量:</span><span class="component-detail-value">2</span></div>
-<div class="component-detail-item" title="单位: 件"><span class="component-detail-label">单位:</span><span class="component-detail-value">件</span></div>
-<div class="component-detail-item" title="位置: 前后端"><span class="component-detail-label">位置:</span><span class="component-detail-value">前后端</span></div>
-<div class="component-detail-item" title="材料: 增强聚碳酸酯"><span class="component-detail-label">材料:</span><span class="component-detail-value">增强聚碳酸酯</span></div>
-<div class="component-detail-item" title="规格: PC-GF30"><span class="component-detail-label">规格:</span><span class="component-detail-value">PC-GF30</span></div>
-<div class="component-detail-item" title="图号: PUMP-D-C01"><span class="component-detail-label">图号:</span><span class="component-detail-value">PUMP-D-C01</span></div>
-<div class="component-detail-item" title="装配方法: M4螺钉"><span class="component-detail-label">装配方法:</span><span class="component-detail-value">M4螺钉</span></div>
-<div class="component-detail-item" title="备注: V2版"><span class="component-detail-label">备注:</span><span class="component-detail-value">V2版</span></div>
+<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-MOTOR-702.html" class="component-qr-link" title="查看 新型直流无刷电机 详情 (目标链接: https://lmy699.github.io/assembly-display/part_PART-MOTOR-702.html)"><img src="component_qr/Component_QR_PART-MOTOR-702.png" alt="新型直流无刷电机 QR Code"/></a></td><td class="component-details-cell"><a href="part_PART-MOTOR-702.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 新型直流无刷电机</a><div class="component-functional-desc" title="功能描述">将输入的24V直流电能高效转化为旋转动能，驱动叶轮工作，具有低噪音、长寿命特点。</div><div class="component-details-grid"><div class="component-detail-item" title="组件 ID"><span class="component-detail-label">组件 ID:</span> PART-MOTOR-702</div>
+<div class="component-detail-item" title="数量"><span class="component-detail-label">数量:</span> 1</div>
+<div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 台</div>
+<div class="component-detail-item" title="位置参考"><span class="component-detail-label">位置参考:</span> 泵体中心</div>
+<div class="component-detail-item" title="材料"><span class="component-detail-label">材料:</span> 铜线圈, 硅钢片, 铝壳</div>
+<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> PM-702-BLDC-24V</div>
+<div class="component-detail-item" title="图纸号"><span class="component-detail-label">图纸号:</span> PUMP-D-M02</div>
+<div class="component-detail-item" title="装配方法"><span class="component-detail-label">装配方法:</span> 螺钉固定 &amp; 焊接(线缆)</div>
+<div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 采用霍尔传感器，启动平稳，效率&gt;85%。</div>
 </div></td></tr>
-<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-MOTOR-702.html" class="component-qr-link" title="查看 高效无刷电机 详情 (https://lmy699.github.io/assembly-display/part_PART-MOTOR-702.html)"><img src="component_qr/Component_QR_PART-MOTOR-702.png" alt="高效无刷电机 QR" style="width:110px; height:110px;"/></a></td><td class="component-details-cell"><a href="part_PART-MOTOR-702.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 高效无刷电机</a><div class="component-functional-desc" title="提供动力源">提供动力源</div><div class="component-details-grid"><div class="component-detail-item" title="ID: PART-MOTOR-702"><span class="component-detail-label">ID:</span><span class="component-detail-value">PART-MOTOR-702</span></div>
-<div class="component-detail-item" title="数量: 1"><span class="component-detail-label">数量:</span><span class="component-detail-value">1</span></div>
-<div class="component-detail-item" title="单位: 台"><span class="component-detail-label">单位:</span><span class="component-detail-value">台</span></div>
-<div class="component-detail-item" title="位置: 中心"><span class="component-detail-label">位置:</span><span class="component-detail-value">中心</span></div>
-<div class="component-detail-item" title="材料: 铝壳等"><span class="component-detail-label">材料:</span><span class="component-detail-value">铝壳等</span></div>
-<div class="component-detail-item" title="规格: PM-702-BLDC-24V-IE4"><span class="component-detail-label">规格:</span><span class="component-detail-value">PM-702-BLDC-24V-IE4</span></div>
-<div class="component-detail-item" title="图号: PUMP-D-M02"><span class="component-detail-label">图号:</span><span class="component-detail-value">PUMP-D-M02</span></div>
-<div class="component-detail-item" title="装配方法: M5螺钉"><span class="component-detail-label">装配方法:</span><span class="component-detail-value">M5螺钉</span></div>
-<div class="component-detail-item" title="备注: IE4能效"><span class="component-detail-label">备注:</span><span class="component-detail-value">IE4能效</span></div>
+<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-SEAL-703.html" class="component-qr-link" title="查看 O型密封圈 详情 (目标链接: https://lmy699.github.io/assembly-display/part_PART-SEAL-703.html)"><img src="component_qr/Component_QR_PART-SEAL-703.png" alt="O型密封圈 QR Code"/></a></td><td class="component-details-cell"><a href="part_PART-SEAL-703.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> O型密封圈</a><div class="component-functional-desc" title="功能描述">在泵盖与泵体、泵盖与电机之间的结合面提供静态密封，防止工作介质（水）泄漏。</div><div class="component-details-grid"><div class="component-detail-item" title="组件 ID"><span class="component-detail-label">组件 ID:</span> PART-SEAL-703</div>
+<div class="component-detail-item" title="数量"><span class="component-detail-label">数量:</span> 3</div>
+<div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 个</div>
+<div class="component-detail-item" title="位置参考"><span class="component-detail-label">位置参考:</span> 前后泵盖接口处</div>
+<div class="component-detail-item" title="材料"><span class="component-detail-label">材料:</span> 丁腈橡胶(NBR)</div>
+<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> 内径30mm, 线径2mm</div>
+<div class="component-detail-item" title="图纸号"><span class="component-detail-label">图纸号:</span> PUMP-D-S03</div>
+<div class="component-detail-item" title="装配方法"><span class="component-detail-label">装配方法:</span> 压入凹槽</div>
+<div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 邵氏硬度70A，耐油耐磨。</div>
 </div></td></tr>
-<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-SEAL-703.html" class="component-qr-link" title="查看 O型密封圈 详情 (https://lmy699.github.io/assembly-display/part_PART-SEAL-703.html)"><img src="component_qr/Component_QR_PART-SEAL-703.png" alt="O型密封圈 QR" style="width:110px; height:110px;"/></a></td><td class="component-details-cell"><a href="part_PART-SEAL-703.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> O型密封圈</a><div class="component-functional-desc" title="提供静态密封">提供静态密封</div><div class="component-details-grid"><div class="component-detail-item" title="ID: PART-SEAL-703"><span class="component-detail-label">ID:</span><span class="component-detail-value">PART-SEAL-703</span></div>
-<div class="component-detail-item" title="数量: 3"><span class="component-detail-label">数量:</span><span class="component-detail-value">3</span></div>
-<div class="component-detail-item" title="单位: 个"><span class="component-detail-label">单位:</span><span class="component-detail-value">个</span></div>
-<div class="component-detail-item" title="位置: 接口"><span class="component-detail-label">位置:</span><span class="component-detail-value">接口</span></div>
-<div class="component-detail-item" title="材料: 氟橡胶"><span class="component-detail-label">材料:</span><span class="component-detail-value">氟橡胶</span></div>
-<div class="component-detail-item" title="规格: ID30mm, CS2mm, FKM"><span class="component-detail-label">规格:</span><span class="component-detail-value">ID30mm, CS2mm, FKM</span></div>
-<div class="component-detail-item" title="图号: PUMP-D-S03"><span class="component-detail-label">图号:</span><span class="component-detail-value">PUMP-D-S03</span></div>
-<div class="component-detail-item" title="装配方法: 压入凹槽"><span class="component-detail-label">装配方法:</span><span class="component-detail-value">压入凹槽</span></div>
-<div class="component-detail-item" title="备注: 硬度75A"><span class="component-detail-label">备注:</span><span class="component-detail-value">硬度75A</span></div>
-</div></td></tr>
-<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-IMPELLER-704.html" class="component-qr-link" title="查看 离心叶轮 详情 (https://lmy699.github.io/assembly-display/part_PART-IMPELLER-704.html)"><img src="component_qr/Component_QR_PART-IMPELLER-704.png" alt="离心叶轮 QR" style="width:110px; height:110px;"/></a></td><td class="component-details-cell"><a href="part_PART-IMPELLER-704.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 离心叶轮</a><div class="component-functional-desc" title="传递能量">传递能量</div><div class="component-details-grid"><div class="component-detail-item" title="ID: PART-IMPELLER-704"><span class="component-detail-label">ID:</span><span class="component-detail-value">PART-IMPELLER-704</span></div>
-<div class="component-detail-item" title="数量: 1"><span class="component-detail-label">数量:</span><span class="component-detail-value">1</span></div>
-<div class="component-detail-item" title="单位: 件"><span class="component-detail-label">单位:</span><span class="component-detail-value">件</span></div>
-<div class="component-detail-item" title="位置: 电机轴"><span class="component-detail-label">位置:</span><span class="component-detail-value">电机轴</span></div>
-<div class="component-detail-item" title="材料: 增强PPS"><span class="component-detail-label">材料:</span><span class="component-detail-value">增强PPS</span></div>
-<div class="component-detail-item" title="规格: PPS-GF40"><span class="component-detail-label">规格:</span><span class="component-detail-value">PPS-GF40</span></div>
-<div class="component-detail-item" title="图号: PUMP-D-I04"><span class="component-detail-label">图号:</span><span class="component-detail-value">PUMP-D-I04</span></div>
-<div class="component-detail-item" title="装配方法: 键+螺母"><span class="component-detail-label">装配方法:</span><span class="component-detail-value">键+螺母</span></div>
-<div class="component-detail-item" title="备注: 闭式"><span class="component-detail-label">备注:</span><span class="component-detail-value">闭式</span></div>
-</div></td></tr>
-<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-BRG-F.html" class="component-qr-link" title="查看 前轴承 详情 (https://lmy699.github.io/assembly-display/part_PART-BRG-F.html)"><img src="component_qr/Component_QR_PART-BRG-F.png" alt="前轴承 QR" style="width:110px; height:110px;"/></a></td><td class="component-details-cell"><a href="part_PART-BRG-F.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 前轴承</a><div class="component-functional-desc" title="支撑轴前端">支撑轴前端</div><div class="component-details-grid"><div class="component-detail-item" title="ID: PART-BRG-F"><span class="component-detail-label">ID:</span><span class="component-detail-value">PART-BRG-F</span></div>
-<div class="component-detail-item" title="数量: 1"><span class="component-detail-label">数量:</span><span class="component-detail-value">1</span></div>
-<div class="component-detail-item" title="单位: 个"><span class="component-detail-label">单位:</span><span class="component-detail-value">个</span></div>
-<div class="component-detail-item" title="位置: 前盖内"><span class="component-detail-label">位置:</span><span class="component-detail-value">前盖内</span></div>
-<div class="component-detail-item" title="材料: 轴承钢"><span class="component-detail-label">材料:</span><span class="component-detail-value">轴承钢</span></div>
-<div class="component-detail-item" title="规格: 6202-2RS"><span class="component-detail-label">规格:</span><span class="component-detail-value">6202-2RS</span></div>
-<div class="component-detail-item" title="图号: STD-BRG-6202"><span class="component-detail-label">图号:</span><span class="component-detail-value">STD-BRG-6202</span></div>
-<div class="component-detail-item" title="装配方法: 压入泵盖"><span class="component-detail-label">装配方法:</span><span class="component-detail-value">压入泵盖</span></div>
-<div class="component-detail-item" title="备注: 深沟球"><span class="component-detail-label">备注:</span><span class="component-detail-value">深沟球</span></div>
-</div></td></tr>
-<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-KEY-01.html" class="component-qr-link" title="查看 半圆键 详情 (https://lmy699.github.io/assembly-display/part_PART-KEY-01.html)"><img src="component_qr/Component_QR_PART-KEY-01.png" alt="半圆键 QR" style="width:110px; height:110px;"/></a></td><td class="component-details-cell"><a href="part_PART-KEY-01.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 半圆键</a><div class="component-functional-desc" title="传递扭矩">传递扭矩</div><div class="component-details-grid"><div class="component-detail-item" title="ID: PART-KEY-01"><span class="component-detail-label">ID:</span><span class="component-detail-value">PART-KEY-01</span></div>
-<div class="component-detail-item" title="数量: 1"><span class="component-detail-label">数量:</span><span class="component-detail-value">1</span></div>
-<div class="component-detail-item" title="单位: 件"><span class="component-detail-label">单位:</span><span class="component-detail-value">件</span></div>
-<div class="component-detail-item" title="位置: 电机轴"><span class="component-detail-label">位置:</span><span class="component-detail-value">电机轴</span></div>
-<div class="component-detail-item" title="材料: 45#钢"><span class="component-detail-label">材料:</span><span class="component-detail-value">45#钢</span></div>
-<div class="component-detail-item" title="规格: 4x5x16"><span class="component-detail-label">规格:</span><span class="component-detail-value">4x5x16</span></div>
-<div class="component-detail-item" title="图号: STD-KEY-HB4"><span class="component-detail-label">图号:</span><span class="component-detail-value">STD-KEY-HB4</span></div>
-<div class="component-detail-item" title="装配方法: 插入键槽"><span class="component-detail-label">装配方法:</span><span class="component-detail-value">插入键槽</span></div>
-<div class="component-detail-item" title="备注: GB/T 1095"><span class="component-detail-label">备注:</span><span class="component-detail-value">GB/T 1095</span></div>
-</div></td></tr>
-<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_NUT-M8-LOCK.html" class="component-qr-link" title="查看 M8尼龙锁紧螺母 详情 (https://lmy699.github.io/assembly-display/part_NUT-M8-LOCK.html)"><img src="component_qr/Component_QR_NUT-M8-LOCK.png" alt="M8尼龙锁紧螺母 QR" style="width:110px; height:110px;"/></a></td><td class="component-details-cell"><a href="part_NUT-M8-LOCK.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> M8尼龙锁紧螺母</a><div class="component-functional-desc" title="固定叶轮">固定叶轮</div><div class="component-details-grid"><div class="component-detail-item" title="ID: NUT-M8-LOCK"><span class="component-detail-label">ID:</span><span class="component-detail-value">NUT-M8-LOCK</span></div>
-<div class="component-detail-item" title="数量: 1"><span class="component-detail-label">数量:</span><span class="component-detail-value">1</span></div>
-<div class="component-detail-item" title="单位: 件"><span class="component-detail-label">单位:</span><span class="component-detail-value">件</span></div>
-<div class="component-detail-item" title="位置: 轴端"><span class="component-detail-label">位置:</span><span class="component-detail-value">轴端</span></div>
-<div class="component-detail-item" title="材料: 不锈钢304"><span class="component-detail-label">材料:</span><span class="component-detail-value">不锈钢304</span></div>
-<div class="component-detail-item" title="规格: M8"><span class="component-detail-label">规格:</span><span class="component-detail-value">M8</span></div>
-<div class="component-detail-item" title="图号: STD-NUT-M8L"><span class="component-detail-label">图号:</span><span class="component-detail-value">STD-NUT-M8L</span></div>
-<div class="component-detail-item" title="装配方法: 螺纹拧紧"><span class="component-detail-label">装配方法:</span><span class="component-detail-value">螺纹拧紧</span></div>
-<div class="component-detail-item" title="备注: DIN 985"><span class="component-detail-label">备注:</span><span class="component-detail-value">DIN 985</span></div>
-</div></td></tr>
-<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-JBOX-01.html" class="component-qr-link" title="查看 接线盒 详情 (https://lmy699.github.io/assembly-display/part_PART-JBOX-01.html)"><img src="component_qr/Component_QR_PART-JBOX-01.png" alt="接线盒 QR" style="width:110px; height:110px;"/></a></td><td class="component-details-cell"><a href="part_PART-JBOX-01.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 接线盒</a><div class="component-functional-desc" title="保护电气连接">保护电气连接</div><div class="component-details-grid"><div class="component-detail-item" title="ID: PART-JBOX-01"><span class="component-detail-label">ID:</span><span class="component-detail-value">PART-JBOX-01</span></div>
-<div class="component-detail-item" title="数量: 1"><span class="component-detail-label">数量:</span><span class="component-detail-value">1</span></div>
-<div class="component-detail-item" title="单位: 套"><span class="component-detail-label">单位:</span><span class="component-detail-value">套</span></div>
-<div class="component-detail-item" title="位置: 电机侧"><span class="component-detail-label">位置:</span><span class="component-detail-value">电机侧</span></div>
-<div class="component-detail-item" title="材料: ABS塑料"><span class="component-detail-label">材料:</span><span class="component-detail-value">ABS塑料</span></div>
-<div class="component-detail-item" title="规格: JB-ABS-01"><span class="component-detail-label">规格:</span><span class="component-detail-value">JB-ABS-01</span></div>
-<div class="component-detail-item" title="图号: PUMP-D-JB01"><span class="component-detail-label">图号:</span><span class="component-detail-value">PUMP-D-JB01</span></div>
-<div class="component-detail-item" title="装配方法: 螺钉固定"><span class="component-detail-label">装配方法:</span><span class="component-detail-value">螺钉固定</span></div>
-<div class="component-detail-item" title="备注: 含密封垫"><span class="component-detail-label">备注:</span><span class="component-detail-value">含密封垫</span></div>
+<tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-IMPELLER-704.html" class="component-qr-link" title="查看 离心叶轮 详情 (目标链接: https://lmy699.github.io/assembly-display/part_PART-IMPELLER-704.html)"><img src="component_qr/Component_QR_PART-IMPELLER-704.png" alt="离心叶轮 QR Code"/></a></td><td class="component-details-cell"><a href="part_PART-IMPELLER-704.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 离心叶轮</a><div class="component-functional-desc" title="功能描述">将电机传递的旋转动能传递给液体，使其获得速度和压力。</div><div class="component-details-grid"><div class="component-detail-item" title="组件 ID"><span class="component-detail-label">组件 ID:</span> PART-IMPELLER-704</div>
+<div class="component-detail-item" title="数量"><span class="component-detail-label">数量:</span> 1</div>
+<div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 个</div>
+<div class="component-detail-item" title="位置参考"><span class="component-detail-label">位置参考:</span> 电机轴前端</div>
+<div class="component-detail-item" title="材料"><span class="component-detail-label">材料:</span> 工程塑料PPS</div>
+<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> IMP-704-PPS</div>
+<div class="component-detail-item" title="图纸号"><span class="component-detail-label">图纸号:</span> PUMP-D-I04</div>
+<div class="component-detail-item" title="装配方法"><span class="component-detail-label">装配方法:</span> 键连接+螺母固定</div>
+<div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 优化流道设计，提高效率。</div>
 </div></td></tr>
 </tbody></table>
-</div></div><button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button><footer role="contentinfo">生成于: <time datetime="2025-04-07 16:45:55">2025-04-07 16:45:55</time> | 数据源: ASM DB<br>基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a> | 版本: V4.9 - 移除生产纲领,添加装配形式,大幅扩充内容与CSS</footer><script>(function(){var b=document.getElementById("back-to-top");if(!b)return;var t=300;function c(){var s=document.body.scrollTop||document.documentElement.scrollTop;b.classList.toggle("show",s>t)}function st(){try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){window.scrollTo(0,0)}}window.addEventListener('scroll',c,{passive:true});b.addEventListener('click',st);c()})();</script></body></html>
+</div></div><button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button><footer role="contentinfo">页面静态生成时间: <time datetime="2025-04-07 17:29:05">2025-04-07 17:29:05</time> | 数据来源: ASM 数据库<br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>Generated by V4.7.0 - 添加修订历史模块，移除生产纲领模块</footer>
+    <script>
+    (function() {
+      // Add data-label attribute to table cells for responsive view
+      function setupResponsiveTables() {
+        const tables = document.querySelectorAll('.revision-history-table'); // Target specific table
+        if (!tables) return;
+
+        tables.forEach(table => {
+            const headers = table.querySelectorAll('thead th');
+            if (!headers || headers.length === 0) return; // Skip if no headers
+
+            const headerTexts = Array.from(headers).map(th => th.textContent.trim());
+            const bodyRows = table.querySelectorAll('tbody tr');
+
+            bodyRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                cells.forEach((cell, index) => {
+                    if (headerTexts[index]) { // Check if header exists for this index
+                        cell.setAttribute('data-label', headerTexts[index]);
+                    }
+                });
+            });
+        });
+      }
+
+      // Back to top button logic
+      var backToTopBtn = document.getElementById("back-to-top");
+      if (backToTopBtn) {
+          var scrollThreshold = 300;
+          function checkScroll() {
+              var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
+              backToTopBtn.classList.toggle("show", scrolled > scrollThreshold);
+          }
+          function scrollToTop() {
+              try { window.scrollTo({top: 0, behavior: 'smooth'}); }
+              catch(e) { window.scrollTo(0, 0); }
+          }
+          window.addEventListener('scroll', checkScroll, { passive: true });
+          backToTopBtn.addEventListener('click', scrollToTop);
+          checkScroll(); // Initial check
+      }
+
+      // Run table setup on load
+      document.addEventListener('DOMContentLoaded', setupResponsiveTables);
+
+    })();
+    </script>
+    </body></html>
