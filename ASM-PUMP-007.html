@@ -207,7 +207,7 @@
             font-style: italic; font-size: 1.1em;
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-medium);
         }
-        .no-data i { font-size: 1.5em; color: var(--accent-color-danger); }
+        .no-data i { font-size: 1.5em; color: var(--accent-color-danger); } /* Adjusted icon size based on screenshot */
 
         /* --- Specific Section Styling --- */
 
@@ -229,6 +229,81 @@
         }
         .assembly-function-section strong { color: var(--primary-color); font-size: 1.15em; display: block; margin-bottom: var(--spacing-small);}
         .assembly-function-section p { margin: 0; line-height: 1.7; color: var(--text-dark); }
+
+        /* --- !!! 新增/修改: 技术要求和声场信息区域样式 !!! --- */
+        #tech-req h2 i { color: var(--accent-color-constraint); } /* Blue icon for tech */
+        #sound-field h2 i { color: var(--accent-color-process); } /* Orange icon for sound */
+
+        .content-block { /* Container for sub-sections like tech req, acceptance, etc. */
+            margin-top: var(--spacing-large);
+            padding: var(--spacing-large);
+            background-color: var(--background-section-even); /* Slightly different background from main section */
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--shadow-light);
+        }
+        /* Remove top margin for the first content-block within a section */
+        .section > .content-block:first-of-type {
+            margin-top: 0;
+        }
+
+        .content-block h3 { /* Sub-headings within the new sections */
+            margin-top: 0; /* No top margin for h3 inside content-block */
+            margin-bottom: var(--spacing-medium);
+            border-bottom: none; /* Remove the default h3 border */
+            padding-bottom: 0;
+            font-size: 1.3em;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-small);
+        }
+        .content-block h3 i { /* Icon style for sub-headings */
+            font-size: 1em; /* Same size as text */
+            color: var(--secondary-hover); /* Use a secondary color */
+            opacity: 0.9;
+            width: 1.2em; /* Give icon some space */
+            text-align: center;
+        }
+        .content-block p, .content-block ul { /* Content text and lists */
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-small); /* Spacing between paragraphs/list items */
+            /* Optional: Add left margin to align with text after icon in H3 */
+            /* margin-left: calc(1.2em + var(--spacing-small)); */
+        }
+        .content-block ul { /* Styling for lists (e.g., requirements) */
+            list-style: disc; /* Or 'decimal' for numbered lists */
+            padding-left: calc(1.2em + var(--spacing-small) + 1em); /* Align list marker roughly with text start */
+            margin-top: var(--spacing-small);
+            margin-bottom: 0;
+        }
+        .content-block ul li {
+             margin-bottom: var(--spacing-small); /* Space between list items */
+        }
+
+        /* Overwrite .no-data style when inside .content-block for better alignment and look */
+        .content-block .no-data {
+             padding: var(--spacing-medium) 0; /* Less padding */
+             text-align: left; /* Align left */
+             border: none; /* No border */
+             background: none; /* No background */
+             font-size: 1em; /* Normal font size */
+             margin-top: var(--spacing-small);
+             display: flex; /* Use flex for icon alignment */
+             flex-direction: row;
+             align-items: center;
+             justify-content: flex-start; /* Align left */
+             gap: var(--spacing-small);
+             /* Optional: Add left margin to align with text after icon in H3 */
+             /* margin-left: calc(1.2em + var(--spacing-small)); */
+        }
+        .content-block .no-data i {
+            font-size: 1.2em; /* Slightly smaller icon */
+            color: var(--text-light); /* Less prominent color */
+        }
+        /* --- !!! 新增/修改样式结束 !!! --- */
+
 
         /* Diagrams & Flowcharts */
         .diagrams-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xlarge); }
@@ -380,8 +455,8 @@
         .components-table td:first-child { border-top-left-radius: var(--border-radius-medium); border-bottom-left-radius: var(--border-radius-medium); border-left: 1px solid var(--border-color); }
         .components-table td:last-child { border-top-right-radius: var(--border-radius-medium); border-bottom-right-radius: var(--border-radius-medium); border-right: 1px solid var(--border-color); }
 
-        .top-assembly-row { border-left-color: #e6d9a1; } .top-assembly-row td { background-color: var(--top-assembly-highlight); }
-        .sub-assembly-row { border-left-color: var(--accent-color-fit); } .sub-assembly-row td { background-color: var(--assembly-highlight); }
+        .top-assembly-row { border-left-color: #e6d9a1; } .top-assembly-row td { background-color: var(--top-assembly-highlight, #fdfaec); } /* Added fallback color */
+        .sub-assembly-row { border-left-color: var(--accent-color-fit); } .sub-assembly-row td { background-color: var(--assembly-highlight, #f0fff4); } /* Added fallback color */
         .part-row { border-left-color: var(--accent-color-constraint); } .part-row td { background-color: var(--background-white); } /* Keep parts white or use --part-highlight */
 
         .component-qr-cell { width: 130px; text-align: center; vertical-align: middle; }
@@ -447,6 +522,8 @@
             .info-table, .components-table, .relationships-list li { page-break-inside: avoid; }
             img { max-width: 100% !important; height: auto !important; }
             code { background: #eee; border: none; }
+            .content-block { border: 1px solid #ccc; box-shadow: none; background: #fff; page-break-inside: avoid; }
+            .content-block h3 { color: #000; }
         }
 
         /* --- Responsive Adjustments --- */
@@ -466,6 +543,7 @@
             .assembly-process-details { padding: var(--spacing-large) var(--spacing-large); }
             .process-subtitle { font-size: 1.2em; }
             .page-nav ul { gap: var(--spacing-small) var(--spacing-medium); }
+             .content-block { padding: var(--spacing-large); } /* Adjust padding for content blocks */
         }
         /* Phone */
         @media (max-width: 768px) {
@@ -490,6 +568,11 @@
             .relationship-info-line { flex-direction: column; align-items: flex-start; gap: var(--spacing-small); margin-top: var(--spacing-medium); }
             .relationship-description { width: 100%; padding-left: 0; border-left: none; border-top: 1px dashed #eee; margin-top: var(--spacing-medium); padding-top: var(--spacing-medium); }
             #back-to-top { bottom: var(--spacing-medium); right: var(--spacing-medium); padding: 10px 13px; font-size: 16px; }
+            /* Adjust content block padding for phones */
+            .content-block { padding: var(--spacing-medium) var(--spacing-large); }
+            .content-block h3 { font-size: 1.2em; }
+            /* .content-block p, .content-block ul, .content-block .no-data { margin-left: 0; } Indentation might be too much on small screens */
+            .content-block ul { padding-left: 1.5em; }
         }
         /* Very Small Screens */
         @media (max-width: 480px) {
@@ -500,6 +583,7 @@
              .components-table td { padding: var(--spacing-small) var(--spacing-medium); }
              .relationships-list li { padding: var(--spacing-small) var(--spacing-medium); }
              .page-nav a { padding: 5px 8px; }
+             .content-block { padding: var(--spacing-medium); } /* Further reduce padding */
         }
     </style>
 </head>
@@ -515,6 +599,8 @@
         <ul>
             <li><a href="#overview"><i class="fas fa-eye"></i> 概览图</a></li>
             <li><a href="#info"><i class="fas fa-info-circle"></i> 基本信息</a></li>
+            <li><a href="#tech-req"><i class="fas fa-cogs"></i> 技术要求</a></li>
+            <li><a href="#sound-field"><i class="fas fa-volume-up"></i> 声场信息</a></li>
             <li><a href="#diagrams"><i class="fas fa-drafting-compass"></i> 参考图纸</a></li>
             <li><a href="#steps"><i class="fas fa-clipboard-list"></i> 装配步骤</a></li>
             <li><a href="#relationships"><i class="fas fa-link"></i> 装配关系</a></li>
@@ -535,9 +621,31 @@
 <tr><th>装配体名称 (AssemblyName)</th><td>新型水泵</td></tr>
 <tr><th>关联组件表 (TableName)</th><td><code>asm_007</code></td></tr>
 <tr><th>Remarks</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr>
-<tr><th>记录创建时间</th><td>2025-04-07 14:35:47</td></tr>
-<tr><th>最后修改时间</th><td>2025-04-07 14:35:47</td></tr>
+<tr><th>记录创建时间</th><td>2025-04-07 15:21:07</td></tr>
+<tr><th>最后修改时间</th><td>2025-04-07 15:21:07</td></tr>
 </table></div>
+
+        <div class="section" id="tech-req"><h2><i class="fas fa-cogs"></i> 技术要求与验收</h2>
+<div class="content-block">
+<h3><i class="fas fa-tools"></i> 装配技术要求</h3>
+<p class="no-data"><i class="fas fa-info-circle"></i> 未提供详细的装配技术要求。</p>
+</div>
+<div class="content-block">
+<h3><i class="fas fa-clipboard-check"></i> 验收技术条件</h3>
+<p class="no-data"><i class="fas fa-info-circle"></i> 未提供详细的验收技术条件。</p>
+</div>
+</div>
+
+        <div class="section" id="sound-field"><h2><i class="fas fa-volume-up"></i> 声场信息与生成类型</h2>
+<div class="content-block">
+<h3><i class="fas fa-wave-square"></i> 产品声场纲领</h3>
+<p class="no-data"><i class="fas fa-info-circle"></i> 未提供产品声场纲领信息。</p>
+</div>
+<div class="content-block">
+<h3><i class="fas fa-tags"></i> 产品生成类型</h3>
+<p class="no-data"><i class="fas fa-info-circle"></i> 未提供产品生成类型信息。</p>
+</div>
+</div>
 
         <div class="section" id="diagrams"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section">
 <div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (源参考)</h3>
@@ -675,9 +783,9 @@
     <button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button>
 
     <footer role="contentinfo">
-        页面静态生成时间: <time datetime="2025-04-07 14:36:47">2025-04-07 14:36:47</time> | 数据来源: ASM 数据库
+        页面静态生成时间: <time datetime="2025-04-07 15:21:13">2025-04-07 15:21:13</time> | 数据来源: ASM 数据库
         <br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a>
-        <br>Generated by V4.4 - 界面丰富化尝试
+        <br>Generated by V4.5.1 - 修正 f-string 语法错误
     </footer>
 
     <!-- 返回顶部按钮 JavaScript -->
