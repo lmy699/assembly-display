@@ -4,202 +4,513 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="装配体 新型水泵 的详细信息、组件列表、装配关系、技术要求和流程。">
+    <meta name="description" content="装配体 新型水泵 的详细信息、组件列表、装配关系和流程。">
     <meta name="author" content="Static Site Generator">
     <title>装配体详情: 新型水泵</title>
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon (示例, 需要您提供 favicon.ico 文件) -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
     
     
     <style>
-        /* --- Global Reset & Base Styles (来自 V4.4) --- */
+        /* --- Global Reset & Base Styles --- */
         *, *::before, *::after { box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
+        html { scroll-behavior: smooth; font-size: 16px; /* Base font size */ }
         body {
-            font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif;
-            margin: 0; padding: 0; background-color: var(--background-light, #f4f7f9);
-            color: var(--text-dark, #34495e); line-height: 1.65;
-            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+            font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif; /* Added more fallback fonts */
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light, #f4f7f9);
+            color: var(--text-dark, #34495e);
+            line-height: 1.65; /* Slightly increased line height */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        /* --- CSS Variables (来自 V4.4) --- */
+
+        /* --- CSS Variables (Theme Colors & Sizes) --- */
         :root {
-            --primary-color: #4a6a8a; --primary-hover: #3b5671; --secondary-color: #6c99c4; --secondary-hover: #5a8ab3;
-            --accent-color-constraint: #3498db; --accent-color-fit: #2ecc71; --accent-color-process: #f39c12; --accent-color-warning: #e67e22; --accent-color-danger: #e74c3c;
-            --background-light: #f4f7f9; --background-white: #ffffff; --background-section-odd: var(--background-white); --background-section-even: #fbfcfd;
-            --text-dark: #34495e; --text-light: #7f8c8d; --text-headings: var(--primary-color); --text-link: var(--secondary-color); --text-link-hover: var(--primary-color); --text-code: #555; --text-white: #ffffff;
-            --border-color: #e1e5e8; --border-color-strong: #ced4da; --border-radius-small: 4px; --border-radius-medium: 8px; --border-radius-large: 12px;
-            --code-background: #ecf0f1; --subtle-highlight: #eaf4ff; --process-background: #fffaf0; --process-border: #f3d9a0; --process-text: #8b5a2b; --process-subtitle-border: #e6d0a7;
-            --shadow-light: 0 2px 5px rgba(0,0,0,0.05); --shadow-medium: 0 5px 15px rgba(0,0,0,0.07); --shadow-strong: 0 6px 18px rgba(0,0,0,.1);
-            --spacing-small: 0.5rem; --spacing-medium: 1rem; --spacing-large: 1.5rem; --spacing-xlarge: 2rem; --spacing-xxlarge: 2.5rem;
-            --transition-speed: 0.2s; --transition-timing: ease-in-out;
-            /* V4.4 可能还有其他变量，根据你的版本添加 */
-             --top-assembly-highlight: #fff8dc; /* Cornsilk */
-             --assembly-highlight: #e8f5e9;     /* Light Green */
-             --part-highlight: #e3f2fd;       /* Light Blue */
+            --primary-color: #4a6a8a;       /* Deep Blue-Gray */
+            --primary-hover: #3b5671;       /* Darker Primary */
+            --secondary-color: #6c99c4;     /* Soft Blue */
+            --secondary-hover: #5a8ab3;     /* Darker Secondary */
+            --accent-color-constraint: #3498db; /* Bright Blue (Constraint) */
+            --accent-color-fit: #2ecc71;       /* Bright Green (Fit) */
+            --accent-color-process: #f39c12;   /* Orange (Process) */
+            --accent-color-warning: #e67e22;  /* Darker Orange (Warning) */
+            --accent-color-danger: #e74c3c;    /* Red (Danger) */
+
+            --background-light: #f4f7f9;      /* Page background */
+            --background-white: #ffffff;      /* Card background */
+            --background-section-odd: var(--background-white); /* Background for odd sections */
+            --background-section-even: #fbfcfd; /* Slightly off-white for even sections */
+
+            --text-dark: #34495e;           /* Main text */
+            --text-light: #7f8c8d;           /* Secondary text */
+            --text-headings: var(--primary-color); /* Heading color */
+            --text-link: var(--secondary-color);
+            --text-link-hover: var(--primary-color);
+            --text-code: #555;
+            --text-white: #ffffff;
+
+            --border-color: #e1e5e8;         /* Default border */
+            --border-color-strong: #ced4da;  /* Stronger border */
+            --border-radius-small: 4px;
+            --border-radius-medium: 8px;
+            --border-radius-large: 12px;
+
+            --code-background: #ecf0f1;       /* Code block background */
+            --subtle-highlight: #eaf4ff;      /* Subtle highlight background (e.g., function) */
+            --process-background: #fffaf0;    /* Process steps background (Light Beige) */
+            --process-border: #f3d9a0;        /* Process steps border */
+            --process-text: #8b5a2b;          /* Process steps text */
+            --process-subtitle-border: #e6d0a7;
+
+            --shadow-light: 0 2px 5px rgba(0,0,0,0.05);
+            --shadow-medium: 0 5px 15px rgba(0,0,0,0.07);
+            --shadow-strong: 0 6px 18px rgba(0,0,0,.1);
+
+            --spacing-small: 0.5rem;  /* 8px */
+            --spacing-medium: 1rem;   /* 16px */
+            --spacing-large: 1.5rem;  /* 24px */
+            --spacing-xlarge: 2rem;   /* 32px */
+            --spacing-xxlarge: 2.5rem; /* 40px */
+
+            --transition-speed: 0.2s;
+            --transition-timing: ease-in-out;
         }
-        /* --- Layout: Container (来自 V4.4) --- */
-        .container { max-width: 1400px; margin: 0 auto; padding: var(--spacing-medium) var(--spacing-large); }
-        /* --- Header (来自 V4.4) --- */
-        header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--text-white); padding: var(--spacing-large) var(--spacing-xlarge); text-align: center; margin-bottom: var(--spacing-xlarge); border-radius: 0 0 var(--border-radius-large) var(--border-radius-large); box-shadow: var(--shadow-strong); position: relative; }
-        header h1 { margin: 0; font-size: clamp(1.8em, 4vw, 2.4em); font-weight: 600; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; gap: var(--spacing-medium); text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+
+        /* --- Layout: Container --- */
+        .container {
+            max-width: 1400px; /* Max width for large screens */
+            margin: 0 auto; /* Center the container */
+            padding: var(--spacing-medium) var(--spacing-large); /* Responsive padding */
+        }
+
+        /* --- Header --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-white);
+            padding: var(--spacing-large) var(--spacing-xlarge);
+            text-align: center;
+            margin-bottom: var(--spacing-xlarge);
+            border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
+            box-shadow: var(--shadow-strong);
+            position: relative; /* For potential future elements */
+        }
+        header h1 {
+            margin: 0;
+            font-size: clamp(1.8em, 4vw, 2.4em); /* Responsive font size */
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-medium);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Subtle text shadow */
+        }
         .assembly-qr-container { margin-top: var(--spacing-medium); }
-        .assembly-qr-image { width: 120px; height: 120px; border: 4px solid var(--background-white); padding: 4px; background-color: var(--background-white); border-radius: var(--border-radius-medium); box-shadow: 0 3px 8px rgba(0,0,0,0.15); vertical-align: middle; transition: transform var(--transition-speed) var(--transition-timing); }
+        .assembly-qr-image {
+            width: 120px; height: 120px;
+            border: 4px solid var(--background-white);
+            padding: 4px; background-color: var(--background-white);
+            border-radius: var(--border-radius-medium);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            vertical-align: middle;
+            transition: transform var(--transition-speed) var(--transition-timing);
+        }
         .assembly-qr-image:hover { transform: scale(1.05); }
-        /* --- Page Navigation (来自 V4.4) --- */
-        .page-nav { background-color: var(--background-section-even); padding: var(--spacing-small) var(--spacing-large); margin-bottom: var(--spacing-xlarge); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); text-align: center; }
+
+        /* --- Page Navigation (Jump Links) --- */
+        .page-nav {
+            background-color: var(--background-section-even);
+            padding: var(--spacing-small) var(--spacing-large);
+            margin-bottom: var(--spacing-xlarge);
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--shadow-light);
+            text-align: center;
+        }
         .page-nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-medium); }
-        .page-nav a { display: inline-block; padding: var(--spacing-small) var(--spacing-medium); color: var(--text-link); text-decoration: none; font-weight: 500; border-radius: var(--border-radius-small); transition: background-color var(--transition-speed) var(--transition-timing), color var(--transition-speed) var(--transition-timing); }
-        .page-nav a:hover, .page-nav a:focus { background-color: var(--primary-color); color: var(--text-white); text-decoration: none; }
+        .page-nav a {
+            display: inline-block;
+            padding: var(--spacing-small) var(--spacing-medium);
+            color: var(--text-link);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: var(--border-radius-small);
+            transition: background-color var(--transition-speed) var(--transition-timing), color var(--transition-speed) var(--transition-timing);
+        }
+        .page-nav a:hover, .page-nav a:focus {
+            background-color: var(--primary-color);
+            color: var(--text-white);
+            text-decoration: none;
+        }
         .page-nav i { margin-right: var(--spacing-small); }
-        /* --- Content Sections (来自 V4.4) --- */
-        .section { background-color: var(--background-section-odd); border-radius: var(--border-radius-large); box-shadow: var(--shadow-medium); padding: var(--spacing-xlarge) var(--spacing-xxlarge); margin-bottom: var(--spacing-xlarge); transition: box-shadow var(--transition-speed) var(--transition-timing); }
-        .section:nth-child(even) { background-color: var(--background-section-even); }
-        .section:hover { box-shadow: var(--shadow-strong); }
-        /* --- Headings (来自 V4.4) --- */
+
+        /* --- Content Sections --- */
+        .section {
+            background-color: var(--background-section-odd); /* Default background */
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-medium);
+            padding: var(--spacing-xlarge) var(--spacing-xxlarge);
+            margin-bottom: var(--spacing-xlarge);
+            transition: box-shadow var(--transition-speed) var(--transition-timing);
+        }
+        .section:nth-child(even) { background-color: var(--background-section-even); } /* Alternate background */
+        .section:hover { box-shadow: var(--shadow-strong); } /* Subtle hover effect */
+
+        /* --- Headings --- */
         h2, h3, h4, h5, h6 { color: var(--text-headings); font-weight: 600; margin-top: 2em; margin-bottom: 1em; }
-        h2 { border-bottom: 3px solid var(--secondary-color); padding-bottom: var(--spacing-medium); margin-top: 0; margin-bottom: var(--spacing-xlarge); font-size: clamp(1.6em, 3.5vw, 2em); display: flex; align-items: center; gap: var(--spacing-medium); }
-        h2 i { font-size: 0.9em; opacity: 0.8; }
-        h3 { color: var(--text-dark); margin-top: var(--spacing-xlarge); margin-bottom: var(--spacing-medium); font-size: clamp(1.3em, 3vw, 1.5em); display: flex; align-items: center; gap: var(--spacing-small); border-bottom: 1px solid var(--border-color); padding-bottom: var(--spacing-small); }
-        /* --- Links & Code (来自 V4.4) --- */
+        h2 { /* Section headings */
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: var(--spacing-medium);
+            margin-top: 0; /* Remove top margin for section titles */
+            margin-bottom: var(--spacing-xlarge);
+            font-size: clamp(1.6em, 3.5vw, 2em);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-medium);
+        }
+        h2 i { font-size: 0.9em; opacity: 0.8; } /* Slightly smaller/lighter icon */
+        h3 { /* Subsection headings */
+            color: var(--text-dark);
+            margin-top: var(--spacing-xlarge);
+            margin-bottom: var(--spacing-medium);
+            font-size: clamp(1.3em, 3vw, 1.5em);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-small);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: var(--spacing-small);
+        }
+
+        /* --- Links & Code --- */
         a { color: var(--text-link); text-decoration: none; transition: color var(--transition-speed) var(--transition-timing); }
         a:hover, a:focus { color: var(--text-link-hover); text-decoration: underline; outline: none; }
-        code { background-color: var(--code-background); padding: 3px 6px; border-radius: var(--border-radius-small); font-family: Consolas, "Courier New", monospace; color: var(--text-code); font-size: 0.9em; border: 1px solid var(--border-color); word-break: break-all; }
-        pre code { border: none; background: none; padding: 0; font-size: inherit; }
-        /* --- Utility Classes (来自 V4.4) --- */
-        .no-image, .no-data { text-align: center; color: var(--text-light); padding: var(--spacing-xlarge); background-color: var(--background-section-even); border: 2px dashed var(--border-color); border-radius: var(--border-radius-medium); margin-top: var(--spacing-large); font-style: italic; font-size: 1.1em; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-medium); }
+        code {
+            background-color: var(--code-background);
+            padding: 3px 6px;
+            border-radius: var(--border-radius-small);
+            font-family: Consolas, "Courier New", monospace;
+            color: var(--text-code);
+            font-size: 0.9em;
+            border: 1px solid var(--border-color); /* Subtle border for code */
+            word-break: break-all; /* Break long code snippets */
+        }
+        pre code { border: none; background: none; padding: 0; font-size: inherit; } /* Reset code style inside pre */
+
+        /* --- Utility Classes --- */
+        .no-image, .no-data {
+            text-align: center; color: var(--text-light); padding: var(--spacing-xlarge);
+            background-color: var(--background-section-even); border: 2px dashed var(--border-color);
+            border-radius: var(--border-radius-medium); margin-top: var(--spacing-large);
+            font-style: italic; font-size: 1.1em;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-medium);
+        }
         .no-data i { font-size: 1.5em; color: var(--accent-color-danger); }
-        /* --- Specific Section Styling (来自 V4.4) --- */
+
+        /* --- Specific Section Styling --- */
+
+        /* Basic Info & Function */
         .info-table { width: 100%; border-collapse: collapse; margin: var(--spacing-large) 0; }
-        .info-table th, .info-table td { border: 1px solid var(--border-color); padding: var(--spacing-medium) var(--spacing-large); text-align: left; vertical-align: top; word-break: break-word; }
-        .info-table th { background-color: #f8fafd; font-weight: 600; width: 25%; color: #495057; border-bottom: 2px solid var(--border-color-strong); }
-        .info-table tr:hover td { background-color: var(--subtle-highlight); }
-        .assembly-function-section { margin-bottom: var(--spacing-large); padding: var(--spacing-large) var(--spacing-xlarge); background-color: var(--subtle-highlight); border-left: 6px solid var(--secondary-color); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); }
+        .info-table th, .info-table td {
+            border: 1px solid var(--border-color); padding: var(--spacing-medium) var(--spacing-large);
+            text-align: left; vertical-align: top; word-break: break-word;
+        }
+        .info-table th {
+            background-color: #f8fafd; font-weight: 600; width: 25%; color: #495057;
+            border-bottom: 2px solid var(--border-color-strong); /* Stronger bottom border for header */
+        }
+        .info-table tr:hover td { background-color: var(--subtle-highlight); } /* Row hover */
+        .assembly-function-section {
+            margin-bottom: var(--spacing-large); padding: var(--spacing-large) var(--spacing-xlarge);
+            background-color: var(--subtle-highlight); border-left: 6px solid var(--secondary-color);
+            border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light);
+        }
         .assembly-function-section strong { color: var(--primary-color); font-size: 1.15em; display: block; margin-bottom: var(--spacing-small);}
         .assembly-function-section p { margin: 0; line-height: 1.7; color: var(--text-dark); }
+
+        /* Diagrams & Flowcharts */
         .diagrams-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xlarge); }
         .diagram-container { text-align: center; }
         .diagram-container h3 { font-size: 1.2em; border-bottom: 1px solid #eee; padding-bottom: var(--spacing-small); margin-bottom: var(--spacing-medium); font-weight: 500; }
-        .diagram-image-wrapper { border: 1px solid var(--border-color); padding: var(--spacing-medium); background: #fdfdfd; border-radius: var(--border-radius-medium); margin-top: var(--spacing-medium); box-shadow: var(--shadow-light); display: inline-block; }
-        .diagram-image { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: var(--border-radius-small); cursor: pointer; transition: transform var(--transition-speed) var(--transition-timing), box-shadow var(--transition-speed) var(--transition-timing); }
+        .diagram-image-wrapper {
+            border: 1px solid var(--border-color); padding: var(--spacing-medium); background: #fdfdfd;
+            border-radius: var(--border-radius-medium); margin-top: var(--spacing-medium);
+            box-shadow: var(--shadow-light); display: inline-block;
+        }
+        .diagram-image {
+            max-width: 100%; height: auto; display: block; margin: 0 auto;
+            border-radius: var(--border-radius-small); cursor: pointer;
+            transition: transform var(--transition-speed) var(--transition-timing), box-shadow var(--transition-speed) var(--transition-timing);
+        }
         .diagram-image:hover { transform: scale(1.03); box-shadow: var(--shadow-medium); }
         .enhanced-flowchart-container { text-align: center; margin-bottom: var(--spacing-large); }
-        .enhanced-diagram { max-width: 95%; height: auto; border: 1px solid var(--border-color-strong); padding: var(--spacing-small); background: var(--background-white); border-radius: var(--border-radius-medium); cursor: pointer; transition: box-shadow var(--transition-speed) var(--transition-timing); display: inline-block; box-shadow: var(--shadow-medium); }
+        .enhanced-diagram {
+            max-width: 95%; height: auto; border: 1px solid var(--border-color-strong); padding: var(--spacing-small);
+            background: var(--background-white); border-radius: var(--border-radius-medium); cursor: pointer;
+            transition: box-shadow var(--transition-speed) var(--transition-timing); display: inline-block;
+            box-shadow: var(--shadow-medium);
+        }
         .enhanced-diagram:hover { box-shadow: var(--shadow-strong); }
+
+        /* Assembly Process Steps (V4.3 Styles Refined) */
         .assembly-process-section h2 i { color: var(--accent-color-process); }
-        .assembly-process-details { background-color: var(--process-background); border: 1px solid var(--process-border); border-left: 6px solid var(--accent-color-process); border-radius: var(--border-radius-medium); padding: var(--spacing-large) var(--spacing-xlarge); margin-top: var(--spacing-large); box-shadow: var(--shadow-light); }
-        .process-subtitle { font-size: 1.25em; font-weight: 600; color: var(--process-text); margin-top: 2em; margin-bottom: 1em; padding-bottom: var(--spacing-small); border-bottom: 2px solid var(--process-subtitle-border); display: flex; align-items: center; gap: var(--spacing-medium); }
+        .assembly-process-details {
+            background-color: var(--process-background); border: 1px solid var(--process-border);
+            border-left: 6px solid var(--accent-color-process); border-radius: var(--border-radius-medium);
+            padding: var(--spacing-large) var(--spacing-xlarge); margin-top: var(--spacing-large);
+            box-shadow: var(--shadow-light);
+        }
+        .process-subtitle { /* Parsed H4 */
+            font-size: 1.25em; font-weight: 600; color: var(--process-text);
+            margin-top: 2em; margin-bottom: 1em; padding-bottom: var(--spacing-small);
+            border-bottom: 2px solid var(--process-subtitle-border);
+            display: flex; align-items: center; gap: var(--spacing-medium);
+        }
         .process-subtitle:first-child { margin-top: 0; }
         .process-subtitle i { font-size: 1em; opacity: 0.9; }
         .process-subtitle-warning i { color: var(--accent-color-warning); }
-        .process-list { list-style: none; padding-left: var(--spacing-large); margin-top: var(--spacing-medium); margin-bottom: var(--spacing-large); }
-        .process-list li { position: relative; padding-left: 2em; margin-bottom: var(--spacing-medium); line-height: 1.75; }
-        .process-list li::before { content: "▹"; position: absolute; left: 0; top: 1px; font-size: 1.3em; color: var(--accent-color-process); font-weight: bold; line-height: 1; }
-        .process-list.numbered-list { counter-reset: step-counter; }
-        .process-list.numbered-list li::before { content: counter(step-counter) "."; counter-increment: step-counter; font-size: 1em; color: var(--accent-color-process); font-weight: bold; min-width: 1.5em; text-align: right; margin-right: 0.8em; position: absolute; left: -0.5em; top: 1px; }
-        .assembly-process-details p { margin: 0 0 var(--spacing-medium) 0; line-height: 1.7; }
-        .process-paragraph-spacer { height: var(--spacing-small); margin: 0; padding: 0; line-height: 0; font-size: 1px; border: none; }
-        .process-component-ref code { background-color: var(--subtle-highlight); border: 1px solid var(--secondary-color); color: var(--primary-color); font-weight: 500; cursor: pointer; transition: background-color var(--transition-speed), color var(--transition-speed); }
-        .process-component-ref:hover code, .process-component-ref:focus code { background-color: var(--secondary-hover); color: var(--text-white); }
-        .process-component-ref-nolink { background-color: var(--code-background); border: 1px dashed var(--border-color); color: var(--text-light); font-style: italic; cursor: default; padding: 2px 5px; border-radius: var(--border-radius-small); font-size: 0.85em; }
+
+        .process-list { /* Parsed UL */
+            list-style: none; padding-left: var(--spacing-large);
+            margin-top: var(--spacing-medium); margin-bottom: var(--spacing-large);
+        }
+        .process-list li {
+            position: relative; padding-left: 2em; /* Space for marker */
+            margin-bottom: var(--spacing-medium); line-height: 1.75; /* Better readability */
+        }
+        .process-list li::before { /* Custom list marker */
+            content: "▹"; /* Default bullet */
+            position: absolute; left: 0; top: 1px; /* Fine-tune position */
+            font-size: 1.3em; color: var(--accent-color-process);
+            font-weight: bold;
+            line-height: 1;
+        }
+        .process-list.numbered-list { counter-reset: step-counter; } /* Setup counter */
+        .process-list.numbered-list li::before {
+            content: counter(step-counter) "."; /* Use counter */
+            counter-increment: step-counter; /* Increment counter */
+            font-size: 1em; color: var(--accent-color-process); font-weight: bold;
+            min-width: 1.5em; /* Ensure space for multi-digit numbers */
+            text-align: right; margin-right: 0.8em; /* Spacing after number */
+            position: absolute; left: -0.5em; top: 1px; /* Adjust position */
+        }
+
+        .assembly-process-details p { /* Parsed paragraphs */
+             margin: 0 0 var(--spacing-medium) 0; line-height: 1.7;
+        }
+        .process-paragraph-spacer { /* Spacer for blank lines */
+            height: var(--spacing-small); margin: 0; padding: 0; line-height: 0; font-size: 1px; border: none;
+        }
+
+        /* Linked Components in Steps */
+        .process-component-ref code { /* Linked AI */
+            background-color: var(--subtle-highlight); border: 1px solid var(--secondary-color);
+            color: var(--primary-color); font-weight: 500; cursor: pointer;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+        .process-component-ref:hover code, .process-component-ref:focus code {
+            background-color: var(--secondary-hover); color: var(--text-white);
+        }
+        .process-component-ref-nolink { /* AI without link */
+             background-color: var(--code-background); border: 1px dashed var(--border-color);
+             color: var(--text-light); font-style: italic; cursor: default;
+             padding: 2px 5px; border-radius: var(--border-radius-small); font-size: 0.85em;
+        }
+
+        /* Relationships List */
         .relationships-list { list-style: none; padding: 0; margin-top: var(--spacing-large); }
-        .relationships-list li { background-color: #fdfdff; border: 1px solid var(--border-color); border-left: 6px solid var(--secondary-color); padding: var(--spacing-large) var(--spacing-xlarge); margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); display: flex; flex-direction: column; gap: var(--spacing-medium); transition: box-shadow var(--transition-speed) var(--transition-timing), border-left-color var(--transition-speed) var(--transition-timing), transform var(--transition-speed) var(--transition-timing); }
-        .relationships-list li:hover { box-shadow: var(--shadow-medium); border-left-color: var(--primary-hover); transform: translateY(-3px); }
-        .relationship-components { font-weight: 600; color: var(--text-dark); display: flex; align-items: center; flex-wrap: wrap; gap: var(--spacing-small) var(--spacing-medium); font-size: 1.1em; }
+        .relationships-list li {
+            background-color: #fdfdff; border: 1px solid var(--border-color);
+            border-left: 6px solid var(--secondary-color); padding: var(--spacing-large) var(--spacing-xlarge);
+            margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium);
+            display: flex; flex-direction: column; gap: var(--spacing-medium);
+            transition: box-shadow var(--transition-speed) var(--transition-timing), border-left-color var(--transition-speed) var(--transition-timing), transform var(--transition-speed) var(--transition-timing);
+        }
+        .relationships-list li:hover {
+            box-shadow: var(--shadow-medium); border-left-color: var(--primary-hover); transform: translateY(-3px);
+        }
+        .relationship-components {
+            font-weight: 600; color: var(--text-dark); display: flex; align-items: center;
+            flex-wrap: wrap; gap: var(--spacing-small) var(--spacing-medium); font-size: 1.1em;
+        }
         .relationship-components .fas { color: #95a5a6; font-size: 0.9em; opacity: 0.8; }
         .relationship-info-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-small) var(--spacing-medium); margin-top: var(--spacing-small); }
-        .relationship-type { display: inline-flex; align-items: center; gap: var(--spacing-small); padding: 6px 14px; border-radius: 18px; font-size: 0.95em; font-weight: 500; white-space: nowrap; border: 1px solid transparent; transition: background-color var(--transition-speed), color var(--transition-speed); }
-        .relationship-type .fas { font-size: 1em; line-height: 1; margin-right: 2px; }
+        .relationship-type {
+            display: inline-flex; align-items: center; gap: var(--spacing-small); padding: 6px 14px;
+            border-radius: 18px; /* Pill shape */ font-size: 0.95em; font-weight: 500; white-space: nowrap;
+            border: 1px solid transparent; transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+        .relationship-type .fas { font-size: 1em; line-height: 1; margin-right: 2px; } /* Icon alignment */
         .relationship-type.constraint { background-color: #eaf3fb; color: var(--accent-color-constraint); border-color: #aed6f1; }
         .relationship-type.fit { background-color: #eafaf1; color: var(--accent-color-fit); border-color: #a3e4d7; }
-        .relationship-type:hover { filter: brightness(95%); }
+        .relationship-type:hover { filter: brightness(95%); } /* Subtle hover */
         .constraint-value { font-style: italic; color: var(--text-light); font-size: 0.9em; margin-left: var(--spacing-small); }
-        .relationship-description { color: var(--text-light); font-size: 0.95em; font-style: italic; width: 100%; margin-top: var(--spacing-medium); padding-left: var(--spacing-medium); border-left: 3px solid var(--border-color); line-height: 1.5; }
+        .relationship-description {
+            color: var(--text-light); font-size: 0.95em; font-style: italic; width: 100%;
+            margin-top: var(--spacing-medium); padding-left: var(--spacing-medium);
+            border-left: 3px solid var(--border-color); line-height: 1.5;
+        }
         .component-link { color: var(--primary-color); font-weight: bold; text-decoration: none; border-bottom: 1px dotted var(--primary-color); }
         .component-link:hover { color: var(--primary-hover); border-bottom-style: solid; text-decoration: none; }
-        .components-table { width: 100%; border-collapse: separate; border-spacing: 0 var(--spacing-medium); margin-top: var(--spacing-large); table-layout: fixed; }
-        .components-table th { background-color: #f8fafd; font-weight: 600; padding: var(--spacing-medium) var(--spacing-large); border-bottom: 2px solid var(--border-color-strong); text-align: left; color: #495057; position: sticky; top: 0; z-index: 10; }
-        .components-table td { border: 1px solid var(--border-color); border-left: none; border-right: none; padding: var(--spacing-large); vertical-align: top; background-color: var(--background-white); }
-        .components-table tr.component-row { border-radius: var(--border-radius-medium); overflow: hidden; box-shadow: var(--shadow-light); transition: box-shadow var(--transition-speed) var(--transition-timing), background-color var(--transition-speed) var(--transition-timing), transform var(--transition-speed) var(--transition-timing); border-left: 5px solid transparent; }
-        .components-table tr.component-row:hover { box-shadow: var(--shadow-medium); transform: translateY(-2px); }
+
+        /* Components Table */
+        .components-table {
+            width: 100%; border-collapse: separate; border-spacing: 0 var(--spacing-medium); /* Row spacing */
+            margin-top: var(--spacing-large); table-layout: fixed;
+        }
+        .components-table th {
+            background-color: #f8fafd; font-weight: 600; padding: var(--spacing-medium) var(--spacing-large);
+            border-bottom: 2px solid var(--border-color-strong); text-align: left; color: #495057;
+            position: sticky; top: 0; z-index: 10; /* Sticky header */
+        }
+        .components-table td {
+            border: 1px solid var(--border-color); border-left: none; border-right: none; padding: var(--spacing-large);
+            vertical-align: top; background-color: var(--background-white);
+        }
+        .components-table tr.component-row {
+            border-radius: var(--border-radius-medium); overflow: hidden; box-shadow: var(--shadow-light);
+            transition: box-shadow var(--transition-speed) var(--transition-timing), background-color var(--transition-speed) var(--transition-timing), transform var(--transition-speed) var(--transition-timing);
+            border-left: 5px solid transparent; /* Type indicator */
+        }
+        .components-table tr.component-row:hover {
+            box-shadow: var(--shadow-medium); transform: translateY(-2px);
+        }
         .components-table td:first-child { border-top-left-radius: var(--border-radius-medium); border-bottom-left-radius: var(--border-radius-medium); border-left: 1px solid var(--border-color); }
         .components-table td:last-child { border-top-right-radius: var(--border-radius-medium); border-bottom-right-radius: var(--border-radius-medium); border-right: 1px solid var(--border-color); }
+
         .top-assembly-row { border-left-color: #e6d9a1; } .top-assembly-row td { background-color: var(--top-assembly-highlight); }
         .sub-assembly-row { border-left-color: var(--accent-color-fit); } .sub-assembly-row td { background-color: var(--assembly-highlight); }
-        .part-row { border-left-color: var(--accent-color-constraint); } .part-row td { background-color: var(--background-white); } /* V4.4 style */
+        .part-row { border-left-color: var(--accent-color-constraint); } .part-row td { background-color: var(--background-white); } /* Keep parts white or use --part-highlight */
+
         .component-qr-cell { width: 130px; text-align: center; vertical-align: middle; }
         .no-qr-placeholder { font-size: 0.85em; color: #aaa; display:inline-block; padding: var(--spacing-small) var(--spacing-medium); border: 1px dashed #ccc; border-radius: var(--border-radius-small); background: #f7f7f7; }
-        .component-qr-link img { width: 100px; height: 100px; display: block; margin: 0 auto; border: 1px solid #eee; padding: 3px; background: white; border-radius: var(--border-radius-small); transition: opacity var(--transition-speed), transform var(--transition-speed); }
+        .component-qr-link img {
+            width: 100px; height: 100px; display: block; margin: 0 auto; border: 1px solid #eee;
+            padding: 3px; background: white; border-radius: var(--border-radius-small);
+            transition: opacity var(--transition-speed), transform var(--transition-speed);
+        }
         .component-qr-link:hover img { opacity: 0.85; transform: scale(1.05); }
         .component-details-cell { width: auto; padding-left: var(--spacing-xlarge) !important; }
-        .component-name-link { font-size: 1.3em; font-weight: 600; color: var(--primary-color); text-decoration: none; display: inline-flex; align-items: center; gap: var(--spacing-medium); margin-bottom: var(--spacing-small); transition: color var(--transition-speed); }
+        .component-name-link {
+            font-size: 1.3em; font-weight: 600; color: var(--primary-color); text-decoration: none;
+            display: inline-flex; align-items: center; gap: var(--spacing-medium); margin-bottom: var(--spacing-small);
+            transition: color var(--transition-speed);
+        }
         .component-name-link:hover { color: var(--primary-hover); }
         .component-icon { font-size: 1.1em; width: 1.2em; text-align: center; opacity: 0.9; }
         .top-assembly-icon { color: #b8860b; } .assembly-icon { color: var(--accent-color-fit); } .part-icon { color: var(--accent-color-constraint); } .unknown-icon { color: var(--text-light); }
-        .component-functional-desc { font-size: 0.95em; color: var(--text-dark); margin-top: var(--spacing-medium); margin-bottom: var(--spacing-large); padding: var(--spacing-medium) var(--spacing-large); background-color: #f9fafb; border-left: 4px solid #bdc3c7; font-style: italic; line-height: 1.5; border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0; }
-        .component-details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-small) var(--spacing-medium); margin-top: var(--spacing-medium); }
+
+        .component-functional-desc {
+            font-size: 0.95em; color: var(--text-dark); margin-top: var(--spacing-medium); margin-bottom: var(--spacing-large);
+            padding: var(--spacing-medium) var(--spacing-large); background-color: #f9fafb; /* Slightly different bg */
+            border-left: 4px solid #bdc3c7; font-style: italic; line-height: 1.5; border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+        }
+        .component-details-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-small) var(--spacing-medium); margin-top: var(--spacing-medium);
+        }
         .component-detail-item { font-size: 0.95em; color: #555; line-height: 1.5; padding: 2px 0; }
         .component-detail-label { font-weight: 600; color: var(--text-dark); min-width: 80px; display: inline-block; margin-right: var(--spacing-small); }
-        /* --- Footer (来自 V4.4) --- */
-        footer { text-align: center; padding: var(--spacing-large); margin-top: var(--spacing-xlarge); font-size: 0.9em; color: #888; border-top: 1px solid var(--border-color); background-color: #f0f0f0; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center; padding: var(--spacing-large); margin-top: var(--spacing-xlarge);
+            font-size: 0.9em; color: #888; border-top: 1px solid var(--border-color);
+            background-color: #f0f0f0; /* Slightly darker footer bg */
+        }
         footer a { color: var(--primary-color); }
         footer a:hover { color: var(--primary-hover); }
-        /* --- Back to Top Button (来自 V4.4) --- */
-        #back-to-top { display: none; position: fixed; bottom: var(--spacing-large); right: var(--spacing-large); z-index: 1000; font-size: 18px; border: none; outline: none; background-color: var(--secondary-color); color: var(--text-white); cursor: pointer; padding: 12px 15px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); transition: opacity 0.3s ease-in-out, background-color 0.3s, transform 0.2s ease; opacity: 0; }
+
+        /* --- Back to Top Button --- */
+        #back-to-top {
+            display: none; position: fixed; bottom: var(--spacing-large); right: var(--spacing-large); z-index: 1000;
+            font-size: 18px; border: none; outline: none; background-color: var(--secondary-color);
+            color: var(--text-white); cursor: pointer; padding: 12px 15px; border-radius: 50%; /* Circle shape */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease-in-out, background-color 0.3s, transform 0.2s ease; opacity: 0;
+        }
         #back-to-top:hover { background-color: var(--primary-color); transform: scale(1.1); }
         #back-to-top.show { display: block; opacity: 0.8; }
         #back-to-top.show:hover { opacity: 1; }
-        /* --- Print Styles (来自 V4.4) --- */
-        @media print { /* ... (保持 V4.4 的打印样式) ... */ }
-        /* --- Responsive Adjustments (来自 V4.4) --- */
-        @media (max-width: 1200px) { /* ... */ }
-        @media (max-width: 992px) { /* ... */ }
-        @media (max-width: 768px) { /* ... */ }
-        @media (max-width: 480px) { /* ... */ }
-    
-        /* --- Styles for Tech Requirements & Acceptance Criteria Section (V4.5) --- */
-        .tech-req-acceptance-section h3 i { /* 子标题图标 */
-            margin-right: 8px; font-size: 0.9em; opacity: 0.8;
+
+        /* --- Print Styles --- */
+        @media print {
+            body { font-size: 10pt; color: #000; background-color: #fff; }
+            header, footer, .page-nav, #back-to-top, .assembly-qr-image, .component-qr-cell { display: none !important; }
+            .container { max-width: 100%; padding: 0; margin: 0; }
+            .section { box-shadow: none; border: 1px solid #ccc; padding: 1cm; margin-bottom: 1cm; border-radius: 0; }
+            h1, h2, h3, h4 { color: #000; border-bottom: 1px solid #999; page-break-after: avoid; }
+            a { color: #000; text-decoration: none; }
+            .component-link::after { content: " (" attr(href) ")"; font-size: 0.8em; } /* Show link target */
+            .info-table, .components-table, .relationships-list li { page-break-inside: avoid; }
+            img { max-width: 100% !important; height: auto !important; }
+            code { background: #eee; border: none; }
         }
-        .tech-req-content, .acceptance-crit-content { /* 内容区域 */
-            padding: var(--spacing-large) var(--spacing-xlarge); /* 内边距 */
-            background-color: #fdfdfd; /* 比 even section 稍白一点 */
-            border-left: 5px solid var(--secondary-color);
-            margin-top: var(--spacing-medium);
-            border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0;
-            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.03); /* 轻微内阴影 */
+
+        /* --- Responsive Adjustments --- */
+        /* Tablet */
+        @media (max-width: 1200px) {
+             .container { max-width: 95%; } /* Use percentage for wider tablets */
+             .section { padding: var(--spacing-large) var(--spacing-xlarge); }
         }
-        /* 支持 ### 小标题 (H4) */
-        .tech-req-content h4, .acceptance-crit-content h4 {
-            font-size: 1.15em; margin-top: 1.8em; margin-bottom: 0.8em;
-            padding-bottom: var(--spacing-small); border-bottom: 1px solid var(--border-color);
-            color: var(--primary-color); font-weight: 600;
+        /* Smaller Tablet / Large Phone */
+        @media (max-width: 992px) {
+            html { font-size: 15px; } /* Slightly smaller base font */
+            .container { padding: var(--spacing-small) var(--spacing-medium); }
+            header h1 { font-size: 2em; } h2 { font-size: 1.7em; margin-bottom: var(--spacing-large); } h3 { font-size: 1.4em; }
+            .section { padding: var(--spacing-large) var(--spacing-large); margin-bottom: var(--spacing-large); }
+            .diagrams-section { grid-template-columns: 1fr; } /* Stack diagrams */
+            .component-details-grid { grid-template-columns: 1fr; } /* Stack component details */
+            .assembly-process-details { padding: var(--spacing-large) var(--spacing-large); }
+            .process-subtitle { font-size: 1.2em; }
+            .page-nav ul { gap: var(--spacing-small) var(--spacing-medium); }
         }
-        .tech-req-content h4:first-child, .acceptance-crit-content h4:first-child {
-             margin-top: 0; /* 第一个小标题无上边距 */
+        /* Phone */
+        @media (max-width: 768px) {
+            html { font-size: 14px; }
+            header { padding: var(--spacing-large); border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);} header h1 { font-size: 1.8em; gap: var(--spacing-small); }
+            h2 { font-size: 1.5em; gap: var(--spacing-small); margin-bottom: var(--spacing-medium); } h3 { font-size: 1.25em; gap: var(--spacing-small); }
+            .section { padding: var(--spacing-medium) var(--spacing-large); border-radius: var(--border-radius-medium); margin-bottom: var(--spacing-large); }
+            .info-table th { width: 35%; }
+            .assembly-process-details { padding: var(--spacing-medium) var(--spacing-large); } .process-subtitle { font-size: 1.15em; }
+            .process-list { padding-left: var(--spacing-medium); } .process-list li { padding-left: 1.5em; }
+            /* Components Table Stack */
+            .components-table thead { display: none; }
+            .components-table, .components-table tbody, .components-table tr, .components-table td { display: block; width: 100% !important; box-sizing: border-box; }
+            .components-table tr.component-row { margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); border: 1px solid var(--border-color); border-left-width: 5px; /* Keep indicator */ }
+            .components-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-medium) var(--spacing-large); border-radius: 0 !important; background-color: inherit !important; }
+            .components-table td:first-child { border-left: none; } .components-table td:last-child { border-bottom: none; border-right: none; }
+            .component-qr-cell { width: 100%; text-align: center; padding-bottom: var(--spacing-medium); } .component-qr-link img { width: 110px; height: 110px; }
+            .component-details-cell { padding-left: var(--spacing-large) !important; padding-top: var(--spacing-small); }
+            /* Relationships List Stack */
+            .relationships-list li { padding: var(--spacing-medium) var(--spacing-large); gap: var(--spacing-small);}
+            .relationship-components { font-size: 1.05em; }
+            .relationship-info-line { flex-direction: column; align-items: flex-start; gap: var(--spacing-small); margin-top: var(--spacing-medium); }
+            .relationship-description { width: 100%; padding-left: 0; border-left: none; border-top: 1px dashed #eee; margin-top: var(--spacing-medium); padding-top: var(--spacing-medium); }
+            #back-to-top { bottom: var(--spacing-medium); right: var(--spacing-medium); padding: 10px 13px; font-size: 16px; }
         }
-        /* 支持普通段落 <p> */
-        .tech-req-content p, .acceptance-crit-content p {
-             margin-bottom: 1em; line-height: 1.75; color: var(--text-dark);
+        /* Very Small Screens */
+        @media (max-width: 480px) {
+             html { font-size: 13px; }
+             header { padding: var(--spacing-medium); } header h1 { font-size: 1.6em; }
+             .section { padding: var(--spacing-medium); }
+             .info-table th, .info-table td { padding: var(--spacing-small) var(--spacing-medium); }
+             .components-table td { padding: var(--spacing-small) var(--spacing-medium); }
+             .relationships-list li { padding: var(--spacing-small) var(--spacing-medium); }
+             .page-nav a { padding: 5px 8px; }
         }
-        /* 支持简单列表 <ul> / <li> */
-        .tech-req-content ul, .acceptance-crit-content ul {
-             margin-top: 0.8em; margin-bottom: 1em; padding-left: 30px; /* 调整列表缩进 */
-             list-style-type: disc; /* 使用默认圆点 */
-        }
-         .tech-req-content li, .acceptance-crit-content li {
-             margin-bottom: 0.7em; line-height: 1.7;
-        }
-         /* 适应小屏幕 */
-         @media (max-width: 768px) {
-             .tech-req-content, .acceptance-crit-content { padding: var(--spacing-medium) var(--spacing-large); }
-             .tech-req-content h4, .acceptance-crit-content h4 { font-size: 1.1em; }
-             .tech-req-content ul, .acceptance-crit-content ul { padding-left: 25px; }
-         }
     </style>
 </head>
-<body><header>
+<body>
+    <header>
 <h1><i class="fas fa-toolbox"></i> 装配体详情: 新型水泵</h1>
 <div class="assembly-qr-container"><img src="assembly_qr/Assembly_QR_ASM-PUMP-007.png" alt="新型水泵 二维码" class="assembly-qr-image" title="QR 链接到装配体主页: https://lmy699.github.io/assembly-display/ASM-PUMP-007.html"></div>
-</header><div class="container">
+</header>
+
+    <div class="container">
+        
     <nav class="page-nav" aria-label="页面导航">
         <ul>
             <li><a href="#overview"><i class="fas fa-eye"></i> 概览图</a></li>
@@ -207,61 +518,67 @@
             <li><a href="#diagrams"><i class="fas fa-drafting-compass"></i> 参考图纸</a></li>
             <li><a href="#steps"><i class="fas fa-clipboard-list"></i> 装配步骤</a></li>
             <li><a href="#relationships"><i class="fas fa-link"></i> 装配关系</a></li>
-            <li><a href="#tech-acceptance"><i class="fas fa-clipboard-check"></i> 技术与验收</a></li> {/* <-- *** 新增锚点链接 *** */}
             <li><a href="#components"><i class="fas fa-th-list"></i> 组件列表</a></li>
         </ul>
     </nav>
-    <div class="section" id="overview"><h2><i class="fas fa-project-diagram"></i> 装配流程概览图</h2>
+    
+
+        <div class="section" id="overview"><h2><i class="fas fa-project-diagram"></i> 装配流程概览图</h2>
 <p>这是一个可视化的装配流程概览。点击图片可在新标签页查看大图。</p><div class="enhanced-flowchart-container"><a href="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程概览图 - 新型水泵" class="enhanced-diagram"/></a></div>
 <p style="margin-top:15px;font-size:0.9em;color:var(--text-light);">注：此图基于源文件: <code>Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png</code></p>
-</div><div class="section" id="info"><h2><i class="fas fa-info-circle"></i> 基本信息与功能</h2>
+</div>
+
+        <div class="section" id="info"><h2><i class="fas fa-info-circle"></i> 基本信息与功能</h2>
 <div class="assembly-function-section"><strong>装配体功能:</strong><p>将液体从低压区高效、低噪音地输送到高压区，适用于家庭或轻工业场景。提供可靠的密封性能。</p></div>
 <h3><i class="fas fa-tags"></i> 详细属性</h3><table class="info-table">
 <tr><th>装配体ID (AssemblyAI)</th><td>ASM-PUMP-007</td></tr>
 <tr><th>装配体名称 (AssemblyName)</th><td>新型水泵</td></tr>
 <tr><th>关联组件表 (TableName)</th><td><code>asm_007</code></td></tr>
-<tr><th>产品平台/系列</th><td>家用微型泵平台 HP-Series</td></tr>
-<tr><th>产品代次/型号</th><td>Gen 2 - 静音增强型</td></tr>
 <tr><th>Remarks</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr>
-<tr><th>记录创建时间</th><td>2025-04-07 13:39:35</td></tr>
-<tr><th>最后修改时间</th><td>2025-04-07 13:39:35</td></tr>
-</table></div><div class="section" id="diagrams"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section">
+<tr><th>记录创建时间</th><td>2025-04-07 14:35:47</td></tr>
+<tr><th>最后修改时间</th><td>2025-04-07 14:35:47</td></tr>
+</table></div>
+
+        <div class="section" id="diagrams"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section">
 <div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (源参考)</h3>
 <div class="diagram-image-wrapper"><a href="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看源流程图大图"><img src="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图 (源文件) - 新型水泵" class="diagram-image"/></a></div>
 </div>
 <div class="diagram-container"><h3><i class="fas fa-shapes"></i> 装配部件图</h3>
 <div class="diagram-image-wrapper"><a href="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" target="_blank" title="点击查看部件图大图"><img src="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" alt="装配部件图 - 新型水泵" class="diagram-image"/></a></div>
 </div>
-</div></div><div class="section assembly-process-section" id="steps">
+</div></div>
+
+        <div class="section assembly-process-section" id="steps">
 <h2><i class="fas fa-clipboard-list"></i> 装配顺序与工序说明</h2>
 <p class="intro-text">请依据以下步骤执行装配操作。点击 <code class="process-component-ref">零件/子装配AI</code> 可跳转至其详情页面。</p>
 <div class="assembly-process-details"><h4 class="process-subtitle"><i class="fas fa-list-ol"></i> 关键装配步骤：</h4>
 <ul class="process-list numbered-list"> <!-- List opened (numbered) -->
-  <li>**固定电机：** 将电机(<a href="part_PART-MOTOR-702.html" class="process-component-ref" title="查看 新型直流无刷电机 详情"><code>PART-MOTOR-702</code></a>)牢固安装在泵体底座(未列出)上，确保安装平稳。</li>
-  <li>**安装密封圈：** 将3个O型密封圈(<a href="part_PART-SEAL-703.html" class="process-component-ref" title="查看 O型密封圈 详情"><code>PART-SEAL-703</code></a>)分别涂抹少量硅脂后，轻轻放入前后泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)的对应凹槽内，避免扭曲。</li>
-  <li>**安装前泵盖：** 将一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)对准电机前端，使用4颗M4x10十字槽螺钉(未列出)对称、分次预紧，最终扭矩达到 1.2 ± 0.1 Nm。</li>
-  <li>**安装叶轮：** 将叶轮(<a href="part_PART-IMPELLER-704.html" class="process-component-ref" title="查看 离心叶轮 详情"><code>PART-IMPELLER-704</code></a>)对准电机输出轴的键槽滑入，安装并拧紧固定螺母，确保叶轮无轴向窜动。</li>
-  <li>**安装后泵盖：** 安装另一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)，同样使用4颗M4x10螺钉，按对角顺序分次拧紧，最终扭矩同前。</li>
-  <li>**接线与测试准备：** 连接电机电源线至测试端口，确认接线牢固无误。</li>
+  <li>**固定电机：** 将电机(<a href="part_PART-MOTOR-702.html" class="process-component-ref" title="查看 新型直流无刷电机 详情"><code>PART-MOTOR-702</code></a>)牢固安装在泵体底座(未列出)上。</li>
+  <li>**安装密封圈：** 将3个O型密封圈(<a href="part_PART-SEAL-703.html" class="process-component-ref" title="查看 O型密封圈 详情"><code>PART-SEAL-703</code></a>)分别放入前后泵盖的对应凹槽内。</li>
+  <li>**安装前泵盖：** 将其中一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)对准电机前端，使用M4x10螺钉(未列出)均匀拧紧。</li>
+  <li>**安装叶轮：** 将叶轮(未列出)安装到电机输出轴上，确保键槽对齐并固定到位。</li>
+  <li>**安装后泵盖：** 安装另一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)，同样使用M4x10螺钉拧紧。</li>
+  <li>**接线与测试：** 连接电源线，进行短暂通电测试，检查是否有异响或泄漏。</li>
 </ul> <!-- List closed -->
 <p class="process-paragraph-spacer">&nbsp;</p>
 <h4 class="process-subtitle process-subtitle-warning"><i class="fas fa-exclamation-triangle"></i> 注意事项：</h4>
 <ul class="process-list"> <!-- List opened (bullet) -->
-  <li>所有部件需清洁无杂质。</li>
-  <li>密封圈安装时务必避免损伤和扭曲。</li>
-  <li>泵盖螺钉需使用扭力扳手按规定扭矩交叉拧紧。</li>
-  <li>叶轮安装方向正确，固定可靠。</li>
+  <li>安装密封圈时避免扭曲或损伤。</li>
+  <li>泵盖螺钉需交叉、分次拧紧，确保受力均匀。</li>
+  <li>叶轮安装方向不能错误。</li>
+  <li>测试时注意安全，防止触电和液体喷溅。</li>
 </ul> <!-- List closed -->
 <p class="process-paragraph-spacer">&nbsp;</p>
 <h4 class="process-subtitle"><i class="fas fa-tools"></i> 所需工具：</h4>
 <ul class="process-list"> <!-- List opened (bullet) -->
   <li>十字螺丝刀 (PH2)</li>
-  <li>扭力扳手 (量程至少覆盖 1.2 Nm)</li>
-  <li>内六角扳手 (根据叶轮固定螺母规格，若需要)</li>
-  <li>硅脂</li>
+  <li>内六角扳手 (根据叶轮固定螺丝)</li>
+  <li>扭力扳手 (推荐，用于精确控制螺钉扭矩)</li>
   <li>干净抹布</li>
 </ul> <!-- List closed at end --></div>
-</div><div class="section" id="relationships"><h2><i class="fas fa-link"></i> 装配关系 (约束与配合)</h2>
+</div>
+
+        <div class="section" id="relationships"><h2><i class="fas fa-link"></i> 装配关系 (约束与配合)</h2>
 <p>共定义了 <strong>5</strong> 条关系。</p>
 <ul class="relationships-list">
 <li>
@@ -301,51 +618,9 @@
 <div class="relationship-description">叶轮轴向定位面与电机轴肩贴合</div>
 </li>
 </ul>
-</div><div class="section tech-req-acceptance-section" id="tech-acceptance">
-<h2><i class="fas fa-clipboard-check"></i> 技术要求与验收条件</h2>
-<h3><i class="fas fa-cogs"></i> 装配技术要求</h3>
-<div class="tech-req-content"><h4>装配环境要求：</h4>
-<ul>
-<li>工作区域清洁、干燥、光线充足。</li>
-<li>操作台需防静电处理。</li>
-</ul>
-<h4>部件准备：</h4>
-<ul>
-<li>所有零件必须符合图纸要求，无毛刺、锈蚀、变形。</li>
-<li>电机(PART-MOTOR-702)需通过入厂检验。</li>
-<li>O型圈(PART-SEAL-703)表面光滑，无裂纹、老化。</li>
-</ul>
-<h4>关键装配要求：</h4>
-<ul>
-<li>电机安装：必须平稳固定，不得有晃动。</li>
-<li>密封圈安装：涂抹适量润滑脂（指定型号），确保完全落入凹槽且未扭曲。</li>
-<li>泵盖紧固：必须使用扭力扳手，按对角线顺序分 2-3 次拧紧至规定扭矩 (1.2 ± 0.1 Nm)，确保密封均匀。</li>
-<li>叶轮安装：键配合应顺畅，固定后叶轮旋转应灵活，无卡滞，轴向间隙符合图纸规定。</li>
-<li>电气连接：导线连接牢固可靠，绝缘良好。</li>
-</ul></div>
-<h3><i class="fas fa-check-square"></i> 装配验收条件</h3>
-<div class="acceptance-crit-content"><h4>外观检查：</h4>
-<ul>
-<li>装配体表面清洁，无划痕、磕碰、污渍。</li>
-<li>各部件安装到位，无歪斜、松动。</li>
-<li>标签、铭牌粘贴正确、牢固。</li>
-</ul>
-<h4>气密性测试：</h4>
-<ul>
-<li>在指定压力下（例如 0.2 MPa）保压 5 分钟，压降不超过允许范围（例如 5%）。</li>
-<li>或者，使用氦质谱检漏，泄漏率小于规定值。</li>
-</ul>
-<h4>功能测试：</h4>
-<ul>
-<li>通电运转，检查电机启动是否平稳，有无异响、剧烈振动。</li>
-<li>在额定工况下运行一段时间（例如 15 分钟），测试流量、扬程是否达到设计要求。</li>
-<li>检查运行过程中各结合面是否有泄漏现象。</li>
-</ul>
-<h4>电气安全测试：</h4>
-<ul>
-<li>进行绝缘电阻和耐压测试，符合相关安全标准。</li>
-</ul></div>
-</div><div class="section" id="components"><h2><i class="fas fa-th-list"></i> 组件列表 (零件和子装配)</h2>
+</div>
+
+        <div class="section" id="components"><h2><i class="fas fa-th-list"></i> 组件列表 (零件和子装配)</h2>
 <p>此装配体包含以下 <strong>4</strong> 个直接下级组件：</p>
 <table class="components-table">
 <thead><tr><th style="width: 130px;" title="组件二维码"><i class="fas fa-qrcode"></i> 二维码</th><th><i class="fas fa-info-circle"></i> 组件信息 (类型 / 功能 / 详情)</th></tr></thead>
@@ -391,14 +666,50 @@
 <div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 优化流道设计，提高效率。</div>
 </div></td></tr>
 </tbody></table>
-</div></div> <!-- /container -->
+</div>
+
+    </div> <!-- /container -->
+
+    
+    <!-- 返回顶部按钮 HTML -->
     <button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button>
+
     <footer role="contentinfo">
-        页面静态生成时间: <time datetime="2025-04-07 13:39:40">2025-04-07 13:39:40</time> | 数据来源: ASM 数据库<br>
-        公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>
-        Generated by V4.5 - 修正错误并补充技术要求验收条件等
+        页面静态生成时间: <time datetime="2025-04-07 14:35:51">2025-04-07 14:35:51</time> | 数据来源: ASM 数据库
+        <br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a>
+        <br>Generated by V4.4 - 界面丰富化尝试
     </footer>
+
+    <!-- 返回顶部按钮 JavaScript -->
     <script>
-        (function() { var backToTopBtn = document.getElementById("back-to-top"); if (!backToTopBtn) return; var scrollThreshold = 300; function checkScroll() { var scrolled = document.body.scrollTop || document.documentElement.scrollTop; if (scrolled > scrollThreshold) { backToTopBtn.classList.add("show"); } else { backToTopBtn.classList.remove("show"); } } function scrollToTop() { try { window.scrollTo({top: 0, behavior: 'smooth'}); } catch(e) { window.scrollTo(0, 0); } } window.addEventListener('scroll', checkScroll, { passive: true }); backToTopBtn.addEventListener('click', scrollToTop); checkScroll(); })();
-    </script></body>
+        (function() {
+            var backToTopBtn = document.getElementById("back-to-top");
+            if (!backToTopBtn) return; // Exit if button not found
+
+            var scrollThreshold = 300; // Pixels to scroll before showing button
+
+            function checkScroll() {
+                var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
+                if (scrolled > scrollThreshold) {
+                    backToTopBtn.classList.add("show");
+                } else {
+                    backToTopBtn.classList.remove("show");
+                }
+            }
+
+            function scrollToTop() {
+                 try { window.scrollTo({top: 0, behavior: 'smooth'}); }
+                 catch(e) { window.scrollTo(0, 0); } // Fallback for older browsers
+            }
+
+            // Attach listeners
+            window.addEventListener('scroll', checkScroll, { passive: true }); // Use passive listener for performance
+            backToTopBtn.addEventListener('click', scrollToTop);
+
+            // Initial check in case the page loads already scrolled down
+            checkScroll();
+        })();
+    </script>
+    
+</body>
 </html>
