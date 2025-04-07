@@ -4,7 +4,7 @@
         *, *::before, *::after { box-sizing: border-box; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif; margin: 0; padding: 0; background-color: var(--background-light, #f4f7f9); color: var(--text-dark, #34495e); line-height: 1.65; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        :root { --primary-color: #4a6a8a; --primary-hover: #3b5671; --secondary-color: #6c99c4; --secondary-hover: #5a8ab3; --accent-color-constraint: #3498db; --accent-color-fit: #2ecc71; --accent-color-process: #f39c12; --accent-color-warning: #e67e22; --accent-color-danger: #e74c3c; --accent-color-history: #9b59b6; /* New color for history */ --background-light: #f4f7f9; --background-white: #ffffff; --background-section-odd: var(--background-white); --background-section-even: #fbfcfd; --text-dark: #34495e; --text-light: #7f8c8d; --text-headings: var(--primary-color); --text-link: var(--secondary-color); --text-link-hover: var(--primary-color); --text-code: #555; --text-white: #ffffff; --border-color: #e1e5e8; --border-color-strong: #ced4da; --border-radius-small: 4px; --border-radius-medium: 8px; --border-radius-large: 12px; --code-background: #ecf0f1; --subtle-highlight: #eaf4ff; --process-background: #fffaf0; --process-border: #f3d9a0; --process-text: #8b5a2b; --process-subtitle-border: #e6d0a7; --shadow-light: 0 2px 5px rgba(0,0,0,0.05); --shadow-medium: 0 5px 15px rgba(0,0,0,0.07); --shadow-strong: 0 6px 18px rgba(0,0,0,.1); --spacing-small: 0.5rem; --spacing-medium: 1rem; --spacing-large: 1.5rem; --spacing-xlarge: 2rem; --spacing-xxlarge: 2.5rem; --transition-speed: 0.2s; --transition-timing: ease-in-out; }
+        :root { --primary-color: #4a6a8a; --primary-hover: #3b5671; --secondary-color: #6c99c4; --secondary-hover: #5a8ab3; --accent-color-constraint: #3498db; --accent-color-fit: #2ecc71; --accent-color-process: #f39c12; --accent-color-warning: #e67e22; --accent-color-danger: #e74c3c; --accent-color-history: #9b59b6; /* New color for history */ --accent-color-production: #8e44ad; /* Optional: New color for production */ --background-light: #f4f7f9; --background-white: #ffffff; --background-section-odd: var(--background-white); --background-section-even: #fbfcfd; --text-dark: #34495e; --text-light: #7f8c8d; --text-headings: var(--primary-color); --text-link: var(--secondary-color); --text-link-hover: var(--primary-color); --text-code: #555; --text-white: #ffffff; --border-color: #e1e5e8; --border-color-strong: #ced4da; --border-radius-small: 4px; --border-radius-medium: 8px; --border-radius-large: 12px; --code-background: #ecf0f1; --subtle-highlight: #eaf4ff; --process-background: #fffaf0; --process-border: #f3d9a0; --process-text: #8b5a2b; --process-subtitle-border: #e6d0a7; --shadow-light: 0 2px 5px rgba(0,0,0,0.05); --shadow-medium: 0 5px 15px rgba(0,0,0,0.07); --shadow-strong: 0 6px 18px rgba(0,0,0,.1); --spacing-small: 0.5rem; --spacing-medium: 1rem; --spacing-large: 1.5rem; --spacing-xlarge: 2rem; --spacing-xxlarge: 2.5rem; --transition-speed: 0.2s; --transition-timing: ease-in-out; }
         /* --- Layout & Header --- */
         .container { max-width: 1400px; margin: 0 auto; padding: var(--spacing-medium) var(--spacing-large); }
         header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--text-white); padding: var(--spacing-large) var(--spacing-xlarge); text-align: center; margin-bottom: var(--spacing-xlarge); border-radius: 0 0 var(--border-radius-large) var(--border-radius-large); box-shadow: var(--shadow-strong); position: relative; }
@@ -30,7 +30,8 @@
         a { color: var(--text-link); text-decoration: none; transition: color var(--transition-speed); }
         a:hover, a:focus { color: var(--text-link-hover); text-decoration: underline; outline: none; }
         code { background-color: var(--code-background); padding: 3px 6px; border-radius: var(--border-radius-small); font-family: Consolas, "Courier New", monospace; color: var(--text-code); font-size: 0.9em; border: 1px solid var(--border-color); word-break: break-all; }
-        pre code { border: none; background: none; padding: 0; font-size: inherit; }
+        pre { white-space: pre-wrap; word-wrap: break-word; background-color: var(--code-background); padding: var(--spacing-medium); border-radius: var(--border-radius-small); border: 1px solid var(--border-color); font-family: Consolas, "Courier New", monospace; font-size: 0.9em; margin: var(--spacing-medium) 0; } /* Style for pre tags */
+        pre code { border: none; background: none; padding: 0; font-size: inherit; white-space: inherit; }
         .no-image, .no-data { text-align: center; color: var(--text-light); padding: var(--spacing-xlarge); background-color: var(--background-section-even); border: 2px dashed var(--border-color); border-radius: var(--border-radius-medium); margin-top: var(--spacing-large); font-style: italic; font-size: 1.1em; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-medium); }
         .no-data i { font-size: 1.5em; color: var(--accent-color-danger); }
         /* --- Info & Function --- */
@@ -41,8 +42,9 @@
         .assembly-function-section { margin-bottom: var(--spacing-large); padding: var(--spacing-large) var(--spacing-xlarge); background-color: var(--subtle-highlight); border-left: 6px solid var(--secondary-color); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); }
         .assembly-function-section strong { color: var(--primary-color); font-size: 1.15em; display: block; margin-bottom: var(--spacing-small);}
         .assembly-function-section p { margin: 0; line-height: 1.7; color: var(--text-dark); }
-        /* --- Technical Requirements & Acceptance --- */
+        /* --- Technical Requirements, Acceptance, Production Info --- */
         #tech-req h2 i { color: var(--accent-color-constraint); }
+        #production-info h2 i { color: var(--accent-color-production, #8e44ad); } /* Icon color for new section */
         .content-block { margin-top: var(--spacing-large); padding: var(--spacing-large); background-color: var(--background-section-even); border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); }
         .section > .content-block:first-of-type { margin-top: 0; }
         .content-block h3 { margin-top: 0; margin-bottom: var(--spacing-medium); border-bottom: none; padding-bottom: 0; font-size: 1.3em; color: var(--primary-color); display: flex; align-items: center; gap: var(--spacing-small); }
@@ -52,6 +54,8 @@
         .content-block ul li { margin-bottom: var(--spacing-small); }
         .content-block .no-data { padding: var(--spacing-medium) 0; text-align: left; border: none; background: none; font-size: 1em; margin-top: var(--spacing-small); display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--spacing-small); }
         .content-block .no-data i { font-size: 1.2em; color: var(--text-light); }
+        .production-type-display { font-size: 1.1em; font-weight: 500; color: var(--text-dark); margin-bottom: var(--spacing-medium); }
+        .production-type-display strong { color: var(--primary-color); }
         /* --- Diagrams & Flowcharts --- */
         .diagrams-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-xlarge); }
         .diagram-container { text-align: center; }
@@ -62,7 +66,7 @@
         .enhanced-flowchart-container { text-align: center; margin-bottom: var(--spacing-large); }
         .enhanced-diagram { max-width: 95%; height: auto; border: 1px solid var(--border-color-strong); padding: var(--spacing-small); background: var(--background-white); border-radius: var(--border-radius-medium); cursor: pointer; transition: box-shadow var(--transition-speed); display: inline-block; box-shadow: var(--shadow-medium); }
         .enhanced-diagram:hover { box-shadow: var(--shadow-strong); }
-        /* --- !!! 新增: Revision History Styles !!! --- */
+        /* --- Revision History Styles --- */
         #revision-history h2 i { color: var(--accent-color-history); }
         .revision-history-table { margin-top: var(--spacing-large); }
         .revision-history-table th { background-color: #f7f3f9; /* Lighter accent color */ border-bottom: 2px solid var(--accent-color-history); color: var(--accent-color-history); }
@@ -75,7 +79,6 @@
         .revision-history-table tr:nth-child(even) td { background-color: #fdfdfe; }
         .revision-history-table tr:hover td { background-color: #fbf9fc; } /* Subtle hover */
         .revision-note { font-size: 0.9em; color: var(--text-light); margin-top: var(--spacing-large); text-align: center; font-style: italic; }
-        /* --- !!! 新增样式结束 !!! --- */
         /* --- Assembly Steps --- */
         .assembly-process-section h2 i { color: var(--accent-color-process); }
         .assembly-process-details { background-color: var(--process-background); border: 1px solid var(--process-border); border-left: 6px solid var(--accent-color-process); border-radius: var(--border-radius-medium); padding: var(--spacing-large) var(--spacing-xlarge); margin-top: var(--spacing-large); box-shadow: var(--shadow-light); }
@@ -157,9 +160,9 @@
             <li><a href="#overview"><i class="fas fa-eye"></i> 概览图</a></li>
             <li><a href="#info"><i class="fas fa-info-circle"></i> 基本信息</a></li>
             <li><a href="#diagrams"><i class="fas fa-drafting-compass"></i> 参考图纸</a></li>
-            <li><a href="#revision-history"><i class="fas fa-history"></i> 修订历史</a></li> <!-- 新增 -->
+            <li><a href="#revision-history"><i class="fas fa-history"></i> 修订历史</a></li>
+            <li><a href="#production-info"><i class="fas fa-industry"></i> 生产信息</a></li> <!-- 新增 -->
             <li><a href="#tech-req"><i class="fas fa-cogs"></i> 技术要求</a></li>
-            <!-- <li><a href="#prod-program"><i class="fas fa-industry"></i> 生产纲领</a></li> --> <!-- 移除 -->
             <li><a href="#steps"><i class="fas fa-clipboard-list"></i> 装配步骤</a></li>
             <li><a href="#relationships"><i class="fas fa-link"></i> 装配关系</a></li>
             <li><a href="#components"><i class="fas fa-th-list"></i> 组件列表</a></li>
@@ -174,9 +177,10 @@
 <tr><th>装配体ID (AssemblyAI)</th><td>ASM-PUMP-007</td></tr>
 <tr><th>装配体名称 (AssemblyName)</th><td>新型水泵</td></tr>
 <tr><th>关联组件表 (TableName)</th><td><code>asm_007</code></td></tr>
-<tr><th>Remarks</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr>
-<tr><th>记录创建时间</th><td>2025-04-07 18:58:33</td></tr>
-<tr><th>最后修改时间</th><td>2025-04-07 18:58:33</td></tr>
+<tr><th>装配组织形式</th><td>固定式装配</td></tr>
+<tr><th>备注 (Remarks)</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr>
+<tr><th>记录创建时间</th><td>2025-04-07 19:11:24</td></tr>
+<tr><th>最后修改时间</th><td>2025-04-07 19:11:24</td></tr>
 </table></div><div class="section" id="diagrams"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section">
 <div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (源参考)</h3>
 <div class="diagram-image-wrapper"><a href="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图 (源文件) - 新型水泵" class="diagram-image"/></a></div>
@@ -205,37 +209,45 @@
 <tr>
 <td data-label="版本">V1.2</td>
 <td data-label="日期">2023-08-01</td>
-<td data-label="修订内容">增加动平衡检测工序</td>
+<td data-label="修订内容">增加动平衡检测工序; 更新FlowchartDetails</td>
 <td data-label="修订人">赵工</td>
 <td data-label="批准人">李总</td>
 </tr>
 <tr>
 <td data-label="版本">V1.3</td>
 <td data-label="日期">2024-01-10</td>
-<td data-label="修订内容">调整气密性测试压力标准</td>
+<td data-label="修订内容">调整气密性测试压力标准; 更新AcceptanceCriteria</td>
 <td data-label="修订人">钱工</td>
 <td data-label="批准人">李总</td>
 </tr>
 </tbody></table>
-<p class="revision-note">（注：以上为详细示例内容，请在数据库对应表中填充实际信息。）</p>
+</div><div class="section" id="production-info"><h2><i class="fas fa-industry"></i> 生产类型与条件</h2>
+<p class="production-type-display"><strong>生产类型:</strong> 小批量试生产</p>
+<div class="content-block">
+<h3><i class="fas fa-warehouse"></i> 生产条件详情</h3>
+<ul>
+<li>主要设备: 电动螺丝批 (扭矩设定: 1.5 Nm), 气密性检测仪 (压力: 0.5 MPa)</li>
+<li>辅助工装: 零件定位夹具 JIG-01</li>
+<li>车间环境: A区装配线, 温度 20-26°C, 湿度 &lt; 65%</li>
+<li>特殊要求: 操作员需佩戴防静电手环</li>
+</ul>
+</div>
 </div><div class="section" id="tech-req"><h2><i class="fas fa-cogs"></i> 技术要求与验收</h2>
 <div class="content-block">
 <h3><i class="fas fa-tools"></i> 装配技术要求</h3>
 <ul>
-<li>示例要求：所有紧固件需按照指定扭矩拧紧。</li>
-<li>示例要求：装配过程中保持清洁，防止异物进入。</li>
-<li>示例要求：线缆布线整齐，固定牢靠。</li>
+<li>1. 所有螺钉按对角顺序分两次拧紧至目标扭矩。</li>
+<li>2. 密封圈安装前涂抹少量硅脂。</li>
+<li>3. 电机引出线需使用热缩管保护。</li>
 </ul>
-<p style="font-size:0.9em; color:var(--text-light); margin-top: var(--spacing-small);"><i>（注：数据库中未提供具体要求，此处为示例。）</i></p>
 </div>
 <div class="content-block">
 <h3><i class="fas fa-clipboard-check"></i> 验收技术条件</h3>
 <ul>
-<li>示例条件：成品外观无划痕、磕碰、变形。</li>
-<li>示例条件：通电测试运行平稳，无异响、无泄漏。</li>
-<li>示例条件：各项性能指标符合设计规范要求。</li>
+<li>1. 外观检查无划痕、毛刺。</li>
+<li>2. 气密性测试保压 30 秒，压降小于 0.02 MPa。</li>
+<li>3. 通电运行声音均匀，无明显杂音或振动。</li>
 </ul>
-<p style="font-size:0.9em; color:var(--text-light); margin-top: var(--spacing-small);"><i>（注：数据库中未提供具体条件，此处为示例。）</i></p>
 </div>
 </div><div class="section assembly-process-section" id="steps">
 <h2><i class="fas fa-clipboard-list"></i> 装配顺序与工序说明</h2>
@@ -245,7 +257,7 @@
   <li>**固定电机：** 将电机(<a href="part_PART-MOTOR-702.html" class="process-component-ref" title="查看 新型直流无刷电机 详情"><code>PART-MOTOR-702</code></a>)牢固安装在泵体底座(未列出)上。</li>
   <li>**安装密封圈：** 将3个O型密封圈(<a href="part_PART-SEAL-703.html" class="process-component-ref" title="查看 O型密封圈 详情"><code>PART-SEAL-703</code></a>)分别放入前后泵盖的对应凹槽内。</li>
   <li>**安装前泵盖：** 将其中一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)对准电机前端，使用M4x10螺钉(未列出)均匀拧紧。</li>
-  <li>**安装叶轮：** 将叶轮(未列出)安装到电机输出轴上，确保键槽对齐并固定到位。</li>
+  <li>**安装叶轮：** 将叶轮(<a href="part_PART-IMPELLER-704.html" class="process-component-ref" title="查看 离心叶轮 详情"><code>PART-IMPELLER-704</code></a>)安装到电机输出轴上，确保键槽对齐并固定到位。</li>
   <li>**安装后泵盖：** 安装另一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)，同样使用M4x10螺钉拧紧。</li>
   <li>**接线与测试：** 连接电源线，进行短暂通电测试，检查是否有异响或泄漏。</li>
 </ul>
@@ -349,27 +361,23 @@
 <div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 优化流道设计，提高效率。</div>
 </div></td></tr>
 </tbody></table>
-</div></div><button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button><footer role="contentinfo">页面静态生成时间: <time datetime="2025-04-07 18:58:38">2025-04-07 18:58:38</time> | 数据来源: ASM 数据库<br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>Generated by V4.7.0 - 添加修订历史模块，移除生产纲领模块</footer>
+</div></div><button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button><footer role="contentinfo">页面静态生成时间: <time datetime="2025-04-07 19:11:29">2025-04-07 19:11:29</time> | 数据来源: ASM 数据库<br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>Generated by V4.7.1 - 添加生产类型与条件模块</footer>
     <script>
     (function() {
-      // Add data-label attribute to table cells for responsive view
+      // Add data-label attribute to table cells for responsive view (Targets revision history table)
       function setupResponsiveTables() {
-        const tables = document.querySelectorAll('.revision-history-table'); // Target specific table
+        const tables = document.querySelectorAll('.revision-history-table'); // Only target this specific table for now
         if (!tables) return;
 
         tables.forEach(table => {
             const headers = table.querySelectorAll('thead th');
-            if (!headers || headers.length === 0) return; // Skip if no headers
-
+            if (!headers || headers.length === 0) return;
             const headerTexts = Array.from(headers).map(th => th.textContent.trim());
             const bodyRows = table.querySelectorAll('tbody tr');
-
             bodyRows.forEach(row => {
                 const cells = row.querySelectorAll('td');
                 cells.forEach((cell, index) => {
-                    if (headerTexts[index]) { // Check if header exists for this index
-                        cell.setAttribute('data-label', headerTexts[index]);
-                    }
+                    if (headerTexts[index]) { cell.setAttribute('data-label', headerTexts[index]); }
                 });
             });
         });
@@ -385,11 +393,11 @@
           }
           function scrollToTop() {
               try { window.scrollTo({top: 0, behavior: 'smooth'}); }
-              catch(e) { window.scrollTo(0, 0); }
+              catch(e) { window.scrollTo(0, 0); } // Fallback for older browsers
           }
           window.addEventListener('scroll', checkScroll, { passive: true });
           backToTopBtn.addEventListener('click', scrollToTop);
-          checkScroll(); // Initial check
+          checkScroll(); // Initial check in case page loads scrolled down
       }
 
       // Run table setup on load
