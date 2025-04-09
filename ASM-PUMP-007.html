@@ -1,4 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="装配体 新型水泵 的详细信息、组件列表、装配关系和流程。"><meta name="author" content="Static Site Generator"><title>装配体详情: 新型水泵</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.js"></script>
+
     <style>
         /* --- Global & Variables --- */
         *, *::before, *::after { box-sizing: border-box; }
@@ -30,7 +33,7 @@
         a { color: var(--text-link); text-decoration: none; transition: color var(--transition-speed); }
         a:hover, a:focus { color: var(--text-link-hover); text-decoration: underline; outline: none; }
         code { background-color: var(--code-background); padding: 3px 6px; border-radius: var(--border-radius-small); font-family: Consolas, "Courier New", monospace; color: var(--text-code); font-size: 0.9em; border: 1px solid var(--border-color); word-break: break-all; }
-        pre { white-space: pre-wrap; word-wrap: break-word; background-color: var(--code-background); padding: var(--spacing-medium); border-radius: var(--border-radius-small); border: 1px solid var(--border-color); font-family: Consolas, "Courier New", monospace; font-size: 0.9em; margin: var(--spacing-medium) 0; } /* Style for pre tags */
+        pre { white-space: pre-wrap; word-wrap: break-word; background-color: var(--code-background); padding: var(--spacing-medium); border-radius: var(--border-radius-small); border: 1px solid var(--border-color); font-family: Consolas, "Courier New", monospace; font-size: 0.9em; margin: var(--spacing-medium) 0; }
         pre code { border: none; background: none; padding: 0; font-size: inherit; white-space: inherit; }
         .no-image, .no-data { text-align: center; color: var(--text-light); padding: var(--spacing-xlarge); background-color: var(--background-section-even); border: 2px dashed var(--border-color); border-radius: var(--border-radius-medium); margin-top: var(--spacing-large); font-style: italic; font-size: 1.1em; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--spacing-medium); }
         .no-data i { font-size: 1.5em; color: var(--accent-color-danger); }
@@ -44,7 +47,7 @@
         .assembly-function-section p { margin: 0; line-height: 1.7; color: var(--text-dark); }
         /* --- Technical Requirements, Acceptance, Production Info --- */
         #tech-req h2 i { color: var(--accent-color-constraint); }
-        #production-info h2 i { color: var(--accent-color-production, #8e44ad); } /* Icon color for new section */
+        #production-info h2 i { color: var(--accent-color-production, #8e44ad); }
         .content-block { margin-top: var(--spacing-large); padding: var(--spacing-large); background-color: var(--background-section-even); border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); box-shadow: var(--shadow-light); }
         .section > .content-block:first-of-type { margin-top: 0; }
         .content-block h3 { margin-top: 0; margin-bottom: var(--spacing-medium); border-bottom: none; padding-bottom: 0; font-size: 1.3em; color: var(--primary-color); display: flex; align-items: center; gap: var(--spacing-small); }
@@ -69,34 +72,60 @@
         /* --- Revision History Styles --- */
         #revision-history h2 i { color: var(--accent-color-history); }
         .revision-history-table { margin-top: var(--spacing-large); }
-        .revision-history-table th { background-color: #f7f3f9; /* Lighter accent color */ border-bottom: 2px solid var(--accent-color-history); color: var(--accent-color-history); }
-        .revision-history-table th:nth-child(1) { width: 10%; } /* Version */
-        .revision-history-table th:nth-child(2) { width: 15%; } /* Date */
-        .revision-history-table th:nth-child(3) { width: 45%; } /* Content */
-        .revision-history-table th:nth-child(4) { width: 15%; } /* Reviser */
-        .revision-history-table th:nth-child(5) { width: 15%; } /* Approver */
+        .revision-history-table th { background-color: #f7f3f9; border-bottom: 2px solid var(--accent-color-history); color: var(--accent-color-history); }
+        .revision-history-table th:nth-child(1) { width: 10%; } .revision-history-table th:nth-child(2) { width: 15%; } .revision-history-table th:nth-child(3) { width: 45%; } .revision-history-table th:nth-child(4) { width: 15%; } .revision-history-table th:nth-child(5) { width: 15%; }
         .revision-history-table td { padding: var(--spacing-medium) var(--spacing-large); }
         .revision-history-table tr:nth-child(even) td { background-color: #fdfdfe; }
-        .revision-history-table tr:hover td { background-color: #fbf9fc; } /* Subtle hover */
+        .revision-history-table tr:hover td { background-color: #fbf9fc; }
         .revision-note { font-size: 0.9em; color: var(--text-light); margin-top: var(--spacing-large); text-align: center; font-style: italic; }
         /* --- Assembly Steps --- */
         .assembly-process-section h2 i { color: var(--accent-color-process); }
         .assembly-process-details { background-color: var(--process-background); border: 1px solid var(--process-border); border-left: 6px solid var(--accent-color-process); border-radius: var(--border-radius-medium); padding: var(--spacing-large) var(--spacing-xlarge); margin-top: var(--spacing-large); box-shadow: var(--shadow-light); }
         .process-subtitle { font-size: 1.25em; font-weight: 600; color: var(--process-text); margin-top: 2em; margin-bottom: 1em; padding-bottom: var(--spacing-small); border-bottom: 2px solid var(--process-subtitle-border); display: flex; align-items: center; gap: var(--spacing-medium); }
-        .process-subtitle:first-child { margin-top: 0; }
-        .process-subtitle i { font-size: 1em; opacity: 0.9; }
-        .process-subtitle-warning i { color: var(--accent-color-warning); }
+        .process-subtitle:first-child { margin-top: 0; } .process-subtitle i { font-size: 1em; opacity: 0.9; } .process-subtitle-warning i { color: var(--accent-color-warning); }
         .process-list { list-style: none; padding-left: var(--spacing-large); margin-top: var(--spacing-medium); margin-bottom: var(--spacing-large); }
         .process-list li { position: relative; padding-left: 2em; margin-bottom: var(--spacing-medium); line-height: 1.75; }
         .process-list li::before { content: "▹"; position: absolute; left: 0; top: 1px; font-size: 1.3em; color: var(--accent-color-process); font-weight: bold; line-height: 1; }
-        .process-list.numbered-list { counter-reset: step-counter; }
-        .process-list.numbered-list li::before { content: counter(step-counter) "."; counter-increment: step-counter; font-size: 1em; color: var(--accent-color-process); font-weight: bold; min-width: 1.5em; text-align: right; margin-right: 0.8em; position: absolute; left: -0.5em; top: 1px; }
+        .process-list.numbered-list { list-style-type: none; counter-reset: step-counter; padding-left: 2.5em; /* Adjust padding for numbers */ }
+        .process-list.numbered-list li::before { content: counter(step-counter) "."; counter-increment: step-counter; font-size: 1em; color: var(--accent-color-process); font-weight: bold; min-width: 1.5em; text-align: right; position: absolute; left: 0; top: 1px; }
+        ol.process-list { list-style-type: decimal; padding-left: 2.5em; } /* Basic numbered list */
+        ol.process-list li { padding-left: 0; } /* Remove extra padding if using native list numbers */
+        ol.process-list li::before { content: none; } /* Remove pseudo-element if using native list numbers */
+
         .assembly-process-details p { margin: 0 0 var(--spacing-medium) 0; line-height: 1.7; }
         .process-paragraph-spacer { height: var(--spacing-small); margin: 0; padding: 0; line-height: 0; font-size: 1px; border: none; }
         .process-component-ref code { background-color: var(--subtle-highlight); border: 1px solid var(--secondary-color); color: var(--primary-color); font-weight: 500; cursor: pointer; transition: background-color var(--transition-speed), color var(--transition-speed); }
         .process-component-ref:hover code, .process-component-ref:focus code { background-color: var(--secondary-hover); color: var(--text-white); }
         .process-component-ref-nolink { background-color: var(--code-background); border: 1px dashed var(--border-color); color: var(--text-light); font-style: italic; cursor: default; padding: 2px 5px; border-radius: var(--border-radius-small); font-size: 0.85em; }
         /* --- Relationships --- */
+        #relationships h3 { /* Style for the graph subheading */ margin-top: var(--spacing-xlarge); font-size: 1.3em; color: var(--text-dark); border-bottom: 1px solid #eee; padding-bottom: var(--spacing-small); }
+        /* --- !!! 新增/确保存在 Vis.js 图的容器样式 !!! --- */
+        #assembly-network-graph {
+            height: 500px; /* Adjust height as needed */
+            width: 100%;
+            border: 1px solid var(--border-color);
+            background-color: #fdfdfd; /* Slightly off-white */
+            border-radius: var(--border-radius-medium);
+            margin-top: var(--spacing-large);
+            box-shadow: var(--shadow-light);
+            position: relative; /* For potential absolute positioning inside */
+        }
+        /* Style for loading/error messages inside the graph div */
+        #assembly-network-graph p.graph-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+            padding: 20px;
+        }
+        #assembly-network-graph p.graph-error {
+             color: var(--accent-color-danger);
+             font-weight: bold;
+        }
+
         .relationships-list { list-style: none; padding: 0; margin-top: var(--spacing-large); }
         .relationships-list li { background-color: #fdfdff; border: 1px solid var(--border-color); border-left: 6px solid var(--secondary-color); padding: var(--spacing-large) var(--spacing-xlarge); margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); display: flex; flex-direction: column; gap: var(--spacing-medium); transition: box-shadow var(--transition-speed), border-left-color var(--transition-speed), transform var(--transition-speed); }
         .relationships-list li:hover { box-shadow: var(--shadow-medium); border-left-color: var(--primary-hover); transform: translateY(-3px); }
@@ -105,10 +134,12 @@
         .relationship-info-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-small) var(--spacing-medium); margin-top: var(--spacing-small); }
         .relationship-type { display: inline-flex; align-items: center; gap: var(--spacing-small); padding: 6px 14px; border-radius: 18px; font-size: 0.95em; font-weight: 500; white-space: nowrap; border: 1px solid transparent; transition: background-color var(--transition-speed), color var(--transition-speed); }
         .relationship-type .fas { font-size: 1em; line-height: 1; margin-right: 2px; }
-        .relationship-type.constraint { background-color: #eaf3fb; color: var(--accent-color-constraint); border-color: #aed6f1; }
-        .relationship-type.fit { background-color: #eafaf1; color: var(--accent-color-fit); border-color: #a3e4d7; }
+        /* Updated: Using RelationshipType and SubType */
+        .relationship-type.constraint { background-color: #eaf3fb; color: var(--accent-color-constraint); border-color: #aed6f1; } /* General Constraint */
+        .relationship-type.fit { background-color: #eafaf1; color: var(--accent-color-fit); border-color: #a3e4d7; } /* General Fit */
+        .relationship-type.positioning { background-color: #fef5e7; color: #f39c12; border-color: #f5cba7; } /* Example for Positioning */
+        .relationship-type.other { background-color: #f2f3f4; color: #7f8c8d; border-color: #d5dbdb; } /* Fallback */
         .relationship-type:hover { filter: brightness(95%); }
-        .constraint-value { font-style: italic; color: var(--text-light); font-size: 0.9em; margin-left: var(--spacing-small); }
         .relationship-description { color: var(--text-light); font-size: 0.95em; font-style: italic; width: 100%; margin-top: var(--spacing-medium); padding-left: var(--spacing-medium); border-left: 3px solid var(--border-color); line-height: 1.5; }
         .component-link { color: var(--primary-color); font-weight: bold; text-decoration: none; border-bottom: 1px dotted var(--primary-color); }
         .component-link:hover { color: var(--primary-hover); border-bottom-style: solid; text-decoration: none; }
@@ -145,12 +176,12 @@
         #back-to-top.show { display: block; opacity: 0.8; }
         #back-to-top.show:hover { opacity: 1; }
         /* --- Print Styles --- */
-        @media print { body { font-size: 10pt; color: #000; background-color: #fff; } header, footer, .page-nav, #back-to-top, .assembly-qr-image, .component-qr-cell { display: none !important; } .container { max-width: 100%; padding: 0; margin: 0; } .section { box-shadow: none; border: 1px solid #ccc; padding: 1cm; margin-bottom: 1cm; border-radius: 0; } h1, h2, h3, h4 { color: #000; border-bottom: 1px solid #999; page-break-after: avoid; } a { color: #000; text-decoration: none; } .component-link::after { content: " (" attr(href) ")"; font-size: 0.8em; } .info-table, .components-table, .relationships-list li, .content-block, .revision-history-table { page-break-inside: avoid; } img { max-width: 100% !important; height: auto !important; } code { background: #eee; border: none; } .content-block { border: 1px solid #ccc; box-shadow: none; background: #fff;} .content-block h3 { color: #000; } }
+        @media print { body { font-size: 10pt; color: #000; background-color: #fff; } header, footer, .page-nav, #back-to-top, .assembly-qr-image, .component-qr-cell, #assembly-network-graph { display: none !important; } .container { max-width: 100%; padding: 0; margin: 0; } .section { box-shadow: none; border: 1px solid #ccc; padding: 1cm; margin-bottom: 1cm; border-radius: 0; } h1, h2, h3, h4 { color: #000; border-bottom: 1px solid #999; page-break-after: avoid; } a { color: #000; text-decoration: none; } .component-link::after { content: " (" attr(href) ")"; font-size: 0.8em; } .info-table, .components-table, .relationships-list li, .content-block, .revision-history-table { page-break-inside: avoid; } img { max-width: 100% !important; height: auto !important; } code { background: #eee; border: none; } .content-block { border: 1px solid #ccc; box-shadow: none; background: #fff;} .content-block h3 { color: #000; } }
         /* --- Responsive Adjustments --- */
         @media (max-width: 1200px) { .container { max-width: 95%; } .section { padding: var(--spacing-large) var(--spacing-xlarge); } }
-        @media (max-width: 992px) { html { font-size: 15px; } .container { padding: var(--spacing-small) var(--spacing-medium); } header h1 { font-size: 2em; } h2 { font-size: 1.7em; margin-bottom: var(--spacing-large); } h3 { font-size: 1.4em; } .section { padding: var(--spacing-large) var(--spacing-large); margin-bottom: var(--spacing-large); } .diagrams-section { grid-template-columns: 1fr; } .component-details-grid { grid-template-columns: 1fr; } .assembly-process-details { padding: var(--spacing-large) var(--spacing-large); } .process-subtitle { font-size: 1.2em; } .page-nav ul { gap: var(--spacing-small) var(--spacing-medium); } .content-block { padding: var(--spacing-large); } .revision-history-table th { font-size: 0.95em; } .revision-history-table td { padding: var(--spacing-medium); } }
-        @media (max-width: 768px) { html { font-size: 14px; } header { padding: var(--spacing-large); border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);} header h1 { font-size: 1.8em; gap: var(--spacing-small); } h2 { font-size: 1.5em; gap: var(--spacing-small); margin-bottom: var(--spacing-medium); } h3 { font-size: 1.25em; gap: var(--spacing-small); } .section { padding: var(--spacing-medium) var(--spacing-large); border-radius: var(--border-radius-medium); margin-bottom: var(--spacing-large); } .info-table th { width: 35%; } .assembly-process-details { padding: var(--spacing-medium) var(--spacing-large); } .process-subtitle { font-size: 1.15em; } .process-list { padding-left: var(--spacing-medium); } .process-list li { padding-left: 1.5em; } .components-table thead { display: none; } .components-table, .components-table tbody, .components-table tr, .components-table td { display: block; width: 100% !important; box-sizing: border-box; } .components-table tr.component-row { margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); border: 1px solid var(--border-color); border-left-width: 5px; } .components-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-medium) var(--spacing-large); border-radius: 0 !important; background-color: inherit !important; } .components-table td:first-child { border-left: none; } .components-table td:last-child { border-bottom: none; border-right: none; } .component-qr-cell { width: 100%; text-align: center; padding-bottom: var(--spacing-medium); } .component-qr-link img { width: 110px; height: 110px; } .component-details-cell { padding-left: var(--spacing-large) !important; padding-top: var(--spacing-small); } .relationships-list li { padding: var(--spacing-medium) var(--spacing-large); gap: var(--spacing-small);} .relationship-components { font-size: 1.05em; } .relationship-info-line { flex-direction: column; align-items: flex-start; gap: var(--spacing-small); margin-top: var(--spacing-medium); } .relationship-description { width: 100%; padding-left: 0; border-left: none; border-top: 1px dashed #eee; margin-top: var(--spacing-medium); padding-top: var(--spacing-medium); } #back-to-top { bottom: var(--spacing-medium); right: var(--spacing-medium); padding: 10px 13px; font-size: 16px; } .content-block { padding: var(--spacing-medium) var(--spacing-large); } .content-block h3 { font-size: 1.2em; } .content-block ul { padding-left: 1.5em; } /* Revision History Responsive */ .revision-history-table thead { display: none; } .revision-history-table, .revision-history-table tbody, .revision-history-table tr, .revision-history-table td { display: block; width: 100% !important; } .revision-history-table tr { margin-bottom: var(--spacing-large); border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); padding: var(--spacing-medium); background-color: var(--background-white); box-shadow: var(--shadow-light); } .revision-history-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-small) 0; display: flex; justify-content: space-between; align-items: center; } .revision-history-table td:last-child { border-bottom: none; } .revision-history-table td::before { content: attr(data-label); font-weight: bold; color: var(--text-dark); margin-right: var(--spacing-large); flex-basis: 30%; text-align: right; } }
-        @media (max-width: 480px) { html { font-size: 13px; } header { padding: var(--spacing-medium); } header h1 { font-size: 1.6em; } .section { padding: var(--spacing-medium); } .info-table th, .info-table td { padding: var(--spacing-small) var(--spacing-medium); } .components-table td { padding: var(--spacing-small) var(--spacing-medium); } .relationships-list li { padding: var(--spacing-small) var(--spacing-medium); } .page-nav a { padding: 5px 8px; } .content-block { padding: var(--spacing-medium); } /* Revision History Mobile */ .revision-history-table td::before { flex-basis: 40%; } }
+        @media (max-width: 992px) { html { font-size: 15px; } .container { padding: var(--spacing-small) var(--spacing-medium); } header h1 { font-size: 2em; } h2 { font-size: 1.7em; margin-bottom: var(--spacing-large); } h3 { font-size: 1.4em; } .section { padding: var(--spacing-large) var(--spacing-large); margin-bottom: var(--spacing-large); } .diagrams-section { grid-template-columns: 1fr; } .component-details-grid { grid-template-columns: 1fr; } .assembly-process-details { padding: var(--spacing-large) var(--spacing-large); } .process-subtitle { font-size: 1.2em; } .page-nav ul { gap: var(--spacing-small) var(--spacing-medium); } .content-block { padding: var(--spacing-large); } .revision-history-table th { font-size: 0.95em; } .revision-history-table td { padding: var(--spacing-medium); } #assembly-network-graph { height: 400px; } }
+        @media (max-width: 768px) { html { font-size: 14px; } header { padding: var(--spacing-large); border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);} header h1 { font-size: 1.8em; gap: var(--spacing-small); } h2 { font-size: 1.5em; gap: var(--spacing-small); margin-bottom: var(--spacing-medium); } h3 { font-size: 1.25em; gap: var(--spacing-small); } .section { padding: var(--spacing-medium) var(--spacing-large); border-radius: var(--border-radius-medium); margin-bottom: var(--spacing-large); } .info-table th { width: 35%; } .assembly-process-details { padding: var(--spacing-medium) var(--spacing-large); } .process-subtitle { font-size: 1.15em; } .process-list, ol.process-list { padding-left: var(--spacing-medium); } .process-list li { padding-left: 1.5em; } ol.process-list li { padding-left: 0; } .components-table thead { display: none; } .components-table, .components-table tbody, .components-table tr, .components-table td { display: block; width: 100% !important; box-sizing: border-box; } .components-table tr.component-row { margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); border: 1px solid var(--border-color); border-left-width: 5px; } .components-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-medium) var(--spacing-large); border-radius: 0 !important; background-color: inherit !important; } .components-table td:first-child { border-left: none; } .components-table td:last-child { border-bottom: none; border-right: none; } .component-qr-cell { width: 100%; text-align: center; padding-bottom: var(--spacing-medium); } .component-qr-link img { width: 110px; height: 110px; } .component-details-cell { padding-left: var(--spacing-large) !important; padding-top: var(--spacing-small); } .relationships-list li { padding: var(--spacing-medium) var(--spacing-large); gap: var(--spacing-small);} .relationship-components { font-size: 1.05em; } .relationship-info-line { flex-direction: column; align-items: flex-start; gap: var(--spacing-small); margin-top: var(--spacing-medium); } .relationship-description { width: 100%; padding-left: 0; border-left: none; border-top: 1px dashed #eee; margin-top: var(--spacing-medium); padding-top: var(--spacing-medium); } #back-to-top { bottom: var(--spacing-medium); right: var(--spacing-medium); padding: 10px 13px; font-size: 16px; } .content-block { padding: var(--spacing-medium) var(--spacing-large); } .content-block h3 { font-size: 1.2em; } .content-block ul { padding-left: 1.5em; } /* Revision History Responsive */ .revision-history-table thead { display: none; } .revision-history-table, .revision-history-table tbody, .revision-history-table tr, .revision-history-table td { display: block; width: 100% !important; } .revision-history-table tr { margin-bottom: var(--spacing-large); border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); padding: var(--spacing-medium); background-color: var(--background-white); box-shadow: var(--shadow-light); } .revision-history-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-small) 0; display: flex; justify-content: space-between; align-items: center; } .revision-history-table td:last-child { border-bottom: none; } .revision-history-table td::before { content: attr(data-label); font-weight: bold; color: var(--text-dark); margin-right: var(--spacing-large); flex-basis: 30%; text-align: right; } #assembly-network-graph { height: 350px; } }
+        @media (max-width: 480px) { html { font-size: 13px; } header { padding: var(--spacing-medium); } header h1 { font-size: 1.6em; } .section { padding: var(--spacing-medium); } .info-table th, .info-table td { padding: var(--spacing-small) var(--spacing-medium); } .components-table td { padding: var(--spacing-small) var(--spacing-medium); } .relationships-list li { padding: var(--spacing-small) var(--spacing-medium); } .page-nav a { padding: 5px 8px; } .content-block { padding: var(--spacing-medium); } /* Revision History Mobile */ .revision-history-table td::before { flex-basis: 40%; } #assembly-network-graph { height: 300px; } }
     </style></head><body><header>
 <h1><i class="fas fa-toolbox"></i> 装配体详情: 新型水泵</h1>
 <div class="assembly-qr-container"><img src="assembly_qr/Assembly_QR_ASM-PUMP-007.png" alt="新型水泵 二维码" class="assembly-qr-image" title="QR 链接到装配体主页: https://lmy699.github.io/assembly-display/ASM-PUMP-007.html"></div>
@@ -161,7 +192,7 @@
             <li><a href="#info"><i class="fas fa-info-circle"></i> 基本信息</a></li>
             <li><a href="#diagrams"><i class="fas fa-drafting-compass"></i> 参考图纸</a></li>
             <li><a href="#revision-history"><i class="fas fa-history"></i> 修订历史</a></li>
-            <li><a href="#production-info"><i class="fas fa-industry"></i> 生产信息</a></li> <!-- 新增 -->
+            <li><a href="#production-info"><i class="fas fa-industry"></i> 生产信息</a></li>
             <li><a href="#tech-req"><i class="fas fa-cogs"></i> 技术要求</a></li>
             <li><a href="#steps"><i class="fas fa-clipboard-list"></i> 装配步骤</a></li>
             <li><a href="#relationships"><i class="fas fa-link"></i> 装配关系</a></li>
@@ -170,7 +201,7 @@
     </nav>
     <div class="section" id="overview"><h2><i class="fas fa-project-diagram"></i> 装配流程概览图</h2>
 <p>这是一个可视化的装配流程概览。点击图片可在新标签页查看大图。</p><div class="enhanced-flowchart-container"><a href="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/enhanced_flowchart_ASM-PUMP-007_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程概览图 - 新型水泵" class="enhanced-diagram"/></a></div>
-<p style="margin-top:15px;font-size:0.9em;color:var(--text-light);">注：此图基于源文件: <code>Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png</code></p>
+<p style="margin-top:15px;font-size:0.9em;color:var(--text-light);">注：此图可能基于源文件: <code>Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png</code> 生成或修改。</p>
 </div><div class="section" id="info"><h2><i class="fas fa-info-circle"></i> 基本信息与功能</h2>
 <div class="assembly-function-section"><strong>装配体功能:</strong><p>将液体从低压区高效、低噪音地输送到高压区，适用于家庭或轻工业场景。提供可靠的密封性能。</p></div>
 <h3><i class="fas fa-tags"></i> 详细属性</h3><table class="info-table">
@@ -178,53 +209,39 @@
 <tr><th>装配体名称 (AssemblyName)</th><td>新型水泵</td></tr>
 <tr><th>关联组件表 (TableName)</th><td><code>asm_007</code></td></tr>
 <tr><th>装配组织形式</th><td>固定式装配</td></tr>
-<tr><th>备注 (Remarks)</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr>
-<tr><th>记录创建时间</th><td>2025-04-09 22:01:00</td></tr>
-<tr><th>最后修改时间</th><td>2025-04-09 22:01:00</td></tr>
+<tr><th>生产类型</th><td>小批量试生产</td></tr>
+<tr><th>备注</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr>
+<tr><th>记录创建时间</th><td>2025-04-09 23:44:25</td></tr>
+<tr><th>最后修改时间</th><td>2025-04-09 23:44:25</td></tr>
 </table></div><div class="section" id="diagrams"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section">
 <div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (源参考)</h3>
-<div class="diagram-image-wrapper"><a href="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图 (源文件) - 新型水泵" class="diagram-image"/></a></div>
+<div class="diagram-image-wrapper"><a href="images/Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图 (源文件) - 新型水泵" class="diagram-image"/></a></div>
 </div>
 <div class="diagram-container"><h3><i class="fas fa-shapes"></i> 装配部件图</h3>
 <div class="diagram-image-wrapper"><a href="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" target="_blank" title="点击查看大图"><img src="images/Assembly_QR_ASM-PUMP-007_新型水泵_部件图.png" alt="装配部件图 - 新型水泵" class="diagram-image"/></a></div>
 </div>
 </div></div><div class="section" id="revision-history"><h2><i class="fas fa-history"></i> 修订历史</h2>
-<table class="info-table revision-history-table">
-<thead><tr><th>版本</th><th>日期</th><th>修订内容</th><th>修订人</th><th>批准人</th></tr></thead>
-<tbody>
+<p>以下是与此装配体相关的修订记录 (注：当前为示例数据)。</p>
+<table class="info-table revision-history-table"><thead><tr><th>版本</th><th>日期</th><th>修订内容</th><th>修订人</th><th>批准人</th></tr></thead><tbody>
 <tr>
 <td data-label="版本">V1.0</td>
 <td data-label="日期">2023-01-15</td>
-<td data-label="修订内容">初始发布</td>
+<td data-label="修订内容">初始发布 (示例数据)</td>
 <td data-label="修订人">张工</td>
 <td data-label="批准人">李总</td>
 </tr>
 <tr>
 <td data-label="版本">V1.1</td>
 <td data-label="日期">2023-05-20</td>
-<td data-label="修订内容">更新电机型号; 修改力矩参数</td>
+<td data-label="修订内容">更新电机型号; 修改力矩参数 (示例数据)</td>
 <td data-label="修订人">王工</td>
 <td data-label="批准人">李总</td>
 </tr>
-<tr>
-<td data-label="版本">V1.2</td>
-<td data-label="日期">2023-08-01</td>
-<td data-label="修订内容">增加动平衡检测工序; 更新FlowchartDetails</td>
-<td data-label="修订人">赵工</td>
-<td data-label="批准人">李总</td>
-</tr>
-<tr>
-<td data-label="版本">V1.3</td>
-<td data-label="日期">2024-01-10</td>
-<td data-label="修订内容">调整气密性测试压力标准; 更新AcceptanceCriteria</td>
-<td data-label="修订人">钱工</td>
-<td data-label="批准人">李总</td>
-</tr>
 </tbody></table>
+<p class="revision-note">提示：修订历史功能需要数据库支持。</p>
 </div><div class="section" id="production-info"><h2><i class="fas fa-industry"></i> 生产类型与条件</h2>
 <p class="production-type-display"><strong>生产类型:</strong> 小批量试生产</p>
-<div class="content-block">
-<h3><i class="fas fa-warehouse"></i> 生产条件详情</h3>
+<div class="content-block"><h3><i class="fas fa-warehouse"></i> 生产条件详情</h3>
 <ul>
 <li>主要设备: 电动螺丝批 (扭矩设定: 1.5 Nm), 气密性检测仪 (压力: 0.5 MPa)</li>
 <li>辅助工装: 零件定位夹具 JIG-01</li>
@@ -233,16 +250,14 @@
 </ul>
 </div>
 </div><div class="section" id="tech-req"><h2><i class="fas fa-cogs"></i> 技术要求与验收</h2>
-<div class="content-block">
-<h3><i class="fas fa-tools"></i> 装配技术要求</h3>
+<div class="content-block"><h3><i class="fas fa-tools"></i> 装配技术要求</h3>
 <ul>
 <li>1. 所有螺钉按对角顺序分两次拧紧至目标扭矩。</li>
 <li>2. 密封圈安装前涂抹少量硅脂。</li>
 <li>3. 电机引出线需使用热缩管保护。</li>
 </ul>
 </div>
-<div class="content-block">
-<h3><i class="fas fa-clipboard-check"></i> 验收技术条件</h3>
+<div class="content-block"><h3><i class="fas fa-clipboard-check"></i> 验收技术条件</h3>
 <ul>
 <li>1. 外观检查无划痕、毛刺。</li>
 <li>2. 气密性测试保压 30 秒，压降小于 0.02 MPa。</li>
@@ -253,14 +268,14 @@
 <h2><i class="fas fa-clipboard-list"></i> 装配顺序与工序说明</h2>
 <p class="intro-text">请依据以下步骤执行装配操作。点击 <code class="process-component-ref">零件/子装配AI</code> 可跳转至其详情页面。</p>
 <div class="assembly-process-details"><h4 class="process-subtitle"><i class="fas fa-list-ol"></i> 关键装配步骤：</h4>
-<ul class="process-list numbered-list">
-  <li>**固定电机：** 将电机(<a href="part_PART-MOTOR-702.html" class="process-component-ref" title="查看 新型直流无刷电机 详情"><code>PART-MOTOR-702</code></a>)牢固安装在泵体底座(未列出)上。</li>
-  <li>**安装密封圈：** 将3个O型密封圈(<a href="part_PART-SEAL-703.html" class="process-component-ref" title="查看 O型密封圈 详情"><code>PART-SEAL-703</code></a>)分别放入前后泵盖的对应凹槽内。</li>
-  <li>**安装前泵盖：** 将其中一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)对准电机前端，使用M4x10螺钉(未列出)均匀拧紧。</li>
-  <li>**安装叶轮：** 将叶轮(<a href="part_PART-IMPELLER-704.html" class="process-component-ref" title="查看 离心叶轮 详情"><code>PART-IMPELLER-704</code></a>)安装到电机输出轴上，确保键槽对齐并固定到位。</li>
-  <li>**安装后泵盖：** 安装另一个泵盖(<a href="part_PART-COVER-701.html" class="process-component-ref" title="查看 新泵盖 详情"><code>PART-COVER-701</code></a>)，同样使用M4x10螺钉拧紧。</li>
+<ol class="process-list numbered-list">
+  <li>**固定电机：** 将电机(<code class="process-component-ref-nolink" title="组件 PART-MOTOR-702 (无链接)">PART-MOTOR-702</code>)牢固安装在泵体底座(未列出)上。</li>
+  <li>**安装密封圈：** 将3个O型密封圈(<code class="process-component-ref-nolink" title="组件 PART-SEAL-703 (无链接)">PART-SEAL-703</code>)分别放入前后泵盖的对应凹槽内。</li>
+  <li>**安装前泵盖：** 将其中一个泵盖(<code class="process-component-ref-nolink" title="组件 PART-COVER-701 (无链接)">PART-COVER-701</code>)对准电机前端，使用M4x10螺钉(未列出)均匀拧紧。</li>
+  <li>**安装叶轮：** 将叶轮(<code class="process-component-ref-nolink" title="组件 PART-IMPELLER-704 (无链接)">PART-IMPELLER-704</code>)安装到电机输出轴上，确保键槽对齐并固定到位。</li>
+  <li>**安装后泵盖：** 安装另一个泵盖(<code class="process-component-ref-nolink" title="组件 PART-COVER-701 (无链接)">PART-COVER-701</code>)，同样使用M4x10螺钉拧紧。</li>
   <li>**接线与测试：** 连接电源线，进行短暂通电测试，检查是否有异响或泄漏。</li>
-</ul>
+</ol>
 <p class="process-paragraph-spacer">&nbsp;</p>
 <h4 class="process-subtitle process-subtitle-warning"><i class="fas fa-exclamation-triangle"></i> 注意事项：</h4>
 <ul class="process-list">
@@ -277,49 +292,19 @@
   <li>扭力扳手 (推荐，用于精确控制螺钉扭矩)</li>
   <li>干净抹布</li>
 </ul></div>
-</div><div class="section" id="relationships"><h2><i class="fas fa-link"></i> 装配关系 (约束与配合)</h2>
-<p>共定义了 <strong>5</strong> 条关系。</p>
-<ul class="relationships-list">
-<li>
-<div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖 详情">新泵盖</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
-<div class="relationship-info-line">
-<span class="relationship-type constraint" title="约束类型: Mate"><i class="fas fa-puzzle-piece"></i>&nbsp;面贴合</span>
+</div><div class="section" id="relationships"><h2><i class="fas fa-link"></i> 装配关系</h2>
+<p class="no-data"><i class="fas fa-ban"></i> 未定义此装配体的关系。</p>
+<h3><i class="fas fa-project-diagram"></i> 组件关系图 (可交互)</h3>
+<div id="assembly-network-graph">
 </div>
-<div class="relationship-description">前泵盖的安装面与电机前端面贴合</div>
-</li>
-<li>
-<div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖 详情">新泵盖</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
-<div class="relationship-info-line">
-<span class="relationship-type constraint" title="约束类型: Align"><i class="fas fa-arrows-up-down"></i>&nbsp;对齐</span>
-</div>
-<div class="relationship-description">前泵盖的中心孔与电机轴线对齐</div>
-</li>
-<li>
-<div class="relationship-components"><a href="part_PART-SEAL-703.html" class="component-link" title="查看 O型密封圈 详情">O型密封圈</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖 详情">新泵盖</a></div>
-<div class="relationship-info-line">
-<span class="relationship-type fit" title="配合类型: Interference"><i class="fas fa-gears"></i>&nbsp;过盈配合</span>
-</div>
-<div class="relationship-description">O型圈压入泵盖密封槽，形成过盈配合以密封</div>
-</li>
-<li>
-<div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
-<div class="relationship-info-line">
-<span class="relationship-type constraint" title="约束类型: Insert"><i class="fas fa-plug-circle-check"></i>&nbsp;插入配合</span>
-<span class="relationship-type fit" title="配合类型: H7/k6"><i class="fas fa-gears"></i>&nbsp;H7/k6 (过渡)</span>
-</div>
-<div class="relationship-description">叶轮孔与电机轴采用过渡配合(H7/k6)，通过键传递扭矩</div>
-</li>
-<li>
-<div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
-<div class="relationship-info-line">
-<span class="relationship-type constraint" title="约束类型: Mate"><i class="fas fa-puzzle-piece"></i>&nbsp;面贴合</span>
-</div>
-<div class="relationship-description">叶轮轴向定位面与电机轴肩贴合</div>
-</li>
-</ul>
 </div><div class="section" id="components"><h2><i class="fas fa-th-list"></i> 组件列表 (零件和子装配)</h2>
-<p>此装配体包含以下 <strong>4</strong> 个直接下级组件：</p>
+<p>此装配体包含以下 <strong>5</strong> 个直接下级组件：</p>
 <table class="components-table"><thead><tr><th style="width: 130px;" title="组件二维码"><i class="fas fa-qrcode"></i> 二维码</th><th><i class="fas fa-info-circle"></i> 组件信息 (类型 / 功能 / 详情)</th></tr></thead><tbody>
+<tr class="component-row top-assembly-row"><td class="component-qr-cell"><a href="ASM-PUMP-007.html" class="component-qr-link" title="查看 新型水泵 (总成) 详情 (目标链接: https://lmy699.github.io/assembly-display/ASM-PUMP-007.html)"><img src="component_qr/Component_QR_ASM-PUMP-007.png" alt="新型水泵 (总成) QR Code"/></a></td><td class="component-details-cell"><a href="ASM-PUMP-007.html" class="component-name-link"><i class="fas fa-cubes component-icon top-assembly-icon" title="顶层装配体"></i> 新型水泵 (总成)</a><div class="component-functional-desc" title="功能描述">作为所有内部零件的容器和结构支撑，构成完整的水泵产品。</div><div class="component-details-grid"><div class="component-detail-item" title="组件 ID"><span class="component-detail-label">组件 ID:</span> ASM-PUMP-007</div>
+<div class="component-detail-item" title="数量"><span class="component-detail-label">数量:</span> 1</div>
+<div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 个</div>
+<div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 顶层装配体节点</div>
+</div></td></tr>
 <tr class="component-row part-row"><td class="component-qr-cell"><a href="part_PART-COVER-701.html" class="component-qr-link" title="查看 新泵盖 详情 (目标链接: https://lmy699.github.io/assembly-display/part_PART-COVER-701.html)"><img src="component_qr/Component_QR_PART-COVER-701.png" alt="新泵盖 QR Code"/></a></td><td class="component-details-cell"><a href="part_PART-COVER-701.html" class="component-name-link"><i class="fas fa-cog component-icon part-icon" title="零件"></i> 新泵盖</a><div class="component-functional-desc" title="功能描述">构成泵体外壳，提供密封界面，保护内部电机，并引导水流。</div><div class="component-details-grid"><div class="component-detail-item" title="组件 ID"><span class="component-detail-label">组件 ID:</span> PART-COVER-701</div>
 <div class="component-detail-item" title="数量"><span class="component-detail-label">数量:</span> 2</div>
 <div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 个</div>
@@ -361,48 +346,71 @@
 <div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 优化流道设计，提高效率。</div>
 </div></td></tr>
 </tbody></table>
-</div></div><button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button><footer role="contentinfo">页面静态生成时间: <time datetime="2025-04-09 23:31:20">2025-04-09 23:31:20</time> | 数据来源: ASM 数据库<br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>Generated by V4.7.1 - 添加生产类型与条件模块</footer>
+</div></div><button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button><footer role="contentinfo">页面静态生成时间: <time datetime="2025-04-10T00:11:18.072680">2025-04-10 00:11:18</time> | 数据来源: ASM 数据库<br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>Generated by V4.8.1 - 集成 Vis.js 图 (基于 V4.7.1)</footer>
     <script>
+    // Self-executing function to avoid polluting global scope
     (function() {
-      // Add data-label attribute to table cells for responsive view (Targets revision history table)
+      // Function to add data-label attributes for responsive tables
       function setupResponsiveTables() {
-        const tables = document.querySelectorAll('.revision-history-table'); // Only target this specific table for now
-        if (!tables) return;
+        // Target specific tables that need responsive headers
+        const tables = document.querySelectorAll('.revision-history-table, .info-table'); // Add other tables if needed
+        if (!tables || tables.length === 0) return;
 
         tables.forEach(table => {
             const headers = table.querySelectorAll('thead th');
+            // Only proceed if table has thead and th elements
             if (!headers || headers.length === 0) return;
+
+            // Get header text, trim whitespace
             const headerTexts = Array.from(headers).map(th => th.textContent.trim());
+
             const bodyRows = table.querySelectorAll('tbody tr');
             bodyRows.forEach(row => {
                 const cells = row.querySelectorAll('td');
                 cells.forEach((cell, index) => {
-                    if (headerTexts[index]) { cell.setAttribute('data-label', headerTexts[index]); }
+                    // Assign data-label if header text exists for this column index
+                    if (headerTexts[index]) {
+                        cell.setAttribute('data-label', headerTexts[index]);
+                    }
                 });
             });
         });
       }
 
-      // Back to top button logic
+      // Back to Top Button Functionality
       var backToTopBtn = document.getElementById("back-to-top");
       if (backToTopBtn) {
-          var scrollThreshold = 300;
+          var scrollThreshold = 300; // Show button after scrolling down 300px
+
+          // Function to check scroll position and toggle button visibility
           function checkScroll() {
-              var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
+              // Works across browsers for scroll position
+              var scrolled = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
               backToTopBtn.classList.toggle("show", scrolled > scrollThreshold);
           }
+
+          // Function to smoothly scroll to the top
           function scrollToTop() {
-              try { window.scrollTo({top: 0, behavior: 'smooth'}); }
-              catch(e) { window.scrollTo(0, 0); } // Fallback for older browsers
+              try {
+                  // Modern smooth scroll
+                  window.scrollTo({top: 0, behavior: 'smooth'});
+              } catch(e) {
+                  // Fallback for older browsers
+                  window.scrollTo(0, 0);
+              }
           }
-          window.addEventListener('scroll', checkScroll, { passive: true });
+
+          // Add event listeners
+          window.addEventListener('scroll', checkScroll, { passive: true }); // Use passive listener for performance
           backToTopBtn.addEventListener('click', scrollToTop);
-          checkScroll(); // Initial check in case page loads scrolled down
+
+          // Initial check in case the page loads already scrolled down
+          checkScroll();
       }
 
-      // Run table setup on load
+      // Run responsive table setup when the DOM is fully loaded
       document.addEventListener('DOMContentLoaded', setupResponsiveTables);
 
-    })();
+    })(); // End of self-executing function
     </script>
     </body></html>
