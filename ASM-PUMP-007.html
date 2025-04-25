@@ -4,7 +4,7 @@
         *, *::before, *::after { box-sizing: border-box; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "Microsoft YaHei", sans-serif; margin: 0; padding: 0; background-color: var(--background-light, #f4f7f9); color: var(--text-dark, #34495e); line-height: 1.65; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        :root { --primary-color: #4a6a8a; --primary-hover: #3b5671; --secondary-color: #6c99c4; --secondary-hover: #5a8ab3; --accent-color-constraint: #3498db; --accent-color-fit: #2ecc71; --accent-color-process: #f39c12; --accent-color-warning: #e67e22; --accent-color-danger: #e74c3c; --accent-color-history: #9b59b6; /* New color for history */ --accent-color-production: #8e44ad; /* Optional: New color for production */ --background-light: #f4f7f9; --background-white: #ffffff; --background-section-odd: var(--background-white); --background-section-even: #fbfcfd; --text-dark: #34495e; --text-light: #7f8c8d; --text-headings: var(--primary-color); --text-link: var(--secondary-color); --text-link-hover: var(--primary-color); --text-code: #555; --text-white: #ffffff; --border-color: #e1e5e8; --border-color-strong: #ced4da; --border-radius-small: 4px; --border-radius-medium: 8px; --border-radius-large: 12px; --code-background: #ecf0f1; --subtle-highlight: #eaf4ff; --process-background: #fffaf0; --process-border: #f3d9a0; --process-text: #8b5a2b; --process-subtitle-border: #e6d0a7; --shadow-light: 0 2px 5px rgba(0,0,0,0.05); --shadow-medium: 0 5px 15px rgba(0,0,0,0.07); --shadow-strong: 0 6px 18px rgba(0,0,0,.1); --spacing-small: 0.5rem; --spacing-medium: 1rem; --spacing-large: 1.5rem; --spacing-xlarge: 2rem; --spacing-xxlarge: 2.5rem; --transition-speed: 0.2s; --transition-timing: ease-in-out; }
+        :root { --primary-color: #4a6a8a; --primary-hover: #3b5671; --secondary-color: #6c99c4; --secondary-hover: #5a8ab3; --accent-color-constraint: #3498db; --accent-color-fit: #2ecc71; --accent-color-process: #f39c12; --accent-color-warning: #e67e22; --accent-color-danger: #e74c3c; --accent-color-info: #3498db; /* Info color for loose fit */ --accent-color-history: #9b59b6; --accent-color-production: #8e44ad; --background-light: #f4f7f9; --background-white: #ffffff; --background-section-odd: var(--background-white); --background-section-even: #fbfcfd; --text-dark: #34495e; --text-light: #7f8c8d; --text-headings: var(--primary-color); --text-link: var(--secondary-color); --text-link-hover: var(--primary-color); --text-code: #555; --text-white: #ffffff; --border-color: #e1e5e8; --border-color-strong: #ced4da; --border-radius-small: 4px; --border-radius-medium: 8px; --border-radius-large: 12px; --code-background: #ecf0f1; --subtle-highlight: #eaf4ff; --process-background: #fffaf0; --process-border: #f3d9a0; --process-text: #8b5a2b; --process-subtitle-border: #e6d0a7; --shadow-light: 0 2px 5px rgba(0,0,0,0.05); --shadow-medium: 0 5px 15px rgba(0,0,0,0.07); --shadow-strong: 0 6px 18px rgba(0,0,0,.1); --spacing-small: 0.5rem; --spacing-medium: 1rem; --spacing-large: 1.5rem; --spacing-xlarge: 2rem; --spacing-xxlarge: 2.5rem; --transition-speed: 0.2s; --transition-timing: ease-in-out; }
         /* --- Layout & Header --- */
         .container { max-width: 1400px; margin: 0 auto; padding: var(--spacing-medium) var(--spacing-large); }
         header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--text-white); padding: var(--spacing-large) var(--spacing-xlarge); text-align: center; margin-bottom: var(--spacing-xlarge); border-radius: 0 0 var(--border-radius-large) var(--border-radius-large); box-shadow: var(--shadow-strong); position: relative; }
@@ -98,7 +98,7 @@
         .process-component-ref-nolink { background-color: var(--code-background); border: 1px dashed var(--border-color); color: var(--text-light); font-style: italic; cursor: default; padding: 2px 5px; border-radius: var(--border-radius-small); font-size: 0.85em; }
         /* --- Relationships --- */
         .relationships-list { list-style: none; padding: 0; margin-top: var(--spacing-large); }
-        .relationships-list li { background-color: #fdfdff; border: 1px solid var(--border-color); border-left: 6px solid var(--secondary-color); padding: var(--spacing-large) var(--spacing-xlarge); margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); display: flex; flex-direction: column; gap: var(--spacing-medium); transition: box-shadow var(--transition-speed), border-left-color var(--transition-speed), transform var(--transition-speed); }
+        .relationships-list li { background-color: #fdfdff; border: 1px solid var(--border-color); border-left: 6px solid var(--secondary-color); padding: var(--spacing-large) var(--spacing-xlarge); margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); display: flex; flex-direction: column; gap: var(--spacing-small); /* Reduced gap slightly */ transition: box-shadow var(--transition-speed), border-left-color var(--transition-speed), transform var(--transition-speed); }
         .relationships-list li:hover { box-shadow: var(--shadow-medium); border-left-color: var(--primary-hover); transform: translateY(-3px); }
         .relationship-components { font-weight: 600; color: var(--text-dark); display: flex; align-items: center; flex-wrap: wrap; gap: var(--spacing-small) var(--spacing-medium); font-size: 1.1em; }
         .relationship-components .fas { color: #95a5a6; font-size: 0.9em; opacity: 0.8; }
@@ -112,6 +112,42 @@
         .relationship-description { color: var(--text-light); font-size: 0.95em; font-style: italic; width: 100%; margin-top: var(--spacing-medium); padding-left: var(--spacing-medium); border-left: 3px solid var(--border-color); line-height: 1.5; }
         .component-link { color: var(--primary-color); font-weight: bold; text-decoration: none; border-bottom: 1px dotted var(--primary-color); }
         .component-link:hover { color: var(--primary-hover); border-bottom-style: solid; text-decoration: none; }
+        /* --- !!! 新增：配合警告样式 !!! --- */
+        .fit-check-warning {
+            margin-top: var(--spacing-medium);
+            padding: var(--spacing-medium) var(--spacing-large);
+            border-radius: var(--border-radius-medium);
+            border-width: 1px;
+            border-style: solid;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-medium);
+            font-size: 1em;
+            font-weight: 500;
+        }
+        .fit-check-warning i {
+            font-size: 1.3em;
+        }
+        /* 过紧警告 (红色系) */
+        .fit-check-warning.tight-fit {
+            background-color: #fdecea; /* Light red background */
+            border-color: var(--accent-color-danger);
+            color: #a94442; /* Darker red text */
+        }
+        .fit-check-warning.tight-fit i {
+            color: var(--accent-color-danger);
+        }
+        /* 过松警告 (蓝色/信息系) */
+        .fit-check-warning.loose-fit {
+            background-color: #eaf3fb; /* Light blue background */
+            border-color: var(--accent-color-info);
+            color: #31708f; /* Darker blue text */
+        }
+        .fit-check-warning.loose-fit i {
+            color: var(--accent-color-info);
+        }
+        /* --- !!! 新增结束 !!! --- */
+
         /* --- Components Table --- */
         .components-table { width: 100%; border-collapse: separate; border-spacing: 0 var(--spacing-medium); margin-top: var(--spacing-large); table-layout: fixed; }
         .components-table th { background-color: #f8fafd; font-weight: 600; padding: var(--spacing-medium) var(--spacing-large); border-bottom: 2px solid var(--border-color-strong); text-align: left; color: #495057; position: sticky; top: 0; z-index: 10; }
@@ -145,10 +181,10 @@
         #back-to-top.show { display: block; opacity: 0.8; }
         #back-to-top.show:hover { opacity: 1; }
         /* --- Print Styles --- */
-        @media print { body { font-size: 10pt; color: #000; background-color: #fff; } header, footer, .page-nav, #back-to-top, .assembly-qr-image, .component-qr-cell { display: none !important; } .container { max-width: 100%; padding: 0; margin: 0; } .section { box-shadow: none; border: 1px solid #ccc; padding: 1cm; margin-bottom: 1cm; border-radius: 0; } h1, h2, h3, h4 { color: #000; border-bottom: 1px solid #999; page-break-after: avoid; } a { color: #000; text-decoration: none; } .component-link::after { content: " (" attr(href) ")"; font-size: 0.8em; } .info-table, .components-table, .relationships-list li, .content-block, .revision-history-table { page-break-inside: avoid; } img { max-width: 100% !important; height: auto !important; } code { background: #eee; border: none; } .content-block { border: 1px solid #ccc; box-shadow: none; background: #fff;} .content-block h3 { color: #000; } }
+        @media print { body { font-size: 10pt; color: #000; background-color: #fff; } header, footer, .page-nav, #back-to-top, .assembly-qr-image, .component-qr-cell, .fit-check-warning { display: none !important; } .container { max-width: 100%; padding: 0; margin: 0; } .section { box-shadow: none; border: 1px solid #ccc; padding: 1cm; margin-bottom: 1cm; border-radius: 0; } h1, h2, h3, h4 { color: #000; border-bottom: 1px solid #999; page-break-after: avoid; } a { color: #000; text-decoration: none; } .component-link::after { content: " (" attr(href) ")"; font-size: 0.8em; } .info-table, .components-table, .relationships-list li, .content-block, .revision-history-table { page-break-inside: avoid; } img { max-width: 100% !important; height: auto !important; } code { background: #eee; border: none; } .content-block { border: 1px solid #ccc; box-shadow: none; background: #fff;} .content-block h3 { color: #000; } }
         /* --- Responsive Adjustments --- */
         @media (max-width: 1200px) { .container { max-width: 95%; } .section { padding: var(--spacing-large) var(--spacing-xlarge); } }
-        @media (max-width: 992px) { html { font-size: 15px; } .container { padding: var(--spacing-small) var(--spacing-medium); } header h1 { font-size: 2em; } h2 { font-size: 1.7em; margin-bottom: var(--spacing-large); } h3 { font-size: 1.4em; } .section { padding: var(--spacing-large) var(--spacing-large); margin-bottom: var(--spacing-large); } .diagrams-section { grid-template-columns: 1fr; } .component-details-grid { grid-template-columns: 1fr; } .assembly-process-details { padding: var(--spacing-large) var(--spacing-large); } .process-subtitle { font-size: 1.2em; } .page-nav ul { gap: var(--spacing-small) var(--spacing-medium); } .content-block { padding: var(--spacing-large); } .revision-history-table th { font-size: 0.95em; } .revision-history-table td { padding: var(--spacing-medium); } }
+        @media (max-width: 992px) { html { font-size: 15px; } .container { padding: var(--spacing-small) var(--spacing-medium); } header h1 { font-size: 2em; } h2 { font-size: 1.7em; margin-bottom: var(--spacing-large); } h3 { font-size: 1.4em; } .section { padding: var(--spacing-large) var(--spacing-large); margin-bottom: var(--spacing-large); } .diagrams-section { grid-template-columns: 1fr; } .component-details-grid { grid-template-columns: 1fr; } .assembly-process-details { padding: var(--spacing-large) var(--spacing-large); } .process-subtitle { font-size: 1.2em; } .page-nav ul { gap: var(--spacing-small) var(--spacing-medium); } .content-block { padding: var(--spacing-large); } .revision-history-table th { font-size: 0.95em; } .revision-history-table td { padding: var(--spacing-medium); } .fit-check-warning { flex-direction: column; align-items: flex-start; text-align: left; } }
         @media (max-width: 768px) { html { font-size: 14px; } header { padding: var(--spacing-large); border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);} header h1 { font-size: 1.8em; gap: var(--spacing-small); } h2 { font-size: 1.5em; gap: var(--spacing-small); margin-bottom: var(--spacing-medium); } h3 { font-size: 1.25em; gap: var(--spacing-small); } .section { padding: var(--spacing-medium) var(--spacing-large); border-radius: var(--border-radius-medium); margin-bottom: var(--spacing-large); } .info-table th { width: 35%; } .assembly-process-details { padding: var(--spacing-medium) var(--spacing-large); } .process-subtitle { font-size: 1.15em; } .process-list { padding-left: var(--spacing-medium); } .process-list li { padding-left: 1.5em; } .components-table thead { display: none; } .components-table, .components-table tbody, .components-table tr, .components-table td { display: block; width: 100% !important; box-sizing: border-box; } .components-table tr.component-row { margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); border: 1px solid var(--border-color); border-left-width: 5px; } .components-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-medium) var(--spacing-large); border-radius: 0 !important; background-color: inherit !important; } .components-table td:first-child { border-left: none; } .components-table td:last-child { border-bottom: none; border-right: none; } .component-qr-cell { width: 100%; text-align: center; padding-bottom: var(--spacing-medium); } .component-qr-link img { width: 110px; height: 110px; } .component-details-cell { padding-left: var(--spacing-large) !important; padding-top: var(--spacing-small); } .relationships-list li { padding: var(--spacing-medium) var(--spacing-large); gap: var(--spacing-small);} .relationship-components { font-size: 1.05em; } .relationship-info-line { flex-direction: column; align-items: flex-start; gap: var(--spacing-small); margin-top: var(--spacing-medium); } .relationship-description { width: 100%; padding-left: 0; border-left: none; border-top: 1px dashed #eee; margin-top: var(--spacing-medium); padding-top: var(--spacing-medium); } #back-to-top { bottom: var(--spacing-medium); right: var(--spacing-medium); padding: 10px 13px; font-size: 16px; } .content-block { padding: var(--spacing-medium) var(--spacing-large); } .content-block h3 { font-size: 1.2em; } .content-block ul { padding-left: 1.5em; } /* Revision History Responsive */ .revision-history-table thead { display: none; } .revision-history-table, .revision-history-table tbody, .revision-history-table tr, .revision-history-table td { display: block; width: 100% !important; } .revision-history-table tr { margin-bottom: var(--spacing-large); border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); padding: var(--spacing-medium); background-color: var(--background-white); box-shadow: var(--shadow-light); } .revision-history-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-small) 0; display: flex; justify-content: space-between; align-items: center; } .revision-history-table td:last-child { border-bottom: none; } .revision-history-table td::before { content: attr(data-label); font-weight: bold; color: var(--text-dark); margin-right: var(--spacing-large); flex-basis: 30%; text-align: right; } }
         @media (max-width: 480px) { html { font-size: 13px; } header { padding: var(--spacing-medium); } header h1 { font-size: 1.6em; } .section { padding: var(--spacing-medium); } .info-table th, .info-table td { padding: var(--spacing-small) var(--spacing-medium); } .components-table td { padding: var(--spacing-small) var(--spacing-medium); } .relationships-list li { padding: var(--spacing-small) var(--spacing-medium); } .page-nav a { padding: 5px 8px; } .content-block { padding: var(--spacing-medium); } /* Revision History Mobile */ .revision-history-table td::before { flex-basis: 40%; } }
     </style></head><body><header>
@@ -179,8 +215,8 @@
 <tr><th>关联组件表 (TableName)</th><td><code>asm_007</code></td></tr>
 <tr><th>装配组织形式</th><td>固定式装配</td></tr>
 <tr><th>备注 (Remarks)</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr>
-<tr><th>记录创建时间</th><td>2025-04-25 21:46:00</td></tr>
-<tr><th>最后修改时间</th><td>2025-04-25 21:46:00</td></tr>
+<tr><th>记录创建时间</th><td>2025-04-25 23:27:32</td></tr>
+<tr><th>最后修改时间</th><td>2025-04-25 23:27:32</td></tr>
 </table></div><div class="section" id="diagrams"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section">
 <div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (源参考)</h3>
 <div class="diagram-image-wrapper"><a href="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" title="点击查看大图"><img src="images/source_Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图 (源文件) - 新型水泵" class="diagram-image"/></a></div>
@@ -219,6 +255,13 @@
 <td data-label="修订内容">调整气密性测试压力标准; 更新AcceptanceCriteria</td>
 <td data-label="修订人">钱工</td>
 <td data-label="批准人">李总</td>
+</tr>
+<tr>
+<td data-label="版本">V1.3.1</td>
+<td data-label="日期">2024-04-26</td>
+<td data-label="修订内容">为特定配合添加风险提示演示 (V4.7.2)</td>
+<td data-label="修订人">AI助手</td>
+<td data-label="批准人">用户</td>
 </tr>
 </tbody></table>
 </div><div class="section" id="production-info"><h2><i class="fas fa-industry"></i> 生产类型与条件</h2>
@@ -295,9 +338,9 @@
 <div class="relationship-description">前泵盖的中心孔与电机轴线对齐</div>
 </li>
 <li>
-<div class="relationship-components"><a href="part_PART-SEAL-703.html" class="component-link" title="查看 O型密封圈 详情">O型密封圈</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖 详情">新泵盖</a></div>
+<div class="relationship-components"><a href="part_PART-COVER-701.html" class="component-link" title="查看 新泵盖 详情">新泵盖</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-SEAL-703.html" class="component-link" title="查看 O型密封圈 详情">O型密封圈</a></div>
 <div class="relationship-info-line">
-<span class="relationship-type fit" title="配合类型: Interference"><i class="fas fa-gears"></i>&nbsp;过盈配合</span>
+<span class="text-light"><em>(未指定具体约束或配合类型)</em></span>
 </div>
 <div class="relationship-description">O型圈压入泵盖密封槽，形成过盈配合以密封</div>
 </li>
@@ -305,9 +348,8 @@
 <div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
 <div class="relationship-info-line">
 <span class="relationship-type constraint" title="约束类型: Insert"><i class="fas fa-plug-circle-check"></i>&nbsp;插入配合</span>
-<span class="relationship-type fit" title="配合类型: H7/k6"><i class="fas fa-gears"></i>&nbsp;H7/k6 (过渡)</span>
 </div>
-<div class="relationship-description">叶轮孔与电机轴采用过渡配合(H7/k6)，通过键传递扭矩</div>
+<div class="relationship-description">叶轮孔(Ø10H7)与电机轴(Ø10k6)采用过渡配合，通过键传递扭矩</div>
 </li>
 <li>
 <div class="relationship-components"><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a>&nbsp;<i class="fas fa-exchange-alt" title="之间的关系"></i>&nbsp;<a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></div>
@@ -325,7 +367,7 @@
 <div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 个</div>
 <div class="component-detail-item" title="位置参考"><span class="component-detail-label">位置参考:</span> 前后两端</div>
 <div class="component-detail-item" title="材料"><span class="component-detail-label">材料:</span> 增强聚碳酸酯(PC)</div>
-<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> PC-701-V2</div>
+<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> PC-701-V2, 密封槽内径30mm</div>
 <div class="component-detail-item" title="图纸号"><span class="component-detail-label">图纸号:</span> PUMP-D-C01</div>
 <div class="component-detail-item" title="装配方法"><span class="component-detail-label">装配方法:</span> M4螺钉固定</div>
 <div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> V2版本，加强筋设计，提升耐压性。</div>
@@ -335,7 +377,7 @@
 <div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 台</div>
 <div class="component-detail-item" title="位置参考"><span class="component-detail-label">位置参考:</span> 泵体中心</div>
 <div class="component-detail-item" title="材料"><span class="component-detail-label">材料:</span> 铜线圈, 硅钢片, 铝壳</div>
-<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> PM-702-BLDC-24V</div>
+<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> PM-702-BLDC-24V, 输出轴Ø10k6</div>
 <div class="component-detail-item" title="图纸号"><span class="component-detail-label">图纸号:</span> PUMP-D-M02</div>
 <div class="component-detail-item" title="装配方法"><span class="component-detail-label">装配方法:</span> 螺钉固定 &amp; 焊接(线缆)</div>
 <div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 采用霍尔传感器，启动平稳，效率&gt;85%。</div>
@@ -345,7 +387,7 @@
 <div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 个</div>
 <div class="component-detail-item" title="位置参考"><span class="component-detail-label">位置参考:</span> 前后泵盖接口处</div>
 <div class="component-detail-item" title="材料"><span class="component-detail-label">材料:</span> 丁腈橡胶(NBR)</div>
-<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> 内径30mm, 线径2mm</div>
+<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> 内径30mm, 线径2mm, 外径约34mm</div>
 <div class="component-detail-item" title="图纸号"><span class="component-detail-label">图纸号:</span> PUMP-D-S03</div>
 <div class="component-detail-item" title="装配方法"><span class="component-detail-label">装配方法:</span> 压入凹槽</div>
 <div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 邵氏硬度70A，耐油耐磨。</div>
@@ -355,13 +397,13 @@
 <div class="component-detail-item" title="单位"><span class="component-detail-label">单位:</span> 个</div>
 <div class="component-detail-item" title="位置参考"><span class="component-detail-label">位置参考:</span> 电机轴前端</div>
 <div class="component-detail-item" title="材料"><span class="component-detail-label">材料:</span> 工程塑料PPS</div>
-<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> IMP-704-PPS</div>
+<div class="component-detail-item" title="规格"><span class="component-detail-label">规格:</span> IMP-704-PPS, 孔Ø10H7</div>
 <div class="component-detail-item" title="图纸号"><span class="component-detail-label">图纸号:</span> PUMP-D-I04</div>
 <div class="component-detail-item" title="装配方法"><span class="component-detail-label">装配方法:</span> 键连接+螺母固定</div>
 <div class="component-detail-item" title="备注"><span class="component-detail-label">备注:</span> 优化流道设计，提高效率。</div>
 </div></td></tr>
 </tbody></table>
-</div></div><button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button><footer role="contentinfo">页面静态生成时间: <time datetime="2025-04-25 22:06:10">2025-04-25 22:06:10</time> | 数据来源: ASM 数据库<br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>Generated by V4.7.1 - 添加生产类型与条件模块</footer>
+</div></div><button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button><footer role="contentinfo">页面静态生成时间: <time datetime="2025-04-25 23:31:46">2025-04-25 23:31:46</time> | 数据来源: ASM 数据库<br>公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>Generated by V4.7.2 - 添加装配规则演示</footer>
     <script>
     (function() {
       // Add data-label attribute to table cells for responsive view (Targets revision history table)
