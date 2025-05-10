@@ -244,8 +244,8 @@
 <tr><th>关联组件表 (TableName)</th><td><code>asm_007</code></td></tr>
 <tr><th>装配组织形式</th><td>固定式装配</td></tr>
 <tr><th>备注 (Remarks)</th><td>V1.0 改进型，电机效率提升15%，噪音降低5dB。</td></tr>
-<tr><th>记录创建时间</th><td>2025-04-26 11:57:13</td></tr>
-<tr><th>最后修改时间</th><td>2025-04-26 11:57:13</td></tr>
+<tr><th>记录创建时间</th><td>2025-05-10 09:18:59</td></tr>
+<tr><th>最后修改时间</th><td>2025-05-10 09:18:59</td></tr>
 </table></div><div class="section" id="diagrams"><h2><i class="fas fa-drafting-compass"></i> 参考图纸</h2><div class="diagrams-section">
 <div class="diagram-container"><h3><i class="fas fa-stream"></i> 装配流程图 (源参考)</h3>
 <div class="diagram-image-wrapper"><a href="images/Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" target="_blank" rel="noopener noreferrer" title="点击查看 &#x27;新型水泵&#x27; 的源装配流程图大图"><img src="images/Assembly_QR_ASM-PUMP-007_新型水泵_流程图.png" alt="装配流程图 (源文件) - 新型水泵" class="diagram-image" loading="lazy"/></a></div>
@@ -372,6 +372,169 @@
 <tr><td><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a></td><td><a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></td><td><span class="relationship-type constraint" title="约束类型: Insert"><i class="fas fa-plug-circle-check"></i>&nbsp;插入配合</span> <span class="relationship-type fit" title="配合关系: H7/k6"><i class="fas fa-cogs"></i>&nbsp;H7/k6 (过渡)</span></td><td>-</td><td class="description-cell">叶轮孔与电机轴采用过渡配合(H7/k6)，通过键传递扭矩</td></tr>
 <tr><td><a href="part_PART-IMPELLER-704.html" class="component-link" title="查看 离心叶轮 详情">离心叶轮</a></td><td><a href="part_PART-MOTOR-702.html" class="component-link" title="查看 新型直流无刷电机 详情">新型直流无刷电机</a></td><td><span class="relationship-type constraint" title="约束类型: Mate"><i class="fas fa-puzzle-piece"></i>&nbsp;面贴合</span></td><td>-</td><td class="description-cell">叶轮轴向定位面与电机轴肩贴合</td></tr>
 </tbody></table></div>
+</div><div class="section" id="interaction-analysis">
+<h2><i class="fas fa-microscope"></i> 零件特征交互影响分析 (ASM-PUMP-007)</h2>
+<p class="intro-text">以下是对装配体 <strong>ASM-PUMP-007</strong> 中定义的零件间装配关系及其涉及的关键特征之间潜在交互影响的分析。信息来源于预定义的工程知识库。</p>
+<div class="relationship-analysis-block">
+
+            <h3>分析针对关系ID: 1 
+                (<span class='analysis-comp-name'>新泵盖</span> 
+                 与 
+                 <span class='analysis-comp-name'>新型直流无刷电机</span>)
+            </h3>
+            <p>
+                <strong>约束类型:</strong> Mate  | 
+                <strong>配合类型:</strong> None
+            </p>
+            <p><em>关系原始描述: 前泵盖的安装面与电机前端面贴合</em></p>
+        
+<div class="feature-pair-analysis">
+
+                    <h4>涉及特征对 (ID: 1): 
+                        <span class='analysis-feature-name'>电机安装面</span> (平面 / 来自 新泵盖) 
+                        与 
+                        <span class='analysis-feature-name'>前端安装面</span> (平面 / 来自 新型直流无刷电机)
+                    </h4>
+                    <p><em>特征对备注: 泵盖与电机端面贴合，注意清洁，均匀锁紧</em></p>
+                
+<h5><i class="fas fa-brain"></i> 知识库洞察:</h5>
+<div class="knowledge-entry-detailed" id="ke-1-1-0">
+<p><strong>[知识库规则ID 1] <i class='fas fa-book-open'></i> 描述:</strong> 两个平面特征通过贴合约束直接接触，通常用于轴向定位、提供支撑或形成密封的初步接触面。</p>
+<p><span class='label'>潜在风险 (敏感度:</span> <span class='sensitivity-medium'>Medium</span>): 接触不良（点接触或线接触）导致定位不准、受力不均、振动源或泄漏（若兼做密封面）。贴合面间有杂质导致装配失效。</p>
+<p><span class='label'><i class='fas fa-pencil-ruler'></i> 设计考量:</span> 保证配合平面的平面度和表面粗糙度。若精度要求高，考虑增加定位销或导向特征。评估是否需要密封胶。设计合理的螺栓布局以保证均匀压紧力。</p>
+<p><span class='label'><i class='fas fa-users-cog'></i> 装配考量:</span> 装配前彻底清洁配合面。按规定顺序和扭矩均匀拧紧连接螺栓。可使用压印法（如红丹）或塞尺检查贴合情况。</p>
+<p><span class='label'><i class='fas fa-search-plus'></i> 检验关注点:</span> 配合面间的间隙（使用塞尺），平面度，锁紧螺栓后的变形情况。</p>
+</div>
+</div>
+</div>
+<div class="relationship-analysis-block">
+
+            <h3>分析针对关系ID: 2 
+                (<span class='analysis-comp-name'>新泵盖</span> 
+                 与 
+                 <span class='analysis-comp-name'>新型直流无刷电机</span>)
+            </h3>
+            <p>
+                <strong>约束类型:</strong> Align  | 
+                <strong>配合类型:</strong> None
+            </p>
+            <p><em>关系原始描述: 前泵盖的中心孔与电机轴线对齐</em></p>
+        
+<div class="feature-pair-analysis">
+
+                    <h4>涉及特征对 (ID: 2): 
+                        <span class='analysis-feature-name'>中心导向孔</span> (孔 / 来自 新泵盖) 
+                        与 
+                        <span class='analysis-feature-name'>输出轴颈</span> (轴 / 来自 新型直流无刷电机)
+                    </h4>
+                    <p><em>特征对备注: 泵盖中心孔与电机轴对齐，保证后续叶轮安装的同轴度</em></p>
+                
+<h5><i class="fas fa-brain"></i> 知识库洞察:</h5>
+<div class="knowledge-entry-detailed" id="ke-2-2-0">
+<p><strong>[知识库规则ID 2] <i class='fas fa-book-open'></i> 描述:</strong> 孔特征的轴线与轴特征的轴线对齐，确保同轴度，为后续的旋转或滑动运动提供基础。</p>
+<p><span class='label'>潜在风险 (敏感度:</span> <span class='sensitivity-high'>High</span>): 对中不良导致运动干涉、额外磨损、振动噪音、或无法装入后续配合件。累积误差可能导致最终功能失效。</p>
+<p><span class='label'><i class='fas fa-pencil-ruler'></i> 设计考量:</span> 合理分配孔和轴的形位公差（特别是同轴度、圆度、直线度）。设计引导倒角 facilitating assembly. 考虑公差链分析。</p>
+<p><span class='label'><i class='fas fa-users-cog'></i> 装配考量:</span> 使用专用对中工具或依据基准面逐步对齐。轻微转动或移动部件以感知对齐情况。避免强行装配。</p>
+<p><span class='label'><i class='fas fa-search-plus'></i> 检验关注点:</span> 装配后测量相关零件的同轴度或跳动量。功能测试（如转动是否顺畅）。</p>
+</div>
+</div>
+</div>
+<div class="relationship-analysis-block">
+
+            <h3>分析针对关系ID: 3 
+                (<span class='analysis-comp-name'>O型密封圈</span> 
+                 与 
+                 <span class='analysis-comp-name'>新泵盖</span>)
+            </h3>
+            <p>
+                <strong>约束类型:</strong> None  | 
+                <strong>配合类型:</strong> Interference
+            </p>
+            <p><em>关系原始描述: O型圈压入泵盖密封槽，形成过盈配合以密封</em></p>
+        
+<div class="feature-pair-analysis">
+
+                    <h4>涉及特征对 (ID: 3): 
+                        <span class='analysis-feature-name'>密封圈接触面</span> (环形面 / 来自 O型密封圈) 
+                        与 
+                        <span class='analysis-feature-name'>密封圈安装槽A</span> (槽 / 来自 新泵盖)
+                    </h4>
+                    <p><em>特征对备注: 密封圈压入泵盖的密封槽中，确保无扭曲损伤</em></p>
+                
+<h5><i class="fas fa-brain"></i> 知识库洞察:</h5>
+<div class="knowledge-entry-detailed" id="ke-3-3-0">
+<p><strong>[知识库规则ID 5] <i class='fas fa-book-open'></i> 描述:</strong> 弹性环形特征（如O型圈）压入刚性槽中，通过弹性变形填充间隙，实现静态或动态密封。</p>
+<p><span class='label'>潜在风险 (敏感度:</span> <span class='sensitivity-high'>High</span>): O型圈被剪切、扭曲、挤出导致密封失效；压缩量不足或过大影响密封效果和寿命；槽的表面粗糙度过大划伤密封圈。</p>
+<p><span class='label'><i class='fas fa-pencil-ruler'></i> 设计考量:</span> 正确选择O型圈材料、硬度及尺寸规格。合理设计密封槽的尺寸、形状、表面粗糙度及导入倒角。计算压缩率和拉伸率。</p>
+<p><span class='label'><i class='fas fa-users-cog'></i> 装配考量:</span> 清洁密封槽和O型圈，涂抹合适的润滑剂（如硅脂）。使用专用工具平稳压入，避免尖锐边缘划伤。检查有无扭曲。</p>
+<p><span class='label'><i class='fas fa-search-plus'></i> 检验关注点:</span> 密封性能测试（如气密性、水压测试）。拆解后检查O型圈有无永久变形或损伤。</p>
+</div>
+</div>
+</div>
+<div class="relationship-analysis-block">
+
+            <h3>分析针对关系ID: 4 
+                (<span class='analysis-comp-name'>离心叶轮</span> 
+                 与 
+                 <span class='analysis-comp-name'>新型直流无刷电机</span>)
+            </h3>
+            <p>
+                <strong>约束类型:</strong> Insert  | 
+                <strong>配合类型:</strong> H7/k6
+            </p>
+            <p><em>关系原始描述: 叶轮孔与电机轴采用过渡配合(H7/k6)，通过键传递扭矩</em></p>
+        
+<div class="feature-pair-analysis">
+
+                    <h4>涉及特征对 (ID: 4): 
+                        <span class='analysis-feature-name'>叶轮轴孔</span> (孔 / 来自 离心叶轮) 
+                        与 
+                        <span class='analysis-feature-name'>输出轴颈</span> (轴 / 来自 新型直流无刷电机)
+                    </h4>
+                    <p><em>特征对备注: 叶轮孔与电机轴采用H7/k6配合，可能需要轻微压入或加热装配</em></p>
+                
+<h5><i class="fas fa-brain"></i> 知识库洞察:</h5>
+<div class="knowledge-entry-detailed" id="ke-4-4-0">
+<p><strong>[知识库规则ID 4] <i class='fas fa-book-open'></i> 描述:</strong> 孔与轴采用过渡配合(H7/k6)，可能产生小部分间隙或小部分过盈，通常用于需要较好对中性且易于拆装的精密定位，可通过键等辅助传递扭矩。</p>
+<p><span class='label'>潜在风险 (敏感度:</span> <span class='sensitivity-medium'>Medium</span>): 配合性质不稳定（时而间隙时而过盈）导致功能一致性差；若设计用于传递扭矩但仅靠配合本身，可能在极限工况下打滑。</p>
+<p><span class='label'><i class='fas fa-pencil-ruler'></i> 设计考量:</span> 明确是否需要辅助的扭矩传递方式（如键、花键、销）。如果依赖此配合进行精密导向，需关注孔和轴的圆度和直线度。</p>
+<p><span class='label'><i class='fas fa-users-cog'></i> 装配考量:</span> 装配时应能感受到轻微的配合力，或刚好无明显晃动。确保键槽等辅助结构对齐良好。</p>
+<p><span class='label'><i class='fas fa-search-plus'></i> 检验关注点:</span> 装配后的实际间隙或轻微过盈。用手感知晃动程度。功能测试中扭矩传递的稳定性。</p>
+</div>
+</div>
+</div>
+<div class="relationship-analysis-block">
+
+            <h3>分析针对关系ID: 5 
+                (<span class='analysis-comp-name'>离心叶轮</span> 
+                 与 
+                 <span class='analysis-comp-name'>新型直流无刷电机</span>)
+            </h3>
+            <p>
+                <strong>约束类型:</strong> Mate  | 
+                <strong>配合类型:</strong> None
+            </p>
+            <p><em>关系原始描述: 叶轮轴向定位面与电机轴肩贴合</em></p>
+        
+<div class="feature-pair-analysis">
+
+                    <h4>涉及特征对 (ID: 5): 
+                        <span class='analysis-feature-name'>叶轮定位端面</span> (平面 / 来自 离心叶轮) 
+                        与 
+                        <span class='analysis-feature-name'>轴肩定位面</span> (平面 / 来自 新型直流无刷电机)
+                    </h4>
+                    <p><em>特征对备注: 叶轮端面与电机轴肩贴合，确保叶轮轴向位置正确</em></p>
+                
+<h5><i class="fas fa-brain"></i> 知识库洞察:</h5>
+<div class="knowledge-entry-detailed" id="ke-5-5-0">
+<p><strong>[知识库规则ID 1] <i class='fas fa-book-open'></i> 描述:</strong> 两个平面特征通过贴合约束直接接触，通常用于轴向定位、提供支撑或形成密封的初步接触面。</p>
+<p><span class='label'>潜在风险 (敏感度:</span> <span class='sensitivity-medium'>Medium</span>): 接触不良（点接触或线接触）导致定位不准、受力不均、振动源或泄漏（若兼做密封面）。贴合面间有杂质导致装配失效。</p>
+<p><span class='label'><i class='fas fa-pencil-ruler'></i> 设计考量:</span> 保证配合平面的平面度和表面粗糙度。若精度要求高，考虑增加定位销或导向特征。评估是否需要密封胶。设计合理的螺栓布局以保证均匀压紧力。</p>
+<p><span class='label'><i class='fas fa-users-cog'></i> 装配考量:</span> 装配前彻底清洁配合面。按规定顺序和扭矩均匀拧紧连接螺栓。可使用压印法（如红丹）或塞尺检查贴合情况。</p>
+<p><span class='label'><i class='fas fa-search-plus'></i> 检验关注点:</span> 配合面间的间隙（使用塞尺），平面度，锁紧螺栓后的变形情况。</p>
+</div>
+</div>
+</div>
 </div><div class="section" id="components"><h2><i class="fas fa-th-list"></i> 组件列表 (零件和子装配)</h2>
 <p>此装配体包含以下 <strong>4</strong> 个直接下级组件：</p>
 <table class="components-table">
@@ -421,7 +584,7 @@
 </div></div>
     <button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button>
     <footer role="contentinfo">
-        页面静态生成时间: <time datetime="2025-05-09 21:18:48">2025-05-09 21:18:48</time> | 数据来源: ASM 数据库<br>
+        页面静态生成时间: <time datetime="2025-05-10 09:19:09">2025-05-10 09:19:09</time> | 数据来源: ASM 数据库<br>
         公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>
         Generated by V4.8.4.1 - 基于 V4.8.4 调整QR位置
     </footer>
