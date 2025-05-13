@@ -215,6 +215,60 @@
         @media (max-width: 992px) { html { font-size: 15px; } .container { padding: var(--spacing-small) var(--spacing-medium); } header h1 { font-size: 2em; } h2 { font-size: 1.7em; margin-bottom: var(--spacing-large); } h3 { font-size: 1.4em; } .section { padding: var(--spacing-large) var(--spacing-large); margin-bottom: var(--spacing-large); } .diagrams-section { grid-template-columns: 1fr; } .component-details-grid { grid-template-columns: 1fr; } .assembly-process-details { padding: var(--spacing-large) var(--spacing-large); } .process-subtitle { font-size: 1.2em; } .page-nav ul { gap: var(--spacing-small) var(--spacing-medium); } .content-block { padding: var(--spacing-large); } .revision-history-table th { font-size: 0.95em; } .revision-history-table td { padding: var(--spacing-medium); } #partsTable th, #partsTable td { padding: var(--spacing-small) var(--spacing-medium); } .part-qr-cell img { max-width: 60px; } }
         @media (max-width: 768px) { html { font-size: 14px; } header { padding: var(--spacing-large); border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium);} header h1 { font-size: 1.8em; gap: var(--spacing-small); } h2 { font-size: 1.5em; gap: var(--spacing-small); margin-bottom: var(--spacing-medium); } h3 { font-size: 1.25em; gap: var(--spacing-small); } .section { padding: var(--spacing-medium) var(--spacing-large); border-radius: var(--border-radius-medium); margin-bottom: var(--spacing-large); } .info-table th { width: 35%; } .assembly-process-details { padding: var(--spacing-medium) var(--spacing-large); } .process-subtitle { font-size: 1.15em; } .process-list { padding-left: var(--spacing-medium); } .process-list li { padding-left: 1.5em; } .process-list.numbered-list li { padding-left: 2em; } /* Mobile table styles for Components */ .components-table thead { display: none; } .components-table, .components-table tbody, .components-table tr, .components-table td { display: block; width: 100% !important; box-sizing: border-box; } .components-table tr.component-row { margin-bottom: var(--spacing-large); border-radius: var(--border-radius-medium); border: 1px solid var(--border-color); border-left-width: 5px; overflow: hidden; } .components-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-medium) var(--spacing-large); border-radius: 0 !important; background-color: inherit !important; } .components-table td:first-child { border-left: none; } .components-table td:last-child { border-bottom:none; border-right: none; } .component-qr-cell { width: 100%; text-align: center; padding-bottom: var(--spacing-medium); } .component-qr-link img { width: 110px; height: 110px; } .component-details-cell { padding-left: var(--spacing-large) !important; padding-top: var(--spacing-small); } /* Mobile styles for Relationships */ .relationships-list li { padding: var(--spacing-medium) var(--spacing-large); gap: var(--spacing-small);} .relationship-components {font-size: 1.05em; } .relationship-info-line { flex-direction: column; align-items: flex-start; gap: var(--spacing-small); margin-top: var(--spacing-medium); } .relationship-description { width: 100%; padding-left: 0; border-left: none; border-top: 1px dashed #eee; margin-top: var(--spacing-medium); padding-top: var(--spacing-medium); } #back-to-top { bottom: var(--spacing-medium); right: var(--spacing-medium); padding: 10px 13px; font-size: 16px; } .content-block { padding: var(--spacing-medium) var(--spacing-large); } .content-block h3 { font-size: 1.2em; } .content-block ul { padding-left: 1.5em; } /* Mobile styles for Revision History */ .revision-history-table thead { display: none; } .revision-history-table, .revision-history-table tbody, .revision-history-table tr, .revision-history-table td { display: block; width: 100% !important; } .revision-history-table tr { margin-bottom: var(--spacing-large); border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); padding: var(--spacing-medium); background-color: var(--background-white); box-shadow: var(--shadow-light); } .revision-history-table td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-small) 0; display: flex; justify-content: space-between; align-items: center; } .revision-history-table td:last-child { border-bottom: none; } .revision-history-table td::before { content: attr(data-label); font-weight: bold; color: var(--text-dark); margin-right: var(--spacing-large); flex-basis: 30%; text-align: right; } /* Mobile styles for Parts List Table */ #partsTable thead { display: none; } #partsTable, #partsTable tbody, #partsTable tr, #partsTable td { display: block; width: 100% !important; } #partsTable tr { margin-bottom: var(--spacing-large); border: 1px solid var(--border-color); border-radius: var(--border-radius-medium); padding: var(--spacing-medium); background-color: var(--background-white); box-shadow: var(--shadow-light); } #partsTable td { border: none; border-bottom: 1px dashed #eee; padding: var(--spacing-small) 0; display: flex; justify-content: space-between; align-items: center; } #partsTable td:last-child { border-bottom: none; } #partsTable td::before { content: attr(data-label); font-weight: bold; color: var(--text-dark); margin-right: var(--spacing-large); flex-basis: 30%; text-align: right; flex-shrink: 0; } /* QR Cell on mobile */ #partsTable .part-qr-cell { width: 100%; text-align: left; padding-top: var(--spacing-small); padding-bottom: var(--spacing-medium); border-bottom: 1px dashed #eee; /* Matches other cells */ order: -1; /* Move QR to top */ } #partsTable .part-qr-cell::before { content: "零件二维码"; } #partsTable .part-qr-cell img { margin-left: auto; max-width: 70px; /* Adjust size for mobile */ } /* Name/ID Cell on mobile */ #partsTable .part-name-cell { flex-wrap: wrap; } #partsTable .part-name-cell::before { content: "名称 / ID"; } #partsTable .part-name-cell strong { width: 100%; margin-bottom: 3px; text-align: left;} #partsTable .part-name-cell span { width: 100%; text-align: left; font-size: 0.9em;} /* Other cells */ #partsTable td.part-spec-cell::before { content: "规格型号"; } #partsTable td[data-label="材料"]::before { content: "材料"; } #partsTable td[data-label="单位"]::before { content: "单位"; } #partsTable td[data-label="备注"]::before { content: "备注"; } #partsTable tr.no-results-row td { display: block; text-align: center; } #partsTable tr.no-results-row td::before { display: none; } }
         @media (max-width: 480px) { html { font-size: 13px; } header { padding: var(--spacing-medium); } header h1 { font-size: 1.6em; } .section { padding: var(--spacing-medium); } .info-table th, .info-table td { padding: var(--spacing-small) var(--spacing-medium); } .components-table td { padding: var(--spacing-small) var(--spacing-medium); } .relationships-list li { padding: var(--spacing-small) var(--spacing-medium); } .page-nav a { padding: 5px 8px; } .content-block { padding: var(--spacing-medium); } /* Mobile table labels */ .revision-history-table td::before { flex-basis: 40%; } #partsTable td::before { flex-basis: 40%; } #partsTable .part-qr-cell img { max-width: 60px; } }
+    /* --- 你已有的非常长的CSS定义... --- */
+
+        /* --- 新增: 特征交互分析部分的样式 --- */
+        #interaction-analysis h2 i { color: var(--accent-color-search, #1abc9c); } /* 使用你已有的搜索图标颜色或定义新颜色 */
+        .relationship-analysis-block {
+            background-color: #fdfefe; /* 一个略微不同的背景色，如果需要区分 */
+            border: 1px solid var(--border-color);
+            border-left: 6px solid var(--accent-color-search, #1abc9c); /* 左侧强调线颜色，与搜索部分一致或自定义 */
+            padding: var(--spacing-large);
+            margin-bottom: var(--spacing-xlarge);
+            border-radius: var(--border-radius-medium);
+            box-shadow: var(--shadow-light);
+        }
+        .relationship-analysis-block h3 { /* 分析块内的小标题，针对每个装配关系 */
+            color: var(--primary-color); /* 使用你已有的主色调 */
+            font-size: 1.4em; 
+            margin-top: 0;
+            margin-bottom: var(--spacing-medium);
+            border-bottom: 1px solid #eee;
+            padding-bottom: var(--spacing-small);
+        }
+        .analysis-comp-name { font-weight: 500; color: var(--text-dark); } /* 交互组件名称的样式 */
+        .feature-pair-analysis {
+            margin-top: var(--spacing-medium);
+            padding-left: var(--spacing-large); /* 内缩进 */
+            border-left: 3px dotted #ccc; /* 特征对分析的左侧虚线，表示层级 */
+            margin-bottom: var(--spacing-medium);
+        }
+        .feature-pair-analysis h4 { /* 特征对的标题 */
+            font-size: 1.15em;
+            color: var(--secondary-color); /* 使用你已有的次要色调 */
+            margin-top: var(--spacing-medium);
+            margin-bottom: var(--spacing-small);
+        }
+        .analysis-feature-name { font-style: italic; color: #444; font-weight:500; } /* 特征名称的样式 */
+        .knowledge-entry-detailed { /* 每个知识库条目 */
+            background-color: #f9f9f9; /* 浅灰色背景 */
+            padding: var(--spacing-medium);
+            margin-top: var(--spacing-small);
+            margin-bottom: var(--spacing-medium);
+            border: 1px dashed #e0e0e0; /* 虚线边框 */
+            border-radius: var(--border-radius-small);
+            font-size: 0.95em;
+        }
+        .knowledge-entry-detailed p { margin: 8px 0; line-height: 1.6; }
+        .knowledge-entry-detailed .label { font-weight: bold; color: #2c3e50; } /* 使用你已有的文本颜色 */
+        .knowledge-entry-detailed .fas { margin-right: 5px; opacity: 0.8; } /* 给知识库条目中的小图标加点样式 */
+        
+        /* 敏感度评级颜色 (可以根据你的主题色调整) */
+        .sensitivity-high { color: var(--accent-color-danger, #e74c3c); font-weight: bold; } 
+        .sensitivity-medium { color: var(--accent-color-warning, #e67e22); font-weight: bold; } 
+        .sensitivity-low { color: var(--accent-color-fit, #2ecc71); } 
+        .sensitivity-unknown { color: var(--text-light, #7f8c8d); font-style: italic; } 
+        /* --- 结束特征交互分析部分的样式 --- */
     </style></head><body><header>
 <h1><i class="fas fa-cogs"></i> 零件总览与搜索</h1>
 </header><div class="container"><div class="section" id="search-section"><h2><i class="fas fa-search"></i> 搜索零件</h2><div class="search-container"><label for="partSearchInput"><i class="fas fa-filter"></i> 输入关键词:</label><input type="text" id="partSearchInput" placeholder="搜索零件名称、ID、规格、材料、备注..." aria-label="零件搜索输入框"></div></div><div class="section" id="master-qr-section">
@@ -318,7 +372,7 @@ V2版本，加强筋设计，提升耐压性。
 </tbody></table></div></div></div>
     <button id="back-to-top" title="返回顶部"><i class="fas fa-arrow-up"></i></button>
     <footer role="contentinfo">
-        页面静态生成时间: <time datetime="2025-05-10 09:19:09">2025-05-10 09:19:09</time> | 数据来源: ASM 数据库<br>
+        页面静态生成时间: <time datetime="2025-05-13 20:58:39">2025-05-13 20:58:39</time> | 数据来源: ASM 数据库<br>
         公开访问基址: <a href="https://lmy699.github.io/assembly-display/" target="_blank" rel="noopener noreferrer">https://lmy699.github.io/assembly-display/</a><br>
         Generated by V4.8.4.1 - 基于 V4.8.4 调整QR位置
     </footer>
